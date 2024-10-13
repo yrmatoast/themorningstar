@@ -58,6 +58,7 @@
     {"id":{"name":"par_solid","path":"objects/par_solid/par_solid.yy",},},
     {"id":{"name":"junk_1","path":"rooms/junk_1/junk_1.yy",},},
     {"id":{"name":"junk_2","path":"rooms/junk_2/junk_2.yy",},},
+    {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"id":{"name":"gameframe_macros","path":"scripts/gameframe_macros/gameframe_macros.yy",},},
     {"id":{"name":"gameframe","path":"scripts/gameframe/gameframe.yy",},},
     {"id":{"name":"scr_collision","path":"scripts/scr_collision/scr_collision.yy",},},
@@ -128,6 +129,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"junk_1","path":"rooms/junk_1/junk_1.yy",},},
     {"roomId":{"name":"junk_2","path":"rooms/junk_2/junk_2.yy",},},
   ],

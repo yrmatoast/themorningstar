@@ -1,0 +1,1 @@
+scr_soundeffect_3d(sfx_hurt, x, y)

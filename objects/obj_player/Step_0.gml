@@ -298,7 +298,7 @@ if global.hitstun == 0
 				state = states.fork
 				scr_soundeffect_3d(sfx_slide, x, y)
 			}
-			if (place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope))
+			if (place_meeting(x + sign(hsp), y - 1, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope))
 			{
 				grv = 0.5
 				movespeed = 0

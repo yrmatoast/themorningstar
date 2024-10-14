@@ -1,3 +1,4 @@
+global.saveroom = ds_list_create()
 hsp = 0
 vsp = 0
 grounded = false

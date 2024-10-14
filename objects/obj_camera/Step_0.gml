@@ -1,7 +1,7 @@
 audio_falloff_set_model(audio_falloff_linear_distance)
 audio_listener_position(-obj_player.x, obj_player.y, 0)
  var camx = cam_tar.x - (camera_get_view_width(view_camera[0]) / 2) + xoffset
-var camy = cam_tar.y - 50 - (camera_get_view_height(view_camera[0]) / 2)
+var camy = cam_tar.y - 50 - (camera_get_view_height(view_camera[0]) / 2) + yoffset
 camx = clamp(camx, 0, (room_width - camera_get_view_width(view_camera[0])))
 camy = clamp(camy, 0, (room_height - camera_get_view_height(view_camera[0])))
 var rcx = camx
@@ -14,6 +14,10 @@ if lock = false
 if cam_tar == obj_player
 {
 	var extend = cam_tar.xscale * cam_tar.movespeed * 8
+	if cam_tar.state == states.cape
+		var extendy = cam_tar.vsp * 5
+	else
+		var extendy = 0
 	var accel = 2
 	if (extend < 0 && xoffset > 0) || (extend > 0 && xoffset < 0)
 		var accel = 8
@@ -24,6 +28,7 @@ if cam_tar == obj_player
 	cam_tar.state == states.skidding
 	{
 		xoffset = approach(xoffset, extend, accel)
+		yoffset = approach(yoffset, extendy, 2)
 		noisesprite = spr_hud_speedometer_noisemove
 	}
 	else

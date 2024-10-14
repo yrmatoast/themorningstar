@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_slope",
-    "path":"sprites/spr_slope/spr_slope.yy",
+    "name":"spr_slope_blue",
+    "path":"sprites/spr_slope_blue/spr_slope_blue.yy",
   },
   "spriteMaskId":null,
   "visible":true,

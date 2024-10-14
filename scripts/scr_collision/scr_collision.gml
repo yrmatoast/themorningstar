@@ -2,10 +2,10 @@ function scr_collision()
 {
 	var _ground =  place_meeting(x, y + 1, par_solid) && vsp >= 0
 	var _checkby = .5 // HALF a pixel, this just works!
-	var _slopecheckthing = 20
-	if place_meeting(x + hsp, y, par_solid) && !place_meeting(x + hsp, y, obj_platform)// Horizontal Shit
+	var _slopecheckthing = 24
+	if place_meeting(x + hsp, y, par_solid)// Horizontal Shit
 	{
-		if !place_meeting(x + hsp, y - _slopecheckthing - vsp, par_solid) // check for pixel, if no, go up
+		if !place_meeting(x + hsp, y - _slopecheckthing, par_solid) // check for pixel, if no, go up
 		{
 			while place_meeting(x + hsp, y, par_solid) 
 			{
@@ -24,7 +24,7 @@ function scr_collision()
 	}
 	
 	
-	if vsp >= 0 && !place_meeting(x + hsp, y + 1, par_solid) && place_meeting(x + hsp, y + abs(hsp) + 8, par_solid) // go DOWN slopw
+	if vsp >= 0 && !place_meeting(x + hsp, y + 1, par_solid) && place_meeting(x + hsp, y + _slopecheckthing, par_solid) // go DOWN slopw
 	{
 		while !place_meeting(x + hsp, y + _checkby, par_solid) 
 		{

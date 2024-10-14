@@ -49,6 +49,7 @@
     {"id":{"name":"obj_destroyable","path":"objects/obj_destroyable/obj_destroyable.yy",},},
     {"id":{"name":"obj_doorA","path":"objects/obj_doorA/obj_doorA.yy",},},
     {"id":{"name":"obj_doorB","path":"objects/obj_doorB/obj_doorB.yy",},},
+    {"id":{"name":"obj_doorC","path":"objects/obj_doorC/obj_doorC.yy",},},
     {"id":{"name":"obj_eggcop","path":"objects/obj_eggcop/obj_eggcop.yy",},},
     {"id":{"name":"obj_errorreporter","path":"objects/obj_errorreporter/obj_errorreporter.yy",},},
     {"id":{"name":"obj_fadeout","path":"objects/obj_fadeout/obj_fadeout.yy",},},
@@ -68,6 +69,7 @@
     {"id":{"name":"par_solid","path":"objects/par_solid/par_solid.yy",},},
     {"id":{"name":"junk_1","path":"rooms/junk_1/junk_1.yy",},},
     {"id":{"name":"junk_2","path":"rooms/junk_2/junk_2.yy",},},
+    {"id":{"name":"junk_3","path":"rooms/junk_3/junk_3.yy",},},
     {"id":{"name":"overgrown_1","path":"rooms/overgrown_1/overgrown_1.yy",},},
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"id":{"name":"gameframe_macros","path":"scripts/gameframe_macros/gameframe_macros.yy",},},
@@ -166,6 +168,7 @@
     {"roomId":{"name":"junk_1","path":"rooms/junk_1/junk_1.yy",},},
     {"roomId":{"name":"junk_2","path":"rooms/junk_2/junk_2.yy",},},
     {"roomId":{"name":"overgrown_1","path":"rooms/overgrown_1/overgrown_1.yy",},},
+    {"roomId":{"name":"junk_3","path":"rooms/junk_3/junk_3.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

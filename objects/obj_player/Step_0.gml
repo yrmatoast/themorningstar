@@ -157,10 +157,8 @@ if global.hitstun == 0
 			hsp = movespeed * xscale
 			if animation_end() && get_sprite("capestart")
 				set_sprite("cape", 0)
-			if animation_end() && get_sprite("capestart")
-			{
+			if animation_end() && get_sprite("capefallstart")
 				set_sprite("capefall", 0)
-			}
 			if vsp > 0 && (get_sprite("capestart") || get_sprite("cape"))
 			{
 				set_sprite("capefallstart", 0)
@@ -422,11 +420,11 @@ if global.hitstun == 0
 			}
 			break
 	}
-	if place_meeting(x + hsp, y + vsp, obj_destroyable) &&
+	if place_meeting(x + hsp, y + vsp * 2, obj_destroyable) &&
 	state == states.running ||
 	state == states.fork
 	{
-		with instance_place(x + hsp, y + vsp, obj_destroyable)
+		with instance_place(x + hsp, y + vsp * 2, obj_destroyable)
 			instance_destroy()
 	}
 }

@@ -9,3 +9,4 @@ if instance_exists(_door)
 roomstartx = x
 roomstarty = y
 hallway = false
+depth = 0

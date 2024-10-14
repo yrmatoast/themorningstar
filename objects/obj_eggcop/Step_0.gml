@@ -1,5 +1,5 @@
 scr_collision()
-y += grv
+vsp += grv
 if place_meeting(x, y, obj_player) && obj_player.killmove
 {
 	if global.hitstun == 0
@@ -11,7 +11,7 @@ if place_meeting(x, y, obj_player) && obj_player.killmove
 			kill: true,
 			killID: [id]
 		}
-		global.hitstun = 6
+		global.hitstun = 10
 	}
 }
 if distance_to_object(obj_player) < 32 * 10 && point_distance(0, obj_player.y, 0, y) < 32 * 2

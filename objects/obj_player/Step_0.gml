@@ -323,8 +323,16 @@ if global.hitstun == 0
 				set_sprite("fall")
 			if (move == 0) && grounded
 			{
-				state = states.skidding
-				scr_soundeffect_3d(sfx_break, x, y)
+				if movespeed < 7
+				{
+					state = states.normal
+					movespeed = 0
+				}
+				else
+				{
+					state = states.skidding
+					scr_soundeffect_3d(sfx_break, x, y)
+				}
 			}
 			if (move != xscale && move != 0) && grounded
 			{
@@ -446,6 +454,7 @@ if global.hitstun == 0
 				set_sprite("forkdive", 0)
 				vsp = 15
 				state = states.fork
+				movespeed = abs(movespeed)
 				scr_soundeffect_3d(sfx_dive, x, y)
 			}
 			break

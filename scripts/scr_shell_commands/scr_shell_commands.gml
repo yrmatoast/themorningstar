@@ -27,3 +27,25 @@ function sh_goto_room(args)
 			targetRoom = other.targetRoom
 	}
 }
+
+function meta_toggle_collisions ()
+{
+	return
+	{
+		arguments: ["bool"],
+		suggestions: [
+		["true", "false"]
+		],
+		description: "toggles collisions",
+	}
+}
+
+function sh_toggle_collisions (args)
+{
+	if args[1] == "true"
+		global.showcollisions = true
+	else if args[1] == "false"
+		global.showcollisions = false
+	else if !is_bool(args[1])	
+		global.showcollisions = !global.showcollisions
+}

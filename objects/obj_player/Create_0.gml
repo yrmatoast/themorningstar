@@ -55,9 +55,9 @@ slope_momentum = function()
 	{
 		var _obj = instance_place(x, y + 1, obj_slope)
 		if sign(_obj.image_xscale) != xscale
-			movespeed += 0.2
+			movespeed += 0.4
 		else
-			movespeed -= 0.1
+			movespeed -= 0.2
 		movespeed = clamp(movespeed, 6, 24)
 	}
 }

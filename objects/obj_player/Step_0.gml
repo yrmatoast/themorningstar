@@ -493,3 +493,5 @@ if state == states.fork
 	killmove = true
 else
 	killmove = false
+with par_solid
+	visible = global.showcollisions

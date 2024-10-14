@@ -37,6 +37,7 @@ if global.hitstun == 0
 			{
 				state = states.wallslide
 				vsp = -abs(hsp)
+				scr_soundeffect_3d(sfx_wallslide, x, y)
 			}
 			if grounded
 			{
@@ -56,8 +57,11 @@ if global.hitstun == 0
 		case states.wallslide:
 			hsp = 0
 			grv = 0.25
-			sprite_index = spr_noise_wallslide
 			image_speed = 0.4
+			if vsp > 0
+				sprite_index = spr_noise_wallslidedown
+			else
+				sprite_index = spr_noise_wallslide
 			if !place_meeting(x + sign(xscale), y, obj_solid)
 			{
 				sprite_index = spr_noise_jump
@@ -173,6 +177,7 @@ if global.hitstun == 0
 			{
 				state = states.wallslide
 				vsp = -abs(hsp)
+				scr_soundeffect_3d(sfx_wallslide, x, y)
 			}
 			if jumpstop == false && !key_jump && vsp < 0.5
 			{
@@ -267,6 +272,7 @@ if global.hitstun == 0
 			{
 				state = states.wallslide
 				vsp = -abs(hsp)
+				scr_soundeffect_3d(sfx_wallslide, x, y)
 			}
 			break
 		case states.running:
@@ -438,6 +444,13 @@ if global.hitstun == 0
 				scr_soundeffect_3d(sfx_dive, x, y)
 			}
 			break
+	}
+	if place_meeting(x + hsp, y + vsp, obj_destroyable) &&
+	state == states.running ||
+	state == states.fork
+	{
+		with instance_place(x + hsp, y + vsp, obj_destroyable)
+			instance_destroy()
 	}
 }
 else

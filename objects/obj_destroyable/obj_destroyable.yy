@@ -1,17 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_slope3",
-  "eventList":[],
+  "%Name":"obj_destroyable",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_slope3",
+  "name":"obj_destroyable",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
     "path":"folders/Objects.yy",
   },
   "parentObjectId":{
-    "name":"obj_slope",
-    "path":"objects/obj_slope/obj_slope.yy",
+    "name":"par_solid",
+    "path":"objects/par_solid/par_solid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -31,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_slopecurved",
-    "path":"sprites/spr_slopecurved/spr_slopecurved.yy",
+    "name":"spr_destroyable",
+    "path":"sprites/spr_destroyable/spr_destroyable.yy",
   },
   "spriteMaskId":null,
   "visible":true,

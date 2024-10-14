@@ -135,7 +135,7 @@ function scr_soundeffect_3d(_snd, _x, _y, _pitch = 0)
 
 function animation_end()
 {
-	return floor(image_index) == (image_number - 1);
+	return floor(image_index) >= (image_number - 1);
 }
 
 #macro trace show_debug_message

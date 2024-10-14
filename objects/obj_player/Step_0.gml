@@ -209,7 +209,7 @@ if global.hitstun == 0
 					set_sprite("turn", 0)
 					state = states.running
 					xscale = move
-					timers.run = 80
+					timers.run = 60
 				}
 				else
 				{
@@ -266,7 +266,7 @@ if global.hitstun == 0
 			hsp = movespeed * xscale
 			var targetspeed = 12
 			if timers.run <= 0
-				targetspeed = 16
+				targetspeed = char == "N" ? 16 : 19
 			if animation_end() && (get_sprite("runstart") || get_sprite("runland") || get_sprite("turn"))
 				set_sprite("run")
 			if movespeed > 14 && get_sprite("run")
@@ -355,7 +355,7 @@ if global.hitstun == 0
 			{
 				state = states.running
 				set_sprite("runstart", 0)
-				timers.run = 80
+				timers.run = 60
 			}
 			else
 			{
@@ -389,7 +389,7 @@ if global.hitstun == 0
 			}
 			break
 		case states.jump:
-			hsp = movespeed * xscale
+			hsp = approach(hsp, movespeed * xscale, 2)
 			if move != 0
 			{
 				xscale = move

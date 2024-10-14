@@ -216,9 +216,23 @@ if global.hitstun == 0
 					set_sprite("skidend", 0)
 				}
 			}
+			if key_jump && grounded && move != xscale && move != 0
+			{
+				xscale = move
+				instance_create_depth(x, y + 5, 5, obj_basicparticle, {
+					sprite_index: spr_jumpcloud
+				})
+				vsp = -15
+				scr_soundeffect_3d(sfx_jump, x, y)
+				set_sprite("backflip", 0)
+				state = states.jump
+				jumpstop = false
+			}
 			break
 		case states.runningjump:
 			hsp = movespeed * xscale
+			if movespeed < 10
+				movespeed = approach(movespeed, 10, 2)
 			if jumpanim == true
 			{
 				if movespeed > 12 || (get_sprite("fork") || get_sprite("forkstart"))
@@ -387,6 +401,8 @@ if global.hitstun == 0
 			}
 			break
 		case states.jump:
+		if get_sprite("jump") || get_sprite("fall")
+		{
 			hsp = approach(hsp, movespeed * xscale, 2)
 			if move != 0
 			{
@@ -395,14 +411,28 @@ if global.hitstun == 0
 			}
 			else
 				movespeed = 0
+		}
+		else
+		{
+			hsp = approach(hsp, movespeed, 2)
+			if move != 0
+			{
+				movespeed = 10 * xscale
+			}
+			else
+				movespeed = 0
+		}
 			if animation_end() && get_sprite("jump")
 				set_sprite("fall")
+			if animation_end() && get_sprite("backflip")
+				set_sprite("backflipfall")
 			if grounded
 			{
 				instance_create_depth(x, y, 5, obj_basicparticle, {
 					sprite_index: spr_landeffect
 				})
 				state = states.normal
+				movespeed = abs(movespeed)
 				set_sprite("land", 0)
 				scr_soundeffect_3d(sfx_land, x, y)
 			}

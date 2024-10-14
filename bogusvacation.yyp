@@ -125,6 +125,8 @@
     {"id":{"name":"spr_monster_runstart","path":"sprites/spr_monster_runstart/spr_monster_runstart.yy",},},
     {"id":{"name":"spr_monster_turn","path":"sprites/spr_monster_turn/spr_monster_turn.yy",},},
     {"id":{"name":"spr_movementcloud","path":"sprites/spr_movementcloud/spr_movementcloud.yy",},},
+    {"id":{"name":"spr_noise_backflip","path":"sprites/spr_noise_backflip/spr_noise_backflip.yy",},},
+    {"id":{"name":"spr_noise_backflipfall","path":"sprites/spr_noise_backflipfall/spr_noise_backflipfall.yy",},},
     {"id":{"name":"spr_noise_bounce","path":"sprites/spr_noise_bounce/spr_noise_bounce.yy",},},
     {"id":{"name":"spr_noise_cape","path":"sprites/spr_noise_cape/spr_noise_cape.yy",},},
     {"id":{"name":"spr_noise_capefall","path":"sprites/spr_noise_capefall/spr_noise_capefall.yy",},},

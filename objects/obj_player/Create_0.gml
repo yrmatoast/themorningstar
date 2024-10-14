@@ -47,3 +47,16 @@ hallwaydirection = 1
 
 roomstartx = x
 roomstarty = y
+
+slope_momentum = function()
+{
+	if place_meeting(x, y + 1, obj_slope)
+	{
+		var _obj = instance_place(x, y + 1, obj_slope)
+		if sign(_obj.image_xscale) != xscale
+			movespeed += 0.2
+		else
+			movespeed -= 0.1
+		movespeed = clamp(movespeed, 6, 24)
+	}
+}

@@ -95,6 +95,7 @@ if global.hitstun == 0
 				sprite_index = spr_noise_fork
 			if sprite_index == spr_noise_fork || sprite_index == spr_noise_forkstart
 			{
+				slope_momentum()
 				movespeed = approach(movespeed, 0, 0.1)
 				if key_jump && grounded
 				{
@@ -269,6 +270,7 @@ if global.hitstun == 0
 			}
 			break
 		case states.running:
+			slope_momentum()
 			hsp = movespeed * xscale
 			var targetspeed = 12
 			if timers.run <= 0
@@ -277,7 +279,8 @@ if global.hitstun == 0
 				sprite_index = spr_noise_run
 			if movespeed > 14 && sprite_index == spr_noise_run
 				sprite_index = spr_noise_runmax
-			movespeed = approach(movespeed, targetspeed, 1)
+			if movespeed < targetspeed
+				movespeed = approach(movespeed, targetspeed, 0.40)
 			if key_jump && grounded
 			{
 				instance_create_depth(x, y + 5, 5, obj_basicparticle, {

@@ -1,6 +1,6 @@
 depth = -999;
 gameframe_init();
-gameframe_caption_text = "Pizza Tower: Noise's Bogus Vacation";
+gameframe_caption_text = "Pizza Tower: The Morning Star";
 gameframe_caption_font = fnt_caption;
 gameframe_caption_icon = spr_ico;
 mouse_in_window = false;

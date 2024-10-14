@@ -130,6 +130,7 @@
     {"id":{"name":"spr_noise_skidend","path":"sprites/spr_noise_skidend/spr_noise_skidend.yy",},},
     {"id":{"name":"spr_noise_turn","path":"sprites/spr_noise_turn/spr_noise_turn.yy",},},
     {"id":{"name":"spr_noise_wallslide","path":"sprites/spr_noise_wallslide/spr_noise_wallslide.yy",},},
+    {"id":{"name":"spr_player_bounce","path":"sprites/spr_player_bounce/spr_player_bounce.yy",},},
     {"id":{"name":"spr_player_mask","path":"sprites/spr_player_mask/spr_player_mask.yy",},},
     {"id":{"name":"spr_slope_blue","path":"sprites/spr_slope_blue/spr_slope_blue.yy",},},
     {"id":{"name":"spr_slope","path":"sprites/spr_slope/spr_slope.yy",},},

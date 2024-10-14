@@ -10,8 +10,8 @@
     "path":"folders/Objects.yy",
   },
   "parentObjectId":{
-    "name":"par_solid",
-    "path":"objects/par_solid/par_solid.yy",
+    "name":"obj_slope",
+    "path":"objects/obj_slope/obj_slope.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

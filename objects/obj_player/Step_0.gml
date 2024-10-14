@@ -30,6 +30,29 @@ if global.hitstun == 0
 	}
 	switch state
 	{
+		case states.walljump:
+			grv = 0.5
+			hsp = movespeed * xscale
+			if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
+			{
+				state = states.wallslide
+				vsp = -abs(hsp)
+			}
+			if grounded
+			{
+				sprite_index = spr_noise_land
+				state = states.jump
+				grv = 0.5
+			}
+			if key_down2 && sprite_index != spr_noise_forkdive
+			{
+				sprite_index = spr_noise_forkdive
+				image_index = 0
+				vsp = 15
+				scr_soundeffect_3d(sfx_dive, x, y)
+				state = states.fork
+			}
+			break
 		case states.wallslide:
 			hsp = 0
 			grv = 0.25
@@ -43,9 +66,25 @@ if global.hitstun == 0
 				vsp = vsp
 				jumpstop = true
 			}
+			else
+			{
+				if key_jump2
+				{
+					state = states.walljump
+					xscale *= -1
+					movespeed = 12
+					vsp = -12
+					sprite_index = spr_player_bounce
+					instance_create_depth(x, y + 5, 5, obj_basicparticle, {
+					sprite_index: spr_jumpcloud,
+					image_angle: -90 * xscale,
+					})
+					scr_soundeffect_3d(sfx_jump, x, y)
+				}
+			}
 			if grounded
 			{
-				sprite_index = spr_noise_jump
+				sprite_index = spr_noise_land
 				state = states.jump
 				grv = 0.5
 			}

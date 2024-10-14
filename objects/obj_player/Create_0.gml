@@ -17,6 +17,7 @@ enum states
 	cape,
 	fork,
 	wallslide,
+	walljump,
 }
 state = states.normal
 timers = 

@@ -137,3 +137,43 @@ function animation_end()
 {
 	return floor(image_index) == (image_number - 1);
 }
+
+#macro trace show_debug_message
+#macro error add_error
+
+function draw_set_align(_halign = fa_left, _valign = fa_top)
+{
+	draw_set_halign(_halign);
+	draw_set_valign(_valign);
+}
+
+function error_exists(_errmsg)
+{
+	var _proceed = false
+	if (!ds_list_empty(obj_errorreporter.errors))
+	{
+		for (var i = 0; i < ds_list_size(obj_errorreporter.errors); i++)
+		{
+			var q = ds_list_find_value(obj_errorreporter.errors, i)
+			if q.rtxt == _errmsg
+			{
+				var _proceed = true
+				break
+			}
+		}
+	}
+	return _proceed
+}
+
+function add_error(_text)
+{
+	var _err = 
+	{
+		rtxt: _text,
+		txt: string("ERROR: {0}", _text),
+		timer: 60 * 3,
+	}
+	if !error_exists(_text)
+		ds_list_add(obj_errorreporter.errors, _err)	
+	return _err
+}

@@ -47,6 +47,7 @@ hallwaydirection = 1
 
 roomstartx = x
 roomstarty = y
+char = "N"
 
 slope_momentum = function()
 {

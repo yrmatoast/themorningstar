@@ -7,6 +7,10 @@ if mouse_check_button(mb_left)
 }
 if keyboard_check_pressed(vk_f1)
 	game_restart()
+var att = char == "N" ? attributes.noise : attributes.bruit
+var grav = att[0][0]
+var cape = att[0][1]
+var speeds = [att[1][0], att[1][1], att[1][2]]
 if global.hitstun == 0
 {
 	__ti_input()
@@ -31,7 +35,7 @@ if global.hitstun == 0
 	switch state
 	{
 		case states.walljump:
-			grv = 0.5
+			grv = grav
 			hsp = movespeed * xscale
 			if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
 			{
@@ -43,7 +47,7 @@ if global.hitstun == 0
 			{
 				set_sprite("land", 0)
 				state = states.jump
-				grv = 0.5
+				grv = grav
 			}
 			if key_down2 && !get_sprite("forkdive")
 			{
@@ -65,7 +69,7 @@ if global.hitstun == 0
 			{
 				set_sprite("jump", 0)
 				state = states.jump
-				grv = 0.5
+				grv = grav
 				vsp = vsp
 				jumpstop = true
 			}
@@ -89,7 +93,7 @@ if global.hitstun == 0
 			{
 				set_sprite("land", 0)
 				state = states.jump
-				grv = 0.5
+				grv = grav
 			}
 			break
 		case states.fork:
@@ -102,7 +106,7 @@ if global.hitstun == 0
 				movespeed = approach(movespeed, 0, 0.1)
 				if key_jump && grounded
 				{
-					grv = 0.5
+					grv = grav
 					jumpstop = false
 					vsp = -13
 					jumpanim = true
@@ -114,7 +118,7 @@ if global.hitstun == 0
 				}
 				if movespeed == 0 || (place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope))
 				{
-					grv = 0.5
+					grv = grav
 					movespeed = 0
 					state = states.normal
 					set_sprite("skidend", 0)
@@ -122,7 +126,7 @@ if global.hitstun == 0
 			}
 			if get_sprite("forkdive")
 			{
-				grv = 0.5
+				grv = grav
 				if grounded
 				{
 					if !key_down
@@ -132,14 +136,14 @@ if global.hitstun == 0
 						})
 						if move != 0
 						{
-							grv = 0.5
+							grv = grav
 							state = states.running
 							set_sprite("runland", 0)
 							scr_soundeffect_3d(sfx_land, x, y)
 						}
 						else
 						{
-							grv = 0.5
+							grv = grav
 							state = states.normal
 							set_sprite("idle", 0)
 							scr_soundeffect_3d(sfx_land, x, y)
@@ -159,10 +163,10 @@ if global.hitstun == 0
 				set_sprite("cape", 0)
 			if animation_end() && get_sprite("capefallstart")
 				set_sprite("capefall", 0)
-			if vsp > 0 && (get_sprite("capestart") || get_sprite("cape"))
+			if vsp > 0 && (get_sprite("capestart") || get_sprite("cape")) && char == "N"
 			{
 				set_sprite("capefallstart", 0)
-				grv = 0.5
+				grv = grav
 			}
 			if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
 			{
@@ -170,7 +174,7 @@ if global.hitstun == 0
 				vsp = -abs(hsp)
 				scr_soundeffect_3d(sfx_wallslide, x, y)
 			}
-			if jumpstop == false && !key_jump && vsp < 0.5
+			if jumpstop == false && !key_jump && vsp < grav
 			{
 				jumpstop = true
 				vsp /= 20
@@ -180,12 +184,12 @@ if global.hitstun == 0
 				instance_create_depth(x, y, 5, obj_basicparticle, {
 					sprite_index: spr_landeffect
 				})
-				grv = 0.5
+				grv = grav
 				state = states.running
 				set_sprite("runland", 0)
 				scr_soundeffect_3d(sfx_land, x, y)
 			}
-			if key_down2 && sprite_index != spr_noise_forkdive
+			if key_down2 && sprite_index != spr_noise_forkdive && char == "N"
 			{
 				set_sprite("forkdive", 0)
 				vsp = 15
@@ -195,7 +199,7 @@ if global.hitstun == 0
 			break
 		case states.skidding:
 			hsp = movespeed * xscale
-			grv = 0.5
+			grv = grav
 			movespeed = approach(movespeed, 0, 1 / 1.5)
 			if !get_sprite("runskid")
 				set_sprite("runskid", 0)
@@ -235,7 +239,7 @@ if global.hitstun == 0
 				movespeed = approach(movespeed, 10, 2)
 			if jumpanim == true
 			{
-				if movespeed > 12 || (get_sprite("fork") || get_sprite("forkstart"))
+				if movespeed > speeds[1] || (get_sprite("fork") || get_sprite("forkstart"))
 					set_sprite("longjump", 0)
 				else
 					set_sprite("runjump", 0)
@@ -254,12 +258,12 @@ if global.hitstun == 0
 				set_sprite("runland", 0)
 				scr_soundeffect_3d(sfx_land, x, y)
 			}
-			if jumpstop == false && !key_jump && vsp < 0.5
+			if jumpstop == false && !key_jump && vsp < grav
 			{
 				jumpstop = true
 				vsp /= 20
 			}
-			if key_down2 && sprite_index != spr_noise_forkdive
+			if key_down2 && sprite_index != spr_noise_forkdive && char == "N"
 			{
 				set_sprite("forkdive", 0)
 				vsp = 15
@@ -276,25 +280,25 @@ if global.hitstun == 0
 		case states.running:
 			slope_momentum()
 			hsp = movespeed * xscale
-			var targetspeed = 12
+			var targetspeed = speeds[1]
 			if timers.run <= 0
-				targetspeed = char == "N" ? 16 : 19
+				targetspeed = speeds[2]
 			if animation_end() && (get_sprite("runstart") || get_sprite("runland") || get_sprite("turn"))
 				set_sprite("run")
-			if movespeed > 14 && get_sprite("run")
+			if movespeed > speeds[1] && get_sprite("run")
 				set_sprite("runmax")
 			if movespeed < targetspeed
-				movespeed = approach(movespeed, targetspeed, 0.40)
+				movespeed = approach(movespeed, targetspeed, speeds[0])
 			if key_jump && grounded
 			{
 				instance_create_depth(x, y + 5, 5, obj_basicparticle, {
 					sprite_index: spr_jumpcloud
 				})
-				if movespeed > 12
+				if movespeed > speeds[1]
 				{
 					jumpstop = false
-					vsp = -15
-					grv = 0.25
+					vsp = char == "N" ? -15 : -6
+					grv = cape
 					set_sprite("capestart", 0)
 					jumpanim = true
 					state = states.cape
@@ -341,7 +345,7 @@ if global.hitstun == 0
 				xscale = move
 				timers.run = 60
 			}
-			if key_down2
+			if key_down2 && char == "N"
 			{
 				set_sprite("forkstart", 0)
 				if movespeed < 12
@@ -351,7 +355,7 @@ if global.hitstun == 0
 			}
 			if (place_meeting(x + sign(hsp), y - 1, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope))
 			{
-				grv = 0.5
+				grv = grav
 				movespeed = 0
 				state = states.normal
 				set_sprite("skidend", 0)
@@ -399,7 +403,7 @@ if global.hitstun == 0
 				state = states.jump
 				jumpstop = false
 			}
-			if key_down
+			if key_down && char == "N"
 			{
 				set_sprite("forkstart", 0)
 				if movespeed < 14
@@ -444,12 +448,12 @@ if global.hitstun == 0
 				set_sprite("land", 0)
 				scr_soundeffect_3d(sfx_land, x, y)
 			}
-			if jumpstop == false && !key_jump && vsp < 0.5
+			if jumpstop == false && !key_jump && vsp < grav
 			{
 				jumpstop = true
 				vsp /= 20
 			}
-			if key_down2 && sprite_index != spr_noise_forkdive
+			if key_down2 && sprite_index != spr_noise_forkdive && char == "N"
 			{
 				set_sprite("forkdive", 0)
 				vsp = 15
@@ -489,9 +493,12 @@ else
 	}
 }
 
-if state == states.fork
+if state == states.fork || (state == states.running && char != "N" && movespeed > speeds[1])
 	killmove = true
 else
 	killmove = false
 with par_solid
+{
+	if object_index != obj_destroyable
 	visible = global.showcollisions
+}

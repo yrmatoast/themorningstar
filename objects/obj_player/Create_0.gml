@@ -1,4 +1,5 @@
 global.saveroom = ds_list_create()
+global.followerlist = ds_list_create()
 hsp = 0
 vsp = 0
 grounded = false
@@ -60,6 +61,8 @@ char = "N"
 
 slope_momentum = function()
 {
+	var att = char == "N" ? attributes.noise : attributes.bruit
+	var _speed = att[1][2]
 	if place_meeting(x, y + 1, obj_slope)
 	{
 		var _obj = instance_place(x, y + 1, obj_slope)
@@ -67,6 +70,6 @@ slope_momentum = function()
 			movespeed += 0.4
 		else
 			movespeed -= 0.2
-		movespeed = clamp(movespeed, 6, 24)
+		movespeed = clamp(movespeed, 6, _speed + 4)
 	}
 }

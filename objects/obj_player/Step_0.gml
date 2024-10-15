@@ -36,7 +36,14 @@ if global.hitstun == 0
 	{
 		case states.walljump:
 			grv = grav
-			hsp = movespeed * xscale
+			hsp = approach(hsp, movespeed * xscale, 2)
+			if move != 0
+			{
+				xscale = move
+				movespeed = 10
+			}
+			else
+				movespeed = 0
 			if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
 			{
 				state = states.wallslide
@@ -200,25 +207,14 @@ if global.hitstun == 0
 		case states.skidding:
 			hsp = movespeed * xscale
 			grv = grav
-			movespeed = approach(movespeed, 0, 1 / 1.5)
+			movespeed = approach(movespeed, 0, 1 / 2)
 			if !get_sprite("runskid")
 				set_sprite("runskid", 0)
 			if movespeed == 0 && grounded
 			{
-				if (move != xscale && move != 0)
-				{
-					movespeed = 0
-					set_sprite("turn", 0)
-					state = states.running
-					xscale = move
-					timers.run = 60
-				}
-				else
-				{
-					movespeed = 0
-					state = states.normal
-					set_sprite("skidend", 0)
-				}
+				movespeed = 0
+				state = states.normal
+				set_sprite("skidend", 0)
 			}
 			if key_jump && grounded && move != xscale && move != 0
 			{
@@ -285,7 +281,7 @@ if global.hitstun == 0
 				targetspeed = speeds[2]
 			if animation_end() && (get_sprite("runstart") || get_sprite("runland") || get_sprite("turn"))
 				set_sprite("run")
-			if movespeed > speeds[1] && get_sprite("run")
+			if movespeed >= speeds[2] && get_sprite("run")
 				set_sprite("runmax")
 			if movespeed < targetspeed
 				movespeed = approach(movespeed, targetspeed, speeds[0])
@@ -379,7 +375,7 @@ if global.hitstun == 0
 			{
 				state = states.running
 				set_sprite("runstart", 0)
-				timers.run = 60
+				timers.run = 75
 			}
 			else
 			{
@@ -499,6 +495,8 @@ else
 	killmove = false
 with par_solid
 {
-	if object_index != obj_destroyable
-	visible = global.showcollisions
+	if object_index != obj_destroyable && object_index != obj_spike
+		visible = global.showcollisions
 }
+if keyboard_check_pressed(ord("S"))
+	global.showcollisions = !global.showcollisions

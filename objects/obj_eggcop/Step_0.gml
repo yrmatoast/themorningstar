@@ -11,10 +11,10 @@ if place_meeting(x, y, obj_player) && obj_player.killmove
 			kill: true,
 			killID: [id]
 		}
-		global.hitstun = 10
+		global.hitstun = 5
 	}
 }
-if distance_to_object(obj_player) < 32 * 10 && point_distance(0, obj_player.y, 0, y) < 32 * 2
+if distance_to_object(obj_player) < 32 * 10 && point_distance(0, obj_player.y, 0, y) < 32 * 4
 {
 	if !attacking
 	{

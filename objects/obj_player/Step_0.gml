@@ -36,18 +36,16 @@ if global.hitstun == 0
 	{
 		case states.walljump:
 			grv = grav
-			hsp = approach(hsp, movespeed * xscale, 2)
+			hsp = approach(hsp, movespeed * xscale, 4)
 			if move != 0
 			{
 				xscale = move
 				movespeed = 10
 			}
-			else
-				movespeed = 0
 			if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
 			{
 				state = states.wallslide
-				vsp = -abs(hsp)
+				vsp = -abs(movespeed)
 				scr_soundeffect_3d(sfx_wallslide, x, y)
 			}
 			if grounded
@@ -56,7 +54,7 @@ if global.hitstun == 0
 				state = states.jump
 				grv = grav
 			}
-			if key_down2 && !get_sprite("forkdive")
+			if key_down2 && !get_sprite("forkdive") && char == "N"
 			{
 				set_sprite("forkdive", 0)
 				vsp = 15
@@ -68,6 +66,13 @@ if global.hitstun == 0
 			hsp = 0
 			grv = 0.25
 			image_speed = 0.4
+			if key_down2
+			{
+				set_sprite("fall", 0)
+				state = states.jump
+				grv = grav
+				vsp = 0
+			}
 			if vsp > 0
 				set_sprite("wallslidedown")
 			else
@@ -77,7 +82,7 @@ if global.hitstun == 0
 				set_sprite("jump", 0)
 				state = states.jump
 				grv = grav
-				vsp = vsp
+				vsp = -10
 				jumpstop = true
 			}
 			else
@@ -175,6 +180,10 @@ if global.hitstun == 0
 				set_sprite("capefallstart", 0)
 				grv = grav
 			}
+			if vsp > 0 && char == "M"
+			{
+				grv = cape
+			}
 			if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
 			{
 				state = states.wallslide
@@ -185,6 +194,7 @@ if global.hitstun == 0
 			{
 				jumpstop = true
 				vsp /= 20
+				grv = grav
 			}
 			if grounded
 			{
@@ -293,8 +303,16 @@ if global.hitstun == 0
 				if movespeed > speeds[1]
 				{
 					jumpstop = false
-					vsp = char == "N" ? -15 : -6
-					grv = cape
+					if char == "N"
+					{
+						vsp = -15
+						grv = cape
+					}
+					else
+					{
+						vsp = -10
+						grv = grav
+					}
 					set_sprite("capestart", 0)
 					jumpanim = true
 					state = states.cape
@@ -330,6 +348,7 @@ if global.hitstun == 0
 				}
 				else
 				{
+					movespeed = movespeed > speeds[2] ? speeds[2] : speeds[1]
 					state = states.skidding
 					scr_soundeffect_3d(sfx_break, x, y)
 				}
@@ -489,7 +508,9 @@ else
 	}
 }
 
-if state == states.fork || (state == states.running && char != "N" && movespeed > speeds[1])
+if state == states.fork 
+|| (state == states.running && char != "N" && movespeed > speeds[1])
+|| (state == states.cape && char != "N" && movespeed > speeds[1])
 	killmove = true
 else
 	killmove = false
@@ -500,3 +521,9 @@ with par_solid
 }
 if keyboard_check_pressed(ord("S"))
 	global.showcollisions = !global.showcollisions
+global.hp = clamp(global.hp, 0, 6)
+if global.collect == 20 && global.hp < 6
+{
+	global.collect = 0
+	global.hp += 1
+}

@@ -65,6 +65,7 @@
     {"name":"inst_12EBFFC2","path":"rooms/junk_1/junk_1.yy",},
     {"name":"inst_67D3BFA2","path":"rooms/junk_1/junk_1.yy",},
     {"name":"inst_1FFCF611","path":"rooms/junk_1/junk_1.yy",},
+    {"name":"inst_42F24B1C","path":"rooms/junk_1/junk_1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -128,6 +129,7 @@
         {"$GMRInstance":"v1","%Name":"inst_12EBFFC2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_12EBFFC2","objectId":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":22.0,"scaleY":16.0,"x":9632.0,"y":-32.0,},
         {"$GMRInstance":"v1","%Name":"inst_67D3BFA2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_67D3BFA2","objectId":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":310.0,"scaleY":2.0,"x":96.00003,"y":-96.0,},
         {"$GMRInstance":"v1","%Name":"inst_1FFCF611","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1FFCF611","objectId":{"name":"obj_checkpoint","path":"objects/obj_checkpoint/obj_checkpoint.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":704.0,"y":416.0,},
+        {"$GMRInstance":"v1","%Name":"inst_42F24B1C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_42F24B1C","objectId":{"name":"obj_orangeswitch","path":"objects/obj_orangeswitch/obj_orangeswitch.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":255.0,"y":466.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Tiles_3","depth":-100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_3","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":23,"SerialiseWidth":310,"TileCompressedData":[
           -257,-2147483648,4,609,610,611,612,-19,-2147483648,4,564,565,566,567,-283,-2147483648,4,649,650,651,

@@ -9,4 +9,5 @@ lock = false
 noiseindex = 0
 noisesprite = spr_hud_speedometer_noise
 cupoffset = 0
+barpos = 0
 draw_texture_flush()

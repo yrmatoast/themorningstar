@@ -2,10 +2,11 @@ if active
 {
 	with obj_player
 	{
-		x = other.x
-		y = other.y
+		x = approach(x, other.x, 2)
+		y = approach(y, other.y, 2)
 		state = -4
 		vsp = 0
+		hsp = 0
 		set_sprite("fall")
 		if key_jump2
 		{

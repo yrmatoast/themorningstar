@@ -1,5 +1,7 @@
 global.saveroom = ds_list_create()
 global.followerlist = ds_list_create()
+global.hp = 4
+global.collect = 0
 hsp = 0
 vsp = 0
 grounded = false
@@ -7,12 +9,18 @@ movespeed = 0
 grv = 0.5
 attributes =
 {
-	noise: [
-	[0.5, 0.25],//gravity [normal, cape]
-	[0.35, 12, 16]],//speeds [accel, min, max]
-	bruit: [
-	[0.4, 0.15],
-	[0.45, 14, 19]],
+	noise:
+		[
+		[0.5, 0.25],
+		//gravity [normal, cape]
+		[0.35, 12, 16]
+		],
+		//speeds [accel, min, max]
+	bruit:
+		[
+		[0.4, 0.15],
+		[0.40, 14, 20]
+		],
 }
 image_speed = 0.35
 depth = 0

@@ -15,7 +15,7 @@ if cam_tar == obj_player
 {
 	var extend = cam_tar.xscale * cam_tar.movespeed * 8
 	if cam_tar.state == states.cape
-		var extendy = cam_tar.vsp * 5
+		var extendy = cam_tar.vsp * 8
 	else
 		var extendy = 0
 	var accel = 2
@@ -24,15 +24,16 @@ if cam_tar == obj_player
 	if cam_tar.state == states.running ||
 	cam_tar.state == states.runningjump ||
 	cam_tar.state == states.cape ||
-	cam_tar.state == states.fork ||
-	cam_tar.state == states.skidding
+	cam_tar.state == states.fork
 	{
 		xoffset = approach(xoffset, extend, accel)
 		yoffset = approach(yoffset, extendy, 2)
 		noisesprite = spr_hud_speedometer_noisemove
+		barpos = approach(barpos, 1, 1 / 30)
 	}
 	else
 	{
+		barpos = approach(barpos, 0, 1 / 30)
 		xoffset = approach(xoffset, 0, 6)
 		noisesprite = spr_hud_speedometer_noise
 	}

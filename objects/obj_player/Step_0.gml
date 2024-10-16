@@ -522,7 +522,8 @@ with par_solid
 if keyboard_check_pressed(ord("S"))
 	global.showcollisions = !global.showcollisions
 global.hp = clamp(global.hp, 0, 6)
-if global.collect == 20 && global.hp < 6
+global.collect = clamp(global.collect, 0, 20)
+if global.collect >= 20 && global.hp < 6
 {
 	global.collect = 0
 	global.hp += 1

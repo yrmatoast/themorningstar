@@ -1,1 +1,0 @@
-targetDoor = junk_3

@@ -122,6 +122,8 @@
     {"id":{"name":"spr_jumpcloud","path":"sprites/spr_jumpcloud/spr_jumpcloud.yy",},},
     {"id":{"name":"spr_landeffect","path":"sprites/spr_landeffect/spr_landeffect.yy",},},
     {"id":{"name":"spr_monster_cape","path":"sprites/spr_monster_cape/spr_monster_cape.yy",},},
+    {"id":{"name":"spr_monster_capepound","path":"sprites/spr_monster_capepound/spr_monster_capepound.yy",},},
+    {"id":{"name":"spr_monster_capepoundslam","path":"sprites/spr_monster_capepoundslam/spr_monster_capepoundslam.yy",},},
     {"id":{"name":"spr_monster_capestart","path":"sprites/spr_monster_capestart/spr_monster_capestart.yy",},},
     {"id":{"name":"spr_monster_fall","path":"sprites/spr_monster_fall/spr_monster_fall.yy",},},
     {"id":{"name":"spr_monster_idle","path":"sprites/spr_monster_idle/spr_monster_idle.yy",},},

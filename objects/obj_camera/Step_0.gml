@@ -40,3 +40,4 @@ if cam_tar == obj_player
 }
 noiseindex +=  0.35
 cupoffset = approach(cupoffset, 0, 3)
+shake = approach(shake, 0, 1)

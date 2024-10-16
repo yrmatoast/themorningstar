@@ -18,8 +18,8 @@ attributes =
 		//speeds [accel, min, max]
 	bruit:
 		[
-		[0.4, 0.15],
-		[0.40, 14, 20]
+		[0.45, 0.04],
+		[0.40, 14, 19]
 		],
 }
 image_speed = 0.35
@@ -36,6 +36,7 @@ enum states
 	fork,
 	wallslide,
 	walljump,
+	capepound,
 }
 state = states.normal
 timers = 
@@ -78,6 +79,6 @@ slope_momentum = function()
 			movespeed += 0.4
 		else
 			movespeed -= 0.2
-		movespeed = clamp(movespeed, 6, _speed + 4)
+		movespeed = clamp(movespeed, 6, _speed)
 	}
 }

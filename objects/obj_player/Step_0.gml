@@ -34,6 +34,37 @@ if global.hitstun == 0
 	}
 	switch state
 	{
+		case states.capepound:
+			if get_sprite("capepound")
+			{
+				hsp = approach(hsp, movespeed * xscale, move != 0 ? 4 : 1)
+				if move != 0
+				{
+					xscale = move
+					movespeed = 10
+				}
+				else
+				{
+					movespeed = 0
+				}
+				if grounded
+				{
+					set_sprite("capepoundslam", 0)
+					obj_camera.shake = 20
+				}
+				vsp += 1
+			}
+			if get_sprite("capepoundslam")
+			{
+				hsp = 0
+				movespeed = 0
+				if animation_end()
+				{
+					set_sprite("idle")
+					state = states.normal
+				}
+			}
+			break
 		case states.walljump:
 			grv = grav
 			hsp = approach(hsp, movespeed * xscale, 4)
@@ -184,6 +215,13 @@ if global.hitstun == 0
 			{
 				grv = cape
 			}
+			if key_jump2 && char == "M"
+			{
+				state =states.capepound
+				vsp = -15
+				sprite_index = spr_monster_capepound
+				grv = grav
+			}
 			if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
 			{
 				state = states.wallslide
@@ -193,7 +231,7 @@ if global.hitstun == 0
 			if jumpstop == false && !key_jump && vsp < grav
 			{
 				jumpstop = true
-				vsp /= 20
+				vsp /= 40
 				grv = grav
 			}
 			if grounded
@@ -310,7 +348,7 @@ if global.hitstun == 0
 					}
 					else
 					{
-						vsp = -10
+						vsp = -14
 						grv = grav
 					}
 					set_sprite("capestart", 0)

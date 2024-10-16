@@ -18,7 +18,7 @@ attributes =
 		//speeds [accel, min, max]
 	bruit:
 		[
-		[0.45, 0.04],
+		[0.5, 0.04],
 		[0.40, 14, 19]
 		],
 }
@@ -67,6 +67,7 @@ hallwaydirection = 1
 roomstartx = x
 roomstarty = y
 char = "N"
+hasflew = false
 
 slope_momentum = function()
 {
@@ -79,6 +80,6 @@ slope_momentum = function()
 			movespeed += 0.4
 		else
 			movespeed -= 0.2
-		movespeed = clamp(movespeed, 6, _speed)
+		movespeed = clamp(movespeed, 6, 20)
 	}
 }

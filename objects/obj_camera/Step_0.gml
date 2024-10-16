@@ -10,12 +10,15 @@ rcx = lerp(rcx, camx, 1)
 rcy = lerp(rcx, camy, 1)
 if lock = false
 	camera_set_view_pos(view_camera[0], rcx + irandom_range(shake, -shake), rcy + irandom_range(shake, -shake))
-	
+if room == rm_levelselect
+	visible = false
+else
+	visible = true
 if cam_tar == obj_player
 {
 	var extend = cam_tar.xscale * cam_tar.movespeed * 8
 	if cam_tar.state == states.cape
-		var extendy = cam_tar.vsp * 8
+		var extendy = cam_tar.vsp * 10
 	else
 		var extendy = 0
 	var accel = 2
@@ -35,6 +38,7 @@ if cam_tar == obj_player
 	{
 		barpos = approach(barpos, 0, 1 / 30)
 		xoffset = approach(xoffset, 0, 6)
+		yoffset = approach(yoffset, 0, 2)
 		noisesprite = spr_hud_speedometer_noise
 	}
 }

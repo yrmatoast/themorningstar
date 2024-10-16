@@ -50,59 +50,6 @@ function scr_collision()
 			_ground = true
 		}
 	}
-	
-	
-	/*
-	//y collisioons shit
-	var _clampvsp = max(0, vsp)
-	var _list = ds_list_create()
-	var _array = array_create(0)
-	array_push(_array, obj_solid, obj_platform)
-	//check
-	var list_size = instance_place_list(x, y + 1 + _clampvsp + 8, _array, _list, false)
-	
-	//loop
-	for (var i = 0; i < list_size; i++)
-	{
-		//get obj instance
-		var _listInst = _list[| i]
-		
-		//return objects
-		if instance_exists(platformid)
-		&& place_meeting(x, y + 1 + _clampvsp, _listInst)
-		{
-			if _listInst.object_index == obj_solid
-			|| object_is_ancestor(_listInst.object_index, obj_solid)
-			|| floor(bbox_bottom) <= ceil(_listInst.bbox_top)
-			{
-				if !instance_exists(platformid)
-				|| _listInst.bbox_top <= platformid.bbox_top
-				|| _listInst.bbox_top <= bbox_bottom
-				{
-					platformid = _listInst
-				}
-				
-			}
-		}
-	}
-	ds_list_destroy(_list)
-	//ooone more check... im a chud loser XDDD
-	if instance_exists(platformid) && !place_meeting(x, y + 1, platformid)
-		platformid = noone
-
-	if instance_exists(platformid)
-	{
-		while !place_meeting(x, y + _checkby2, platformid) && !place_meeting(x, y, obj_solid)
-			y += _checkby2
-		if platformid.object_index == obj_platform
-		|| object_is_ancestor(platformid.object_index, obj_platform)
-			while place_meeting(x, y, platformid)
-				y -= _checkby
-		vsp = 0
-		_ground = true
-	}*/
-	
-	
 	grounded = _ground //set for grounded...
 	if grounded
 		y = floor(y);
@@ -118,4 +65,9 @@ function scr_sloped(_x = 0, _y = 1)
 function scr_slope_get(_x = 0, _y = 1)
 {
 	return instance_place(x + _x, y + _y, obj_slope)
+}
+
+function scr_solid(_x = 0, _y = 1)
+{
+	return place_meeting(x + _x, y + _y, obj_solid)
 }

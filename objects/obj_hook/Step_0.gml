@@ -2,8 +2,8 @@ if active
 {
 	with obj_player
 	{
-		x = approach(x, other.x, 2)
-		y = approach(y, other.y, 2)
+		x = approach(x, other.x, 10)
+		y = approach(y, other.y, 10)
 		state = -4
 		vsp = 0
 		hsp = 0

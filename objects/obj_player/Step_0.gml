@@ -108,7 +108,7 @@ if global.hitstun == 0
 				set_sprite("wallslidedown")
 			else
 				set_sprite("wallslide")
-			if !place_meeting(x + sign(xscale), y, obj_solid)
+			if !scr_solid(xscale, 0) && vsp < 0
 			{
 				set_sprite("jump", 0)
 				state = states.jump
@@ -211,14 +211,15 @@ if global.hitstun == 0
 				set_sprite("capefallstart", 0)
 				grv = grav
 			}
-			if vsp > 0 && char == "M"
+			if vsp > 0 && char == "M" && !hasflew
 			{
 				grv = cape
+				hasflew = true
 			}
 			if key_jump2 && char == "M"
 			{
 				state =states.capepound
-				vsp = -15
+				vsp = -20
 				sprite_index = spr_monster_capepound
 				grv = grav
 			}
@@ -228,9 +229,10 @@ if global.hitstun == 0
 				vsp = -abs(hsp)
 				scr_soundeffect_3d(sfx_wallslide, x, y)
 			}
-			if jumpstop == false && !key_jump && vsp < grav
+			if jumpstop == false && !key_jump
 			{
 				jumpstop = true
+				hasflew = true
 				vsp /= 40
 				grv = grav
 			}
@@ -329,7 +331,7 @@ if global.hitstun == 0
 				targetspeed = speeds[2]
 			if animation_end() && (get_sprite("runstart") || get_sprite("runland") || get_sprite("turn"))
 				set_sprite("run")
-			if movespeed >= speeds[2] && get_sprite("run")
+			if movespeed > speeds[1] && get_sprite("run")
 				set_sprite("runmax")
 			if movespeed < targetspeed
 				movespeed = approach(movespeed, targetspeed, speeds[0])
@@ -354,6 +356,7 @@ if global.hitstun == 0
 					set_sprite("capestart", 0)
 					jumpanim = true
 					state = states.cape
+					hasflew = false
 					scr_soundeffect_3d(sfx_highjump, x, y)
 				}
 				else
@@ -406,7 +409,7 @@ if global.hitstun == 0
 				state = states.fork
 				scr_soundeffect_3d(sfx_slide, x, y)
 			}
-			if (place_meeting(x + sign(hsp), y - 1, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope))
+			if scr_solid(sign(hsp), 0) && !scr_sloped() && grounded
 			{
 				grv = grav
 				movespeed = 0
@@ -428,7 +431,7 @@ if global.hitstun == 0
 			hsp = movespeed * xscale
 			if animation_end() && (get_sprite("land") || get_sprite("skidend"))
 				set_sprite("idle", 0)
-			if move != 0
+			if move != 0 && !scr_solid(move, 0)
 			{
 				state = states.running
 				set_sprite("runstart", 0)
@@ -445,7 +448,7 @@ if global.hitstun == 0
 				set_sprite("fall")
 				state = states.jump
 			}
-			if key_jump && grounded
+			if key_jump && grounded && !scr_solid(0, 0)
 			{
 				instance_create_depth(x, y + 5, 5, obj_basicparticle, {
 					sprite_index: spr_jumpcloud
@@ -456,7 +459,7 @@ if global.hitstun == 0
 				state = states.jump
 				jumpstop = false
 			}
-			if key_down && char == "N"
+			if key_down && char == "N" && !scr_solid(move, 0)
 			{
 				set_sprite("forkstart", 0)
 				if movespeed < 14
@@ -516,11 +519,12 @@ if global.hitstun == 0
 			}
 			break
 	}
-	if place_meeting(x + hsp, y + vsp * 2, obj_destroyable) &&
+	if place_meeting(x + hsp, y + vsp, obj_destroyable) &&
 	state == states.running ||
-	state == states.fork
+	state == states.fork ||
+	state == states.capepound
 	{
-		with instance_place(x + hsp, y + vsp * 2, obj_destroyable)
+		with instance_place(x + hsp, y + vsp, obj_destroyable)
 			instance_destroy()
 	}
 }
@@ -549,6 +553,7 @@ else
 if state == states.fork 
 || (state == states.running && char != "N" && movespeed > speeds[1])
 || (state == states.cape && char != "N" && movespeed > speeds[1])
+|| state == states.capepound
 	killmove = true
 else
 	killmove = false

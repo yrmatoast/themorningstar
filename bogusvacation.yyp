@@ -75,6 +75,7 @@
     {"id":{"name":"junk_2","path":"rooms/junk_2/junk_2.yy",},},
     {"id":{"name":"junk_3","path":"rooms/junk_3/junk_3.yy",},},
     {"id":{"name":"junk_4","path":"rooms/junk_4/junk_4.yy",},},
+    {"id":{"name":"junk_5","path":"rooms/junk_5/junk_5.yy",},},
     {"id":{"name":"overgrown_1","path":"rooms/overgrown_1/overgrown_1.yy",},},
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"id":{"name":"gameframe_macros","path":"scripts/gameframe_macros/gameframe_macros.yy",},},
@@ -186,6 +187,7 @@
     {"roomId":{"name":"overgrown_1","path":"rooms/overgrown_1/overgrown_1.yy",},},
     {"roomId":{"name":"junk_3","path":"rooms/junk_3/junk_3.yy",},},
     {"roomId":{"name":"junk_4","path":"rooms/junk_4/junk_4.yy",},},
+    {"roomId":{"name":"junk_5","path":"rooms/junk_5/junk_5.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

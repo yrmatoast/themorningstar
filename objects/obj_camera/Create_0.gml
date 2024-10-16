@@ -10,4 +10,5 @@ noiseindex = 0
 noisesprite = spr_hud_speedometer_noise
 cupoffset = 0
 barpos = 0
+cupfont = font_add_sprite_ext(spr_cuphud_numbers, "0123456789", false, -3)
 draw_texture_flush()

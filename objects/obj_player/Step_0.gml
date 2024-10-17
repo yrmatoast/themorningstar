@@ -1,4 +1,5 @@
-vsp += grv
+if vsp < 20
+	vsp += grv
 scr_collision()
 if mouse_check_button(mb_left)
 {

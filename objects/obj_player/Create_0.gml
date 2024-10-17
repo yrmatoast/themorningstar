@@ -2,6 +2,7 @@ global.saveroom = ds_list_create()
 global.followerlist = ds_list_create()
 global.hp = 4
 global.collect = 0
+global.Bswitch = 1
 hsp = 0
 vsp = 0
 grounded = false
@@ -13,13 +14,13 @@ attributes =
 		[
 		[0.5, 0.25],
 		//gravity [normal, cape]
-		[0.35, 12, 16]
+		[0.40, 12, 16]
 		],
 		//speeds [accel, min, max]
 	bruit:
 		[
 		[0.5, 0.04],
-		[0.40, 14, 19]
+		[0.40, 12, 19]
 		],
 }
 image_speed = 0.35
@@ -68,6 +69,8 @@ roomstartx = x
 roomstarty = y
 char = "N"
 hasflew = false
+savedspd = 0
+savedpos = 0
 
 slope_momentum = function()
 {
@@ -80,6 +83,6 @@ slope_momentum = function()
 			movespeed += 0.4
 		else
 			movespeed -= 0.2
-		movespeed = clamp(movespeed, 6, 20)
+		movespeed = clamp(movespeed, 6, 24)
 	}
 }

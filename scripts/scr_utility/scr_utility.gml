@@ -99,7 +99,7 @@ function gamepad_check_any(_device) // check for gamepad
 	{
 		if gamepad_button_check(_device, i)
 		{
-			return 1;
+			return true;
         	}
     	}
 }

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":87.0,
+  "duration":192.24,
   "name":"goldenyolk",
   "parent":{
     "name":"Sounds",

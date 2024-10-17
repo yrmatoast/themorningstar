@@ -1,0 +1,1 @@
+timer = approach(timer, 0, 1)

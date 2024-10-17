@@ -2,9 +2,18 @@ var _door = asset_get_index("obj_door" + targetDoor)
 
 if instance_exists(_door)
 {
-	var pad = hallway ? (32 * 6) * hallwaydirection : 16
-	x = _door.x + pad
-	y = _door.y - 14
+	if hallway != 2
+	{
+		var pad = hallway ? (32 * 6) * hallwaydirection : 16
+		x = _door.x + pad
+		y = _door.y - 14
+	}
+	else
+	{
+		x = _door.x + savedpos
+		y = _door.y - (32 * 6) * hallwaydirection
+		vsp = savedspd
+	}
 }
 roomstartx = x
 roomstarty = y
@@ -18,3 +27,4 @@ with obj_noisette_follow
 	x = gx
 	y = gy
 }
+global.Bswitch = 1

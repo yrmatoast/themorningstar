@@ -61,6 +61,7 @@
     {"id":{"name":"obj_hook","path":"objects/obj_hook/obj_hook.yy",},},
     {"id":{"name":"obj_levelselect","path":"objects/obj_levelselect/obj_levelselect.yy",},},
     {"id":{"name":"obj_noisette_follow","path":"objects/obj_noisette_follow/obj_noisette_follow.yy",},},
+    {"id":{"name":"obj_noisettespot","path":"objects/obj_noisettespot/obj_noisettespot.yy",},},
     {"id":{"name":"obj_orangeswitch","path":"objects/obj_orangeswitch/obj_orangeswitch.yy",},},
     {"id":{"name":"obj_parrallax","path":"objects/obj_parrallax/obj_parrallax.yy",},},
     {"id":{"name":"obj_platform","path":"objects/obj_platform/obj_platform.yy",},},
@@ -87,6 +88,7 @@
     {"id":{"name":"overgrown_2","path":"rooms/overgrown_2/overgrown_2.yy",},},
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"id":{"name":"rm_levelselect","path":"rooms/rm_levelselect/rm_levelselect.yy",},},
+    {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"id":{"name":"gameframe_macros","path":"scripts/gameframe_macros/gameframe_macros.yy",},},
     {"id":{"name":"gameframe","path":"scripts/gameframe/gameframe.yy",},},
     {"id":{"name":"scr_collision","path":"scripts/scr_collision/scr_collision.yy",},},
@@ -213,6 +215,7 @@
     {"roomId":{"name":"junk_5","path":"rooms/junk_5/junk_5.yy",},},
     {"roomId":{"name":"rm_levelselect","path":"rooms/rm_levelselect/rm_levelselect.yy",},},
     {"roomId":{"name":"overgrown_2","path":"rooms/overgrown_2/overgrown_2.yy",},},
+    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

@@ -26,7 +26,7 @@ function scr_player_cape(){
 	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
 	{
 		state = states.wallslide
-		vsp = -abs(hsp)
+		vsp = -movespeed
 		scr_soundeffect_3d(sfx_wallslide, x, y)
 	}
 	if jumpstop == false && !key_jump

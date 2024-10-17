@@ -16,12 +16,11 @@ function scr_player_wallslide()
 		set_sprite("wallslidedown")
 	else
 		set_sprite("wallslide")
-	if !scr_solid(xscale, 0) && vsp < 0
+	if !scr_solid(xscale, 0)
 	{
 		set_sprite("jump", 0)
 		state = states.jump
 		grv = grav
-		vsp = -10
 		jumpstop = true
 	}
 	else

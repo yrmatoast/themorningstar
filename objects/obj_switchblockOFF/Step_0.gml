@@ -1,4 +1,4 @@
-if global.Bswitch != -1
+if active != -1
 {
 	instance_deactivate_object(sol)
 	image_alpha = 0.5

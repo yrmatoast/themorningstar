@@ -1,20 +1,16 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_runningjump(){
-	if timers.run > 0
+	hsp = approach(hsp, movespeed * xscale, 1)
+	if movespeed <= speeds[1]
 	{
-		hsp = approach(hsp, movespeed * xscale, 2)
 		if move != 0
 		{
 			xscale = move
-			movespeed = 10
+			movespeed = speeds[1]
 		}
 		else
 			movespeed = 0
-	}
-	else
-	{
-		hsp = movespeed * xscale
 	}
 	if jumpanim == true
 	{
@@ -49,10 +45,10 @@ function scr_player_runningjump(){
 		state = states.fork
 		scr_soundeffect_3d(sfx_dive, x, y)
 	}
-	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
+	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope) && movespeed >= speeds[1]
 	{
 		state = states.wallslide
-		vsp = -abs(hsp)
+		vsp = min(vsp, 0)
 		scr_soundeffect_3d(sfx_wallslide, x, y)
 	}
 }

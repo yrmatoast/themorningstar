@@ -9,30 +9,33 @@ function scr_player_running(){
 		set_sprite("run")
 	if movespeed > speeds[1] && get_sprite("run")
 		set_sprite("runmax")
-	if (move != xscale && movespeed <= speeds[1])
+	if grounded
 	{
-		movespeed = approach(movespeed, 0, 0.40)
-		if movespeed == 0
+		if (move != xscale && movespeed <= speeds[1])
 		{
-			grv = grav
-			movespeed = 0
-			state = states.normal
-			set_sprite("skidend", 0)
+			movespeed = approach(movespeed, 0, 0.40)
+			if movespeed == 0
+			{
+				grv = grav
+				movespeed = 0
+				state = states.normal
+				set_sprite("skidend", 0)
+			}
+			if (move != xscale && move != 0) && grounded
+			{
+				movespeed = 0
+				set_sprite("turn", 0)
+				xscale = move
+				timers.run = 60
+			}
 		}
-		if (move != xscale && move != 0) && grounded
+		else
 		{
-			movespeed = 0
-			set_sprite("turn", 0)
-			xscale = move
-			timers.run = 60
+			if movespeed < targetspeed
+				movespeed = approach(movespeed, targetspeed, speeds[0])
+			else if char == "N" && targetspeed >= speeds[2]
+				movespeed = approach(movespeed, 19, 0.01)
 		}
-	}
-	else
-	{
-		if movespeed < targetspeed
-			movespeed = approach(movespeed, targetspeed, speeds[0])
-		else if char == "N" && targetspeed >= speeds[2]
-			movespeed = approach(movespeed, 19, 0.01)
 	}
 	if key_jump && grounded
 	{
@@ -100,7 +103,7 @@ function scr_player_running(){
 		state = states.normal
 		set_sprite("skidend", 0)
 	}
-	if get_sprite("run")
+	if get_sprite("run") && grounded
 		timers.run = approach(timers.run, 0, 1)
 	if timers.steppart == 0
 	{

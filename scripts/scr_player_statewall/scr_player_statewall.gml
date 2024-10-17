@@ -2,6 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_wallslide()
 {
+	image_speed = 0.35
 	hsp = 0
 	grv = 0.25
 	image_speed = 0.4

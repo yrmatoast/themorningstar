@@ -8,10 +8,11 @@ if ds_queue_size(followqueue) > (lag * pos)
 {
 	gx = ds_queue_dequeue(followqueue)
 	gy = ds_queue_dequeue(followqueue)
-	image_xscale = ds_queue_dequeue(followqueue)
+	realscale = ds_queue_dequeue(followqueue)
 }
 if spot == false
 {
+	image_xscale = realscale
 	x = approach(x, gx - 25 * image_xscale * pos, 32)
 	y = approach(y, gy, 16)
 }
@@ -32,6 +33,25 @@ if instance_exists(obj_noisettespot)
 		spot = true
 		x = approach(x, inst.x, 32)
 		y = approach(y, inst.y, 16)
+		spottype = inst.spot
+		if obj_player.x != x 
+			image_xscale = sign(obj_player.x - x)
+		if place_meeting(x, y, obj_player)
+		{
+			if sprite_index == spr_idle
+			{
+				switch spottype
+				{
+					case spots.bounce:
+						with obj_player
+						{
+							vsp = -20
+							state = states.bounce
+						}
+						break
+				}
+			}
+		}
 	}
 	else
 		spot = false

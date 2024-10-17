@@ -2,6 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_jump()
 {
+	image_speed = 0.35
 	if get_sprite("jump") || get_sprite("fall")
 	{
 		hsp = approach(hsp, movespeed * xscale, 2)
@@ -15,9 +16,9 @@ function scr_player_jump()
 	}
 	else
 	{
-		hsp = approach(hsp, movespeed, 2)
+		hsp = approach(hsp, movespeed * move, 2)
 		if move != 0
-			movespeed = 10 * xscale
+			movespeed = 10
 		else
 			movespeed = 0
 	}
@@ -48,4 +49,30 @@ function scr_player_jump()
 		movespeed = abs(movespeed)
 		scr_soundeffect_3d(sfx_dive, x, y)
 	}
+}
+
+function scr_player_bounce()
+{
+	image_speed = 0.35
+	set_sprite("bounce")
+	hsp = approach(hsp, movespeed * xscale, 2)
+	if move != 0
+	{
+		xscale = move
+		movespeed = 10
+	}
+	else
+		movespeed = 0
+	if grounded && !place_meeting(x, y + 1, obj_spike)
+	{
+		instance_create_depth(x, y, 5, obj_basicparticle, {
+			sprite_index: spr_landeffect
+		})
+		state = states.normal
+		movespeed = abs(movespeed)
+		set_sprite("land", 0)
+		scr_soundeffect_3d(sfx_land, x, y)
+	}
+	else if place_meeting(x, y + 1, obj_spike)
+		vsp = -15
 }

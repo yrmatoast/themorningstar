@@ -1,6 +1,11 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_running(){
+	if get_sprite("runmax")
+		image_speed = movespeed / 19 - 0.3
+	else
+		image_speed = 0.35
+	slope_momentum(0.2, 0.1)
 	hsp = movespeed * xscale
 	var targetspeed = speeds[1]
 	if timers.run <= 0

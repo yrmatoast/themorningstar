@@ -2,6 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_skidding()
 {
+	image_speed = 0.35
 	hsp = movespeed * xscale
 	grv = grav
 	movespeed = approach(movespeed, 0, 0.80)

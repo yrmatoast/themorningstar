@@ -1,5 +1,6 @@
 function scr_player_normal()
 {
+	image_speed = 0.35
 	hsp = movespeed * xscale
 	if animation_end() && (get_sprite("land") || get_sprite("skidend"))
 		set_sprite("idle", 0)
@@ -31,7 +32,7 @@ function scr_player_normal()
 		state = states.jump
 		jumpstop = false
 	}
-	if key_down && char == "N" && !scr_solid(move, 0)
+	if key_down && char == "N" && !scr_solid(move + xscale, 0)
 	{
 		set_sprite("forkstart", 0)
 		if movespeed < 14

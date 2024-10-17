@@ -34,6 +34,9 @@ if global.hitstun == 0
 	}
 	switch state
 	{
+		case states.bounce:
+			scr_player_bounce()
+			break
 		case states.capepound:
 			scr_player_capepound()
 			break

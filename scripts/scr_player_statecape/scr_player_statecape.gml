@@ -1,6 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_cape(){
+	image_speed = 0.35
 	hsp = movespeed * xscale
 	if animation_end() && get_sprite("capestart")
 		set_sprite("cape", 0)
@@ -57,6 +58,7 @@ function scr_player_cape(){
 
 function scr_player_capepound()
 {
+	image_speed = 0.35
 	if get_sprite("capepound")
 	{
 		hsp = approach(hsp, movespeed * xscale, move != 0 ? 4 : 1)

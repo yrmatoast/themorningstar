@@ -38,6 +38,7 @@ enum states
 	wallslide,
 	walljump,
 	capepound,
+	bounce,
 }
 state = states.normal
 timers = 
@@ -72,17 +73,15 @@ hasflew = false
 savedspd = 0
 savedpos = 0
 
-slope_momentum = function()
+slope_momentum = function(_accel = 0.4, _daccel = 0.2, _max = 24)
 {
-	var att = char == "N" ? attributes.noise : attributes.bruit
-	var _speed = att[1][2]
 	if place_meeting(x, y + 1, obj_slope)
 	{
 		var _obj = instance_place(x, y + 1, obj_slope)
 		if sign(_obj.image_xscale) != xscale
-			movespeed += 0.4
+			movespeed += _accel
 		else
-			movespeed -= 0.2
-		movespeed = clamp(movespeed, 6, 24)
+			movespeed -= _daccel
+		movespeed = clamp(movespeed, 6, _max)
 	}
 }

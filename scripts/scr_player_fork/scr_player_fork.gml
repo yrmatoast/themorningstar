@@ -2,6 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_fork()
 {
+	image_speed = 0.35
 	hsp = movespeed * xscale
 	if animation_end() && get_sprite("forkstart")
 		set_sprite("fork", 0)
@@ -21,7 +22,7 @@ function scr_player_fork()
 			sprite_index: spr_jumpcloud
 			})
 		}
-		if movespeed == 0 || (place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope))
+		if movespeed <= 0 || scr_solid(hsp, 0)
 		{
 			grv = grav
 			movespeed = 0

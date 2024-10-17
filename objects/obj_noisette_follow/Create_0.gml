@@ -3,6 +3,7 @@ followqueue = ds_queue_create()
 targetfollower = obj_player
 gx = x
 gy = y
+realscale = 1
 ds_list_add(global.followerlist, id)
 pos = ds_list_find_index(global.followerlist, id) + 1
 spr_idle = spr_noisette_idle_junk
@@ -13,3 +14,4 @@ ogy = y
 depth = 1
 image_speed = 0.35
 spot = false
+spottype = spots.bounce

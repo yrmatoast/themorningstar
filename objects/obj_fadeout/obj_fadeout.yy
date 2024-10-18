@@ -10,8 +10,8 @@
   "name":"obj_fadeout",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Level Structure",
+    "path":"folders/Objects/Level Structure.yy",
   },
   "parentObjectId":null,
   "persistent":true,

@@ -9,10 +9,13 @@
   "name":"obj_platform",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Collision",
+    "path":"folders/Objects/Collision.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_platform",
+    "path":"objects/par_platform/par_platform.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

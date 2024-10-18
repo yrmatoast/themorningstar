@@ -8,8 +8,8 @@
   "name":"obj_switchblock",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Parent Objects",
+    "path":"folders/Objects/Parent Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

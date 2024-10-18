@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_doorC",
+  "%Name":"par_platform",
   "eventList":[],
   "managed":true,
-  "name":"obj_doorC",
+  "name":"par_platform",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level Structure",
-    "path":"folders/Objects/Level Structure.yy",
+    "name":"Parent Objects",
+    "path":"folders/Objects/Parent Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -27,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_doorB",
-    "path":"sprites/spr_doorB/spr_doorB.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

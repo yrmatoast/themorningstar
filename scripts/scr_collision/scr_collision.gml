@@ -39,12 +39,12 @@ function scr_collision()
 			y += _checkby2
 			vsp = 0
 	}
-	
-	if place_meeting(x, y + vsp, obj_platform)
+	//platforms
+	if place_meeting(x, y + vsp, par_platform)
 	{
-		if bbox_bottom - 1 < instance_place(x, y + vsp, obj_platform).y && vsp >= 0
+		if bbox_bottom - 1 < instance_place(x, y + vsp, par_platform).y && vsp >= 0
 		{
-			while !place_meeting(x, y + _checkby2, obj_platform)
+			while !place_meeting(x, y + _checkby2, par_platform)
 				y += _checkby2
 			vsp = 0
 			_ground = true

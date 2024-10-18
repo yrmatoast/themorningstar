@@ -69,12 +69,12 @@ if global.hitstun == 0
 			scr_player_jump()
 			break
 	}
-	if place_meeting(x + hsp, y + vsp, obj_destroyable) &&
+	if place_meeting(x + hsp, y + vsp * 2, obj_destroyable) &&
 	state == states.running ||
 	state == states.fork ||
 	state == states.capepound
 	{
-		with instance_place(x + hsp, y + vsp, obj_destroyable)
+		with instance_place(x + hsp, y + vsp * 2, obj_destroyable)
 			instance_destroy()
 	}
 }

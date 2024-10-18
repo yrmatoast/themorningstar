@@ -42,6 +42,8 @@ function scr_player_running(){
 				movespeed = approach(movespeed, 19, 0.01)
 		}
 	}
+	if movespeed > speeds[1] && timers.run > 0
+		timers.run = 0
 	if key_jump && grounded
 	{
 		instance_create_depth(x, y + 5, 5, obj_basicparticle, {

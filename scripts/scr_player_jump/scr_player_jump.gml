@@ -49,6 +49,7 @@ function scr_player_jump()
 		movespeed = abs(movespeed)
 		scr_soundeffect_3d(sfx_dive, x, y)
 	}
+	do_monsterjump()
 }
 
 function scr_player_bounce()

@@ -52,4 +52,5 @@ function scr_player_runningjump(){
 		vsp = -movespeed
 		scr_soundeffect_3d(sfx_wallslide, x, y)
 	}
+	do_monsterjump()
 }

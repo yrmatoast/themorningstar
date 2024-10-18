@@ -17,13 +17,7 @@ function scr_player_cape(){
 		grv = cape
 		hasflew = true
 	}
-	if key_jump2 && char == "M"
-	{
-		state = states.capepound
-		vsp = -20
-		sprite_index = spr_monster_capepound
-		grv = grav
-	}
+	do_monsterjump()
 	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
 	{
 		state = states.wallslide
@@ -73,6 +67,16 @@ function scr_player_capepound()
 		{
 			set_sprite("capepoundslam", 0)
 			obj_camera.shake = 20
+			with obj_destroyable
+			{
+				if point_distance(other.x, other.y, x, y) < 32 * 6
+					instance_destroy()
+			}
+			with obj_eggcop
+			{
+				if point_distance(other.x, other.y, x, y) < 32 * 6
+					instance_destroy()
+			}
 		}
 		vsp += 1
 	}

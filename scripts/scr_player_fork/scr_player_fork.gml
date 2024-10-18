@@ -22,7 +22,7 @@ function scr_player_fork()
 			sprite_index: spr_jumpcloud
 			})
 		}
-		if movespeed <= 0 || scr_solid(hsp, 0)
+		if movespeed <= 0 || scr_solid(hsp, -1)
 		{
 			grv = grav
 			movespeed = 0

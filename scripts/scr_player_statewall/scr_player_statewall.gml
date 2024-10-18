@@ -6,13 +6,6 @@ function scr_player_wallslide()
 	hsp = 0
 	grv = 0.25
 	image_speed = 0.4
-	if move != xscale && move != 0
-	{
-		set_sprite("fall", 0)
-		state = states.jump
-		grv = grav
-		vsp = 0
-	}
 	if vsp > 0
 		set_sprite("wallslidedown")
 	else

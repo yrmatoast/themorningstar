@@ -85,3 +85,15 @@ slope_momentum = function(_accel = 0.4, _daccel = 0.2, _max = 24)
 		movespeed = clamp(movespeed, 6, _max)
 	}
 }
+
+do_monsterjump = function()
+{
+	if key_jump2 && char == "M"
+	{
+		state = states.capepound
+		vsp = -20
+		sprite_index = spr_monster_capepound
+		grv = grav
+		scr_soundeffect_3d(sfx_dive, x, y)
+	}
+}

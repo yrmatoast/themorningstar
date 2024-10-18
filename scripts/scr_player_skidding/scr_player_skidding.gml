@@ -20,7 +20,7 @@ function scr_player_skidding()
 		instance_create_depth(x, y + 5, 5, obj_basicparticle, {
 			sprite_index: spr_jumpcloud
 		})
-		vsp = -15
+		vsp = -17
 		scr_soundeffect_3d(sfx_jump, x, y)
 		set_sprite("backflip", 0)
 		state = states.jump

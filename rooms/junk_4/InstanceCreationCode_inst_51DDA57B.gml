@@ -1,1 +1,1 @@
-targetDoor = junk_3
+targetRoom = junk_3

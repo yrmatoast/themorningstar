@@ -1,1 +1,1 @@
-scr_soundeffect_3d(sfx_hurt, x, y)
+event_play_oneshot3d("event:/Sfx/hurt", x, y)

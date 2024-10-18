@@ -21,7 +21,7 @@ function scr_player_skidding()
 			sprite_index: spr_jumpcloud
 		})
 		vsp = -17
-		scr_soundeffect_3d(sfx_jump, x, y)
+		event_play_oneshot3d("event:/Sfx/jump", x, y)
 		set_sprite("backflip", 0)
 		state = states.jump
 		jumpstop = false

@@ -1,6 +1,7 @@
 if vsp < 20
 	vsp += grv
 scr_collision()
+fmod_listener_setPosition(0, x, y, 0)
 if mouse_check_button(mb_left)
 {
 	x = mouse_x;
@@ -21,7 +22,7 @@ if global.hitstun == 0
 	{
 		if timers.step == 0
 		{
-			scr_soundeffect_3d(sfx_step, x, y)
+			event_play_oneshot3d("event:/Sfx/step", x, y)
 			timers.step = 5
 		}
 	}
@@ -29,7 +30,7 @@ if global.hitstun == 0
 	{
 		if timers.step == 0
 		{
-			scr_soundeffect_3d(sfx_step, x, y)
+			event_play_oneshot3d("event:/Sfx/step", x, y)
 			timers.step = 7
 		}
 	}
@@ -68,6 +69,9 @@ if global.hitstun == 0
 		case states.jump:
 			scr_player_jump()
 			break
+		case states.hurt:
+			scr_player_hurt()
+			break
 	}
 	if place_meeting(x + hsp, y + vsp * 2, obj_destroyable) &&
 	state == states.running ||
@@ -77,6 +81,20 @@ if global.hitstun == 0
 		with instance_place(x + hsp, y + vsp * 2, obj_destroyable)
 			instance_destroy()
 	}
+	if place_meeting(x + hsp, y + vsp + 1, obj_spike) && state != states.bounce && iframe <= 0
+	{
+		state = states.hurt 
+		vsp = -10
+		iframe = 60 * 2
+		movespeed = 10 * -xscale
+		set_sprite("hurt")
+		event_play_oneshot3d("event:/Sfx/hurt", x, y)
+
+		global.hp -= 1
+		alarm[0] = 3
+	}
+	if state != states.hurt
+		iframe = approach(iframe, 0, 1)
 }
 else
 {

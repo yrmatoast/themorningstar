@@ -39,6 +39,7 @@ enum states
 	walljump,
 	capepound,
 	bounce,
+	hurt,
 }
 state = states.normal
 timers = 
@@ -94,6 +95,8 @@ do_monsterjump = function()
 		vsp = -20
 		sprite_index = spr_monster_capepound
 		grv = grav
-		scr_soundeffect_3d(sfx_dive, x, y)
+		event_play_oneshot3d("event:/Sfx/dive", x, y)
 	}
 }
+
+iframe = 0

@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"License",
+  "name":"License",
+  "parent":{
+    "name":"FMODGMS",
+    "path":"folders/FMODGMS.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

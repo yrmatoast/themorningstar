@@ -45,3 +45,33 @@ if cam_tar == obj_player
 noiseindex +=  0.35
 cupoffset = approach(cupoffset, 0, 3)
 shake = approach(shake, 0, 1)
+cupx = lerp(cupx, 256 + 16 - 6 + (56 * (global.hp - 4)), 0.25)
+cupy = (16 - 4 + cupoffset)
+if (!ds_list_empty(collectables))
+{
+	for (var i = 0; i < ds_list_size(collectables); i++)
+	{
+		var q = ds_list_find_value(collectables, i)
+		with q
+		{
+			var targetxx = other.cupx
+			var targetyy = other.cupy
+			var point = point_direction(x, y, targetxx , targetyy)
+		    hsp = lengthdir_x(25, point)
+		    vsp = lengthdir_y(25, point)
+			x += hsp
+			y += vsp
+			if point_distance(x, y, targetxx , targetyy) < 25
+			{
+				with other
+				{
+					cupoffset = 24
+					collect = global.collect
+					q = undefined
+					ds_list_delete(collectables, i)
+					i--
+				}
+			}
+		}
+	}
+}

@@ -10,7 +10,7 @@ if instance_exists(_door)
 	}
 	else
 	{
-		x = _door.x + savedpos
+		x = _door.x + savedpos - 16
 		y = _door.y - (32 * 6) * hallwaydirection
 		vsp = savedspd
 	}

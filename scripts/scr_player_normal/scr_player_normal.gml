@@ -27,7 +27,7 @@ function scr_player_normal()
 			sprite_index: spr_jumpcloud
 		})
 		vsp = -15
-		scr_soundeffect_3d(sfx_jump, x, y)
+		event_play_oneshot3d("event:/Sfx/jump", x, y)
 		set_sprite("jump", 0)
 		state = states.jump
 		jumpstop = false
@@ -38,6 +38,6 @@ function scr_player_normal()
 		if movespeed < 14
 			movespeed = 14
 		state = states.fork
-		scr_soundeffect_3d(sfx_slide, x, y)
+		event_play_oneshot3d("event:/Sfx/slide", x, y)
 	}
 }

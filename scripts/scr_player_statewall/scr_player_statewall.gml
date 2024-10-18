@@ -30,7 +30,7 @@ function scr_player_wallslide()
 			sprite_index: spr_jumpcloud,
 			image_angle: -90 * xscale,
 			})
-			scr_soundeffect_3d(sfx_jump, x, y)
+			event_play_oneshot3d("event:/Sfx/jump", x, y)
 		}
 	}
 	if grounded
@@ -54,7 +54,7 @@ function scr_player_walljump()
 	{
 		state = states.wallslide
 		vsp = -abs(movespeed)
-		scr_soundeffect_3d(sfx_wallslide, x, y)
+		event_play_oneshot3d("event:/Sfx/wallslide", x, y)
 	}
 	if grounded
 	{
@@ -66,7 +66,7 @@ function scr_player_walljump()
 	{
 		set_sprite("forkdive", 0)
 		vsp = 15
-		scr_soundeffect_3d(sfx_dive, x, y)
+		event_play_oneshot3d("event:/Sfx/dive", x, y)
 		state = states.fork
 	}
 }

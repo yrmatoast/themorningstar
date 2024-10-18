@@ -22,7 +22,7 @@ function scr_player_cape(){
 	{
 		state = states.wallslide
 		vsp = -movespeed
-		scr_soundeffect_3d(sfx_wallslide, x, y)
+		event_play_oneshot3d("event:/Sfx/wallslide", x, y)
 	}
 	if jumpstop == false && !key_jump
 	{
@@ -39,13 +39,13 @@ function scr_player_cape(){
 		grv = grav
 		state = states.running
 		set_sprite("runland", 0)
-		scr_soundeffect_3d(sfx_land, x, y)
+		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}
 	if key_down2 && sprite_index != spr_noise_forkdive && char == "N"
 	{
 		set_sprite("forkdive", 0)
 		vsp = 15
-		scr_soundeffect_3d(sfx_dive, x, y)
+		event_play_oneshot3d("event:/Sfx/dive", x, y)
 		state = states.fork
 	}
 }

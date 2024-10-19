@@ -5,9 +5,13 @@ function scr_player_skidding()
 	image_speed = 0.35
 	hsp = movespeed * xscale
 	grv = grav
-	movespeed = approach(movespeed, 0, 0.80)
+	movespeed = approach(movespeed, 0, 0.40)
 	if !get_sprite("runskid")
 		set_sprite("runskid", 0)
+	if animation_end() && get_sprite("runskid") && char == "M"
+	{
+		image_index = 2
+	}
 	if movespeed == 0 && grounded
 	{
 		movespeed = 0

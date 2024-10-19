@@ -33,9 +33,17 @@ function scr_player_running(){
 				xscale = move
 				timers.run = 60
 			}
+			if animation_end() && get_sprite("run")
+				set_sprite("runskid", 0)
+			if animation_end() && get_sprite("runskid") && char == "M"
+			{
+				image_index = 2
+			}
 		}
 		else
 		{
+			if get_sprite("runskid")
+				set_sprite("run")
 			if movespeed < targetspeed
 				movespeed = approach(movespeed, targetspeed, speeds[0])
 			else if char == "N" && targetspeed >= speeds[2]

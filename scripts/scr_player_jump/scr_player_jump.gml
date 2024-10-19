@@ -22,6 +22,7 @@ function scr_player_jump()
 		else
 			movespeed = 0
 	}
+	do_wallslide()
 	if animation_end() && get_sprite("jump")
 		set_sprite("fall")
 	if animation_end() && get_sprite("backflip")
@@ -32,9 +33,9 @@ function scr_player_jump()
 			sprite_index: spr_landeffect
 		})
 		state = states.normal
-		movespeed = abs(movespeed)
+		movespeed = abs(hsp)
 		set_sprite("land", 0)
-		scr_soundeffect_3d(sfx_land, x, y)
+		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}
 	if jumpstop == false && !key_jump && vsp < grav
 	{
@@ -47,8 +48,9 @@ function scr_player_jump()
 		vsp = 15
 		state = states.fork
 		movespeed = abs(movespeed)
-		scr_soundeffect_3d(sfx_dive, x, y)
+		event_play_oneshot3d("event:/Sfx/dive", x, y)
 	}
+	do_monsterjump()
 }
 
 function scr_player_bounce()
@@ -69,9 +71,9 @@ function scr_player_bounce()
 			sprite_index: spr_landeffect
 		})
 		state = states.normal
-		movespeed = abs(movespeed)
+		movespeed = abs(hsp)
 		set_sprite("land", 0)
-		scr_soundeffect_3d(sfx_land, x, y)
+		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}
 	else if place_meeting(x, y + 1, obj_spike)
 		vsp = -15

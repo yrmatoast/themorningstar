@@ -32,7 +32,7 @@ function scr_player_runningjump(){
 		})
 		state = states.running
 		set_sprite("runland", 0)
-		scr_soundeffect_3d(sfx_land, x, y)
+		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}
 	if jumpstop == false && !key_jump && vsp < grav
 	{
@@ -44,12 +44,8 @@ function scr_player_runningjump(){
 		set_sprite("forkdive", 0)
 		vsp = 15
 		state = states.fork
-		scr_soundeffect_3d(sfx_dive, x, y)
+		event_play_oneshot3d("event:/Sfx/dive", x, y)
 	}
-	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope) && movespeed >= speeds[1]
-	{
-		state = states.wallslide
-		vsp = -movespeed
-		scr_soundeffect_3d(sfx_wallslide, x, y)
-	}
+	do_wallslide()
+	do_monsterjump()
 }

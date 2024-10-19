@@ -22,8 +22,6 @@ function scr_collision()
 			hsp = 0
 		}
 	}
-	
-	
 	if vsp >= 0 && !place_meeting(x + hsp, y + 1, par_solid) && place_meeting(x + hsp, y + _slopecheckthing / 1.5 + vsp, par_solid) && scr_sloped(0, vsp + 1) // go DOWN slopw
 	{
 		while !place_meeting(x + hsp, y + _checkby, par_solid) 
@@ -31,6 +29,8 @@ function scr_collision()
 				y += _checkby
 		}
 	}
+	x += hsp
+	
 	
 	var _checkby2 = _checkby * sign(vsp)
 	if place_meeting(x, y + vsp, par_solid) // Vertical Shit
@@ -39,12 +39,12 @@ function scr_collision()
 			y += _checkby2
 			vsp = 0
 	}
-	
-	if place_meeting(x, y + vsp, obj_platform)
+	//platforms
+	if place_meeting(x, y + vsp, par_platform)
 	{
-		if bbox_bottom - 1 < instance_place(x, y + vsp, obj_platform).y && vsp >= 0
+		if bbox_bottom - 1 < instance_place(x, y + vsp, par_platform).y && vsp >= 0
 		{
-			while !place_meeting(x, y + _checkby2, obj_platform)
+			while !place_meeting(x, y + _checkby2, par_platform)
 				y += _checkby2
 			vsp = 0
 			_ground = true
@@ -54,7 +54,6 @@ function scr_collision()
 	if grounded
 		y = floor(y);
 	y += vsp
-	x += hsp
 }
 
 function scr_sloped(_x = 0, _y = 1)

@@ -33,9 +33,17 @@ function scr_player_running(){
 				xscale = move
 				timers.run = 60
 			}
+			if animation_end() && get_sprite("run")
+				set_sprite("runskid", 0)
+			if animation_end() && get_sprite("runskid") && char == "M"
+			{
+				image_index = 2
+			}
 		}
 		else
 		{
+			if get_sprite("runskid")
+				set_sprite("run")
 			if movespeed < targetspeed
 				movespeed = approach(movespeed, targetspeed, speeds[0])
 			else if char == "N" && targetspeed >= speeds[2]
@@ -66,7 +74,7 @@ function scr_player_running(){
 			jumpanim = true
 			state = states.cape
 			hasflew = false
-			scr_soundeffect_3d(sfx_highjump, x, y)
+			event_play_oneshot3d("event:/Sfx/capejump", x, y)
 		}
 		else
 		{
@@ -74,7 +82,7 @@ function scr_player_running(){
 			vsp = -13
 			jumpanim = true
 			state = states.runningjump
-			scr_soundeffect_3d(sfx_jump, x, y)
+			event_play_oneshot3d("event:/Sfx/jump", x, y)
 		}
 	}
 	if !grounded
@@ -93,7 +101,7 @@ function scr_player_running(){
 	{
 		movespeed = movespeed > speeds[2] ? speeds[2] : speeds[1]
 		state = states.skidding
-		scr_soundeffect_3d(sfx_break, x, y)
+		event_play_oneshot3d("event:/Sfx/runend", x, y)
 	}
 	if key_down2 && char == "N"
 	{
@@ -101,7 +109,7 @@ function scr_player_running(){
 		if movespeed < 12
 			movespeed = 12
 		state = states.fork
-		scr_soundeffect_3d(sfx_slide, x, y)
+		event_play_oneshot3d("event:/Sfx/slide", x, y)
 	}
 	if scr_solid(sign(hsp), 0) && !scr_sloped() && grounded
 	{

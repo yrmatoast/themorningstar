@@ -9,8 +9,8 @@
   "name":"obj_orangeswitch",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Debug",
+    "path":"folders/Objects/Debug.yy",
   },
   "parentObjectId":null,
   "persistent":false,

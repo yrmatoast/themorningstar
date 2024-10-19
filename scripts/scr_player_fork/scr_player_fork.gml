@@ -17,12 +17,12 @@ function scr_player_fork()
 			vsp = -13
 			jumpanim = true
 			state = states.runningjump
-			scr_soundeffect_3d(sfx_jump, x, y)
+			event_play_oneshot3d("event:/Sfx/jump", x, y)
 			instance_create_depth(x, y + 5, 5, obj_basicparticle, {
 			sprite_index: spr_jumpcloud
 			})
 		}
-		if movespeed <= 0 || scr_solid(hsp, 0)
+		if movespeed <= 0 || scr_solid(hsp, -1)
 		{
 			grv = grav
 			movespeed = 0
@@ -45,7 +45,7 @@ function scr_player_fork()
 					grv = grav
 					state = states.running
 					set_sprite("runland", 0)
-					scr_soundeffect_3d(sfx_land, x, y)
+					event_play_oneshot3d("event:/Sfx/land", x, y)
 					timers.run = 30
 				}
 				else
@@ -53,13 +53,13 @@ function scr_player_fork()
 					grv = grav
 					state = states.normal
 					set_sprite("idle", 0)
-					scr_soundeffect_3d(sfx_land, x, y)
+					event_play_oneshot3d("event:/Sfx/land", x, y)
 				}
 			}
 			else
 			{
 				set_sprite("forkstart", 0)
-				scr_soundeffect_3d(sfx_slide, x, y)
+				event_play_oneshot3d("event:/Sfx/slide", x, y)
 			}
 		}
 	}

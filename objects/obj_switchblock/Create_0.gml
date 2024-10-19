@@ -4,3 +4,4 @@ image_yscale: other.image_yscale,
 image_alpha: 0,
 })
 active = true
+num = -4

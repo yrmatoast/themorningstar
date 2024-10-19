@@ -39,6 +39,7 @@ enum states
 	walljump,
 	capepound,
 	bounce,
+	hurt,
 }
 state = states.normal
 timers = 
@@ -85,3 +86,30 @@ slope_momentum = function(_accel = 0.4, _daccel = 0.2, _max = 24)
 		movespeed = clamp(movespeed, 6, _max)
 	}
 }
+
+do_monsterjump = function()
+{
+	if key_jump2 && char == "M"
+	{
+		state = states.capepound
+		vsp = -20
+		sprite_index = spr_monster_capepound
+		grv = grav
+		event_play_oneshot3d("event:/Sfx/dive", x, y)
+	}
+}
+
+do_wallslide = function()
+{
+	var _vsp = -movespeed
+	if _vsp < movespeed
+		_vsp = _vsp
+	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
+	{
+		state = states.wallslide
+		vsp = _vsp
+		event_play_oneshot3d("event:/Sfx/wallslide", x, y)
+	}
+}
+
+iframe = 0

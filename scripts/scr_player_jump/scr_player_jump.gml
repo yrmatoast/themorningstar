@@ -32,7 +32,7 @@ function scr_player_jump()
 			sprite_index: spr_landeffect
 		})
 		state = states.normal
-		movespeed = abs(movespeed)
+		movespeed = abs(hsp)
 		set_sprite("land", 0)
 		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}
@@ -70,7 +70,7 @@ function scr_player_bounce()
 			sprite_index: spr_landeffect
 		})
 		state = states.normal
-		movespeed = abs(movespeed)
+		movespeed = abs(hsp)
 		set_sprite("land", 0)
 		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}

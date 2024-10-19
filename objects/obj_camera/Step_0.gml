@@ -21,7 +21,7 @@ if cam_tar == obj_player
 		var extendy = cam_tar.vsp * 10
 	else
 		var extendy = 0
-	var accel = 2
+	var accel = 1
 	if (extend < 0 && xoffset > 0) || (extend > 0 && xoffset < 0)
 		var accel = 8
 	if cam_tar.state == states.running ||

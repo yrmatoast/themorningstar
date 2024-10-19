@@ -1,7 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_runningjump(){
-	image_speed = 0.30
+	image_speed = 0.35
 	hsp = approach(hsp, movespeed * xscale, 1)
 	if movespeed <= speeds[1]
 	{
@@ -46,11 +46,6 @@ function scr_player_runningjump(){
 		state = states.fork
 		event_play_oneshot3d("event:/Sfx/dive", x, y)
 	}
-	if place_meeting(x + sign(xscale), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope) && movespeed >= speeds[1]
-	{
-		state = states.wallslide
-		vsp = -movespeed
-		event_play_oneshot3d("event:/Sfx/wallslide", x, y)
-	}
+	do_wallslide()
 	do_monsterjump()
 }

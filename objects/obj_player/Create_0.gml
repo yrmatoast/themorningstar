@@ -99,4 +99,17 @@ do_monsterjump = function()
 	}
 }
 
+do_wallslide = function()
+{
+	var _vsp = -movespeed
+	if _vsp < movespeed
+		_vsp = _vsp
+	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
+	{
+		state = states.wallslide
+		vsp = _vsp
+		event_play_oneshot3d("event:/Sfx/wallslide", x, y)
+	}
+}
+
 iframe = 0

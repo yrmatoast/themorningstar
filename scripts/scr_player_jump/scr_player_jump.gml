@@ -22,6 +22,7 @@ function scr_player_jump()
 		else
 			movespeed = 0
 	}
+	do_wallslide()
 	if animation_end() && get_sprite("jump")
 		set_sprite("fall")
 	if animation_end() && get_sprite("backflip")

@@ -8,9 +8,15 @@ function scr_player_skidding()
 	movespeed = approach(movespeed, 0, 0.40)
 	if !get_sprite("runskid")
 		set_sprite("runskid", 0)
-	if animation_end() && get_sprite("runskid") && char == "M"
+	if animation_end() && get_sprite("runskid") && char == "M" && grounded
 	{
 		image_index = 2
+	}
+	if animation_end() && get_sprite("runskid") && !grounded
+	{
+		jumpstop = false
+		jumpanim = true
+		state = states.runningjump
 	}
 	if movespeed == 0 && grounded
 	{

@@ -48,12 +48,7 @@ function scr_player_walljump()
 		xscale = move
 		movespeed = 8
 	}
-	if place_meeting(x + sign(xscale), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
-	{
-		state = states.wallslide
-		vsp = -abs(movespeed)
-		event_play_oneshot3d("event:/Sfx/wallslide", x, y)
-	}
+	do_wallslide()
 	if grounded
 	{
 		set_sprite("land", 0)

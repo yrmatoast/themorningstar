@@ -18,12 +18,7 @@ function scr_player_cape(){
 		hasflew = true
 	}
 	do_monsterjump()
-	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope)
-	{
-		state = states.wallslide
-		vsp = -movespeed
-		event_play_oneshot3d("event:/Sfx/wallslide", x, y)
-	}
+	do_wallslide()
 	if jumpstop == false && !key_jump
 	{
 		jumpstop = true

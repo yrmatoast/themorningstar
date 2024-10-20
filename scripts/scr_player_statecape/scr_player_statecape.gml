@@ -7,7 +7,7 @@ function scr_player_cape(){
 		set_sprite("cape", 0)
 	if animation_end() && get_sprite("capefallstart")
 		set_sprite("capefall", 0)
-	if vsp > 0 && (get_sprite("capestart") || get_sprite("cape")) 
+	if vsp > 0 && (get_sprite("capestart") || get_sprite("cape")) && char == "N"
 	{
 		set_sprite("capefallstart", 0)
 		grv = grav

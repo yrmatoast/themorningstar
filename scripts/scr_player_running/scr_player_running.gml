@@ -54,35 +54,50 @@ function scr_player_running(){
 		timers.run = 0
 	if key_jump && grounded
 	{
-		instance_create_depth(x, y + 5, 5, obj_basicparticle, {
-			sprite_index: spr_jumpcloud
-		})
-		if movespeed > speeds[1]
+		if move != 0 && move != xscale || get_sprite("turn")
 		{
+			xscale = move
+			instance_create_depth(x, y + 5, 5, obj_basicparticle, {
+				sprite_index: spr_jumpcloud
+			})
+			vsp = -17
+			event_play_oneshot3d("event:/Sfx/jump", x, y)
+			set_sprite("backflip", 0)
+			state = states.jump
 			jumpstop = false
-			if char == "N"
-			{
-				vsp = -15
-				grv = cape
-			}
-			else
-			{
-				vsp = -14
-				grv = grav
-			}
-			set_sprite("capestart", 0)
-			jumpanim = true
-			state = states.cape
-			hasflew = false
-			event_play_oneshot3d("event:/Sfx/capejump", x, y)
 		}
 		else
 		{
-			jumpstop = false
-			vsp = -13
-			jumpanim = true
-			state = states.runningjump
-			event_play_oneshot3d("event:/Sfx/jump", x, y)
+			instance_create_depth(x, y + 5, 5, obj_basicparticle, {
+				sprite_index: spr_jumpcloud
+			})
+			if movespeed > speeds[1]
+			{
+				jumpstop = false
+				if char == "N"
+				{
+					vsp = -15
+					grv = cape
+				}
+				else
+				{
+					vsp = -14
+					grv = grav
+				}
+				set_sprite("capestart", 0)
+				jumpanim = true
+				state = states.cape
+				hasflew = false
+				event_play_oneshot3d("event:/Sfx/capejump", x, y)
+			}
+			else
+			{
+				jumpstop = false
+				vsp = -13
+				jumpanim = true
+				state = states.runningjump
+				event_play_oneshot3d("event:/Sfx/jump", x, y)
+			}
 		}
 	}
 	if !grounded
@@ -102,6 +117,7 @@ function scr_player_running(){
 		movespeed = movespeed > speeds[2] ? speeds[2] : speeds[1]
 		state = states.skidding
 		event_play_oneshot3d("event:/Sfx/runend", x, y)
+		timers.turn = 15
 	}
 	if key_down2 
 	{

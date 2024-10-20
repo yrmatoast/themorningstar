@@ -47,6 +47,7 @@ timers =
 	run: 0,
 	step: 0,
 	steppart: 0,
+	turn: 0,
 }
 
 jumpanim = false

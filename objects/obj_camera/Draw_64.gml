@@ -11,7 +11,7 @@ if (!ds_list_empty(collectables))
 }
 for (var i = 0; i < global.hp; i++)
 {
-	draw_sprite(spr_hud_health, i, 32 + 13 + (56 * i), 64 + sin(current_time / 115 - (i * 60.5)) * 3)
+	draw_sprite(get_sprite_name("hud_health"), i, 32 + 13 + (56 * i), 64 + sin(current_time / 115 - (i * 60.5)) * 3)
 }
 var spdx = 32 - 16 - 10
 var spry = 64 + 32

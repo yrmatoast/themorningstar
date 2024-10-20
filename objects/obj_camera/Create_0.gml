@@ -32,3 +32,5 @@ create_collect = function(_sprite, _x, _y)
 	ds_list_add(obj_camera.collectables, par)
 	return par;
 }
+
+char = obj_player.char

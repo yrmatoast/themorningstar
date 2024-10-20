@@ -24,6 +24,14 @@ function scr_player_skidding()
 		state = states.normal
 		set_sprite("skidend", 0)
 	}
+	if (move != xscale && move != 0) && grounded && timers.turn == 0
+	{
+		set_sprite("turn", 0)
+		state = states.running
+		xscale = move
+		movespeed = 0
+		timers.run = 60
+	}
 	if key_jump && grounded && move != xscale && move != 0
 	{
 		xscale = move
@@ -36,4 +44,5 @@ function scr_player_skidding()
 		state = states.jump
 		jumpstop = false
 	}
+	timers.turn = approach(timers.turn, 0, 1)
 }

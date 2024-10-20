@@ -6,14 +6,13 @@ camx = clamp(camx, 0, (room_width - camera_get_view_width(view_camera[0])))
 camy = clamp(camy, 0, (room_height - camera_get_view_height(view_camera[0])))
 var rcx = camx
 var rcy = camy
-rcx = lerp(rcx, camx, 1)
-rcy = lerp(rcx, camy, 1)
 if lock = false
 	camera_set_view_pos(view_camera[0], rcx + irandom_range(shake, -shake), rcy + irandom_range(shake, -shake))
 if room == rm_levelselect
 	visible = false
 else
 	visible = true
+char = obj_player.char
 if cam_tar == obj_player
 {
 	var extend = cam_tar.xscale * cam_tar.movespeed * 8

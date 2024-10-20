@@ -1,7 +1,7 @@
 {
   "$GMRoom":"v1",
   "%Name":"kungfu_8",
-  "creationCodeFile":"",
+  "creationCodeFile":"rooms/kungfu_8/RoomCreationCode.gml",
   "inheritCode":false,
   "inheritCreationOrder":false,
   "inheritLayers":false,

@@ -1,1 +1,1 @@
-event_play_oneshot3d("event:/Sfx/hurt", x, y)
+event_play_oneshot3d("event:/Sfx/enemykill", x, y)

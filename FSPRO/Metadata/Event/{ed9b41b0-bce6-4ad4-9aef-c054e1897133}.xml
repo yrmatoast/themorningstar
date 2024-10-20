@@ -5,7 +5,7 @@
 			<value>enemykill</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{dc68f269-e378-4dd5-9fea-9a23f06c336d}</destination>
@@ -86,8 +86,11 @@
 		</relationship>
 	</object>
 	<object class="MultiSound" id="{cd93658f-1c41-4131-8691-3a209b8920c7}">
+		<property name="playbackMode">
+			<value>1</value>
+		</property>
 		<relationship name="sounds">
-			<destination>{e115dcc3-3837-4526-a906-8fce7b68bcbb}</destination>
+			<destination>{fc600bfc-847d-4410-b9e0-9e44228f679c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{fb92b49d-dd4a-49f3-a580-2135ea5b2313}">
@@ -99,14 +102,49 @@
 	<object class="MixerBusEffectChain" id="{93e23a4d-5cd0-45e9-a82a-2de1e33950bd}">
 		<relationship name="effects">
 			<destination>{4d987865-fb60-46a3-bd8e-e5a698149b0f}</destination>
+			<destination>{ee5e3bea-78e0-4d59-9075-943f07be86a8}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a07e31f7-ab79-41b0-ab15-e85f10813002}" />
-	<object class="SingleSound" id="{e115dcc3-3837-4526-a906-8fce7b68bcbb}">
-		<relationship name="audioFile">
-			<destination>{db414e80-a376-422e-8c3e-ace82924759d}</destination>
+	<object class="MultiSound" id="{fc600bfc-847d-4410-b9e0-9e44228f679c}">
+		<relationship name="sounds">
+			<destination>{7689a710-d7ca-4112-b6bc-a3ed985928a8}</destination>
+			<destination>{f5c7d59d-003a-4f8b-8727-076636a20b54}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{f4c451c9-31b7-4aab-be44-f6c8f51208f7}" />
 	<object class="MixerBusFader" id="{4d987865-fb60-46a3-bd8e-e5a698149b0f}" />
+	<object class="SpatialiserEffect" id="{ee5e3bea-78e0-4d59-9075-943f07be86a8}">
+		<property name="minimumDistance">
+			<value>6.80000019</value>
+		</property>
+		<property name="maximumDistance">
+			<value>1600</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>2000</value>
+		</property>
+		<property name="minimumExtent">
+			<value>10</value>
+		</property>
+		<property name="stereoToSurroundUserPanMode">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="SingleSound" id="{7689a710-d7ca-4112-b6bc-a3ed985928a8}">
+		<relationship name="audioFile">
+			<destination>{b7b44d8e-59b5-4664-abcf-33f3f02f18d7}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{f5c7d59d-003a-4f8b-8727-076636a20b54}">
+		<relationship name="audioFile">
+			<destination>{39305b7f-7d57-4a28-b09f-c205e4d14ca8}</destination>
+		</relationship>
+	</object>
 </objects>

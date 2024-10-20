@@ -2,6 +2,21 @@ if vsp < 20
 	vsp += grv
 scr_collision()
 fmod_listener_setPosition(0, x, y, 0)
+if state == states.running && !get_sprite("runskid")
+{
+	fmod_event_setPause(machsnd, false);
+	if !event_isplaying(machsnd)
+		fmod_event_play(machsnd);
+	var s = 0;
+	if get_sprite("run")
+		s = 1;
+	else if get_sprite("runmax") || (get_sprite("runland") && movespeed > 12)
+		s = 2;
+	fmod_event_set3DPosition(machsnd, x, y, 0);
+	fmod_event_setParameter(machsnd, "state", s, true);
+}
+else
+	fmod_event_setPause(machsnd, true)
 if mouse_check_button(mb_left)
 {
 	x = mouse_x;
@@ -17,23 +32,6 @@ if global.hitstun == 0
 {
 	__ti_input()
 	move = key_left + key_right;
-	timers.step = approach(timers.step, 0, 1)
-	if get_sprite("runmax")
-	{
-		if timers.step == 0
-		{
-			event_play_oneshot3d("event:/Sfx/step", x, y)
-			timers.step = 5
-		}
-	}
-	if get_sprite("run")
-	{
-		if timers.step == 0
-		{
-			event_play_oneshot3d("event:/Sfx/step", x, y)
-			timers.step = 7
-		}
-	}
 	switch state
 	{
 		case states.bounce:

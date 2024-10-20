@@ -16,6 +16,8 @@ function scr_player_wallslide()
 		state = states.jump
 		grv = grav
 		jumpstop = true
+		if vsp < -15
+			vsp = -15
 	}
 	if grounded
 	{
@@ -51,18 +53,19 @@ function scr_player_walljump()
 	}
 	else
 		movespeed = 0
-	do_wallslide()
 	if grounded
 	{
 		set_sprite("land", 0)
 		state = states.jump
 		grv = grav
 	}
-	if key_down2 && !get_sprite("forkdive") && char == "N"
+	if key_down2 && !get_sprite("forkdive")
 	{
 		set_sprite("forkdive", 0)
 		vsp = 15
 		event_play_oneshot3d("event:/Sfx/dive", x, y)
 		state = states.fork
 	}
+	do_wallslide()
+	do_monsterjump()
 }

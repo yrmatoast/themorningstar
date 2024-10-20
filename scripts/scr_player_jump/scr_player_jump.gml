@@ -42,7 +42,7 @@ function scr_player_jump()
 		jumpstop = true
 		vsp /= 20
 	}
-	if key_down2 && sprite_index != spr_noise_forkdive && char == "N"
+	if key_down2 && sprite_index != spr_noise_forkdive 
 	{
 		set_sprite("forkdive", 0)
 		vsp = 15

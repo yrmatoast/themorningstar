@@ -32,7 +32,7 @@ function scr_player_normal()
 		state = states.jump
 		jumpstop = false
 	}
-	if key_down && char == "N" && !scr_solid(move + xscale, 0)
+	if key_down && !scr_solid(move + xscale, 0)
 	{
 		set_sprite("forkstart", 0)
 		if movespeed < 14

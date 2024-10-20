@@ -7,7 +7,7 @@ function scr_player_cape(){
 		set_sprite("cape", 0)
 	if animation_end() && get_sprite("capefallstart")
 		set_sprite("capefall", 0)
-	if vsp > 0 && (get_sprite("capestart") || get_sprite("cape")) && char == "N"
+	if vsp > 0 && (get_sprite("capestart") || get_sprite("cape")) 
 	{
 		set_sprite("capefallstart", 0)
 		grv = grav
@@ -36,7 +36,7 @@ function scr_player_cape(){
 		set_sprite("runland", 0)
 		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}
-	if key_down2 && sprite_index != spr_noise_forkdive && char == "N"
+	if key_down2 && sprite_index != spr_noise_forkdive 
 	{
 		set_sprite("forkdive", 0)
 		vsp = 15

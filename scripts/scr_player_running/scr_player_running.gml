@@ -103,7 +103,7 @@ function scr_player_running(){
 		state = states.skidding
 		event_play_oneshot3d("event:/Sfx/runend", x, y)
 	}
-	if key_down2 && char == "N"
+	if key_down2 
 	{
 		set_sprite("forkstart", 0)
 		if movespeed < 12

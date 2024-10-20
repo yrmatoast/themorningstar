@@ -27,7 +27,8 @@ function scr_player_wallslide()
 	{
 		state = states.walljump
 		xscale *= -1
-		movespeed = 8
+		movespeed = 10
+		hsp = movespeed * xscale
 		vsp = -12
 		set_sprite("bounce", 0)
 		instance_create_depth(x, y + 5, 5, obj_basicparticle, {
@@ -46,7 +47,7 @@ function scr_player_walljump()
 	if move != 0
 	{
 		xscale = move
-		movespeed = 8
+		movespeed = 10
 	}
 	do_wallslide()
 	if grounded

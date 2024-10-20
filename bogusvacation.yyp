@@ -108,6 +108,7 @@
     {"id":{"name":"overgrown_2","path":"rooms/overgrown_2/overgrown_2.yy",},},
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"id":{"name":"rm_levelselect","path":"rooms/rm_levelselect/rm_levelselect.yy",},},
+    {"id":{"name":"rm_preinit","path":"rooms/rm_preinit/rm_preinit.yy",},},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"id":{"name":"gameframe_macros","path":"scripts/gameframe_macros/gameframe_macros.yy",},},
     {"id":{"name":"gameframe","path":"scripts/gameframe/gameframe.yy",},},
@@ -220,6 +221,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_preinit","path":"rooms/rm_preinit/rm_preinit.yy",},},
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"junk_1","path":"rooms/junk_1/junk_1.yy",},},
     {"roomId":{"name":"junk_2","path":"rooms/junk_2/junk_2.yy",},},

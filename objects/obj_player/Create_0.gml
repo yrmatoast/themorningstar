@@ -113,3 +113,4 @@ do_wallslide = function()
 }
 
 iframe = 0
+machsnd = fmod_createEventInstance("event:/Sfx/sprinting");

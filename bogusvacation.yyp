@@ -102,6 +102,7 @@
     {"id":{"name":"junk_4","path":"rooms/junk_4/junk_4.yy",},},
     {"id":{"name":"junk_5","path":"rooms/junk_5/junk_5.yy",},},
     {"id":{"name":"junk_6","path":"rooms/junk_6/junk_6.yy",},},
+    {"id":{"name":"kungfu_8","path":"rooms/kungfu_8/kungfu_8.yy",},},
     {"id":{"name":"overgrown_1","path":"rooms/overgrown_1/overgrown_1.yy",},},
     {"id":{"name":"overgrown_2","path":"rooms/overgrown_2/overgrown_2.yy",},},
     {"id":{"name":"overgrown_3","path":"rooms/overgrown_3/overgrown_3.yy",},},
@@ -237,6 +238,7 @@
     {"roomId":{"name":"overgrown_og1","path":"rooms/overgrown_og1/overgrown_og1.yy",},},
     {"roomId":{"name":"overgrown_og2","path":"rooms/overgrown_og2/overgrown_og2.yy",},},
     {"roomId":{"name":"overgrown_3","path":"rooms/overgrown_3/overgrown_3.yy",},},
+    {"roomId":{"name":"kungfu_8","path":"rooms/kungfu_8/kungfu_8.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

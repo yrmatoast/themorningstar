@@ -49,6 +49,8 @@ function scr_player_walljump()
 		xscale = move
 		movespeed = 10
 	}
+	else
+		movespeed = 0
 	do_wallslide()
 	if grounded
 	{

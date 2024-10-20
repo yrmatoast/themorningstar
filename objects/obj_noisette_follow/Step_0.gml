@@ -28,15 +28,15 @@ else
 if instance_exists(obj_noisettespot)
 {
 	var inst = instance_nearest(obj_player.x, obj_player.y, obj_noisettespot)
-	if point_distance(obj_player.x, 0, inst.x, 0) < 32 * 12 
+	if point_distance(obj_player.x, 0, inst.x, 0) < 32 * 24 && point_distance(0, obj_player.y, 0, obj_player.y) < 32 * 12
 	{
 		spot = true
-		x = approach(x, inst.x, 32)
-		y = approach(y, inst.y, 16)
+		x = approach(x, inst.x, 64)
+		y = approach(y, inst.y, 64)
 		spottype = inst.spot
 		if obj_player.x != x 
 			image_xscale = sign(obj_player.x - x)
-		if place_meeting(x, y, obj_player)
+		if place_meeting(x, y, obj_player) && x = inst.x && y = inst.y
 		{
 			if sprite_index == spr_idle
 			{

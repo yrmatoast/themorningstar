@@ -1,6 +1,6 @@
 function scr_collision()
 {
-	var _ground =  place_meeting(x, y + 1, par_solid) && vsp >= 0 || (place_meeting(x, y + 1, par_platform) && bbox_bottom - 1 < instance_place(x, y + 1, par_platform).y) && vsp >= 0
+	var _ground =  place_meeting(x, y + 1, par_solid) && vsp >= 0 || (place_meeting(x, y + 1, par_platform) && bbox_bottom - 1 < instance_place(x, y + 1, par_platform).y) && vsp >= 0 || place_meeting(x, y + 1, obj_slope) && vsp >= 0
 	var _checkby = 0.5
 	var _slopecheckthing = 42
 	if place_meeting(x + hsp, y - 42, par_solid) && scr_sloped()
@@ -10,9 +10,7 @@ function scr_collision()
 		if !place_meeting(x + hsp, y - _slopecheckthing, par_solid) && (scr_sloped() || place_meeting(x + hsp, y, obj_slope))
 		{
 			while place_meeting(x + hsp, y, par_solid) 
-			{
 				y -= _checkby
-			}
 		}
 		else
 		{
@@ -26,14 +24,14 @@ function scr_collision()
 	{
 		while !place_meeting(x + hsp, y + _checkby, par_solid) 
 		{
-				y += _checkby
+			y += _checkby
 		}
 	}
 	x += hsp
 	
 	
 	var _checkby2 = _checkby * sign(vsp)
-	if place_meeting(x, y + vsp, par_solid) // Vertical Shit
+	if place_meeting(x, y + vsp + 0.5, par_solid) // Vertical Shit
 	{
 		while !place_meeting(x, y + _checkby2, par_solid)  //basic collision
 			y += _checkby2
@@ -47,7 +45,6 @@ function scr_collision()
 			while !place_meeting(x, y + _checkby2, par_platform)
 				y += _checkby2
 			vsp = 0
-			_ground = true
 		}
 	}
 	grounded = _ground //set for grounded...

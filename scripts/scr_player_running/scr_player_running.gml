@@ -5,7 +5,6 @@ function scr_player_running(){
 		image_speed = movespeed / 19 - 0.3
 	else
 		image_speed = 0.35
-	slope_momentum(0.2, 0.1)
 	hsp = movespeed * xscale
 	var targetspeed = speeds[1]
 	if timers.run <= 0
@@ -42,6 +41,7 @@ function scr_player_running(){
 		}
 		else
 		{
+			slope_momentum(0.2, 0.1)
 			if get_sprite("runskid")
 				set_sprite("run")
 			if movespeed < targetspeed

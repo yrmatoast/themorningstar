@@ -71,14 +71,6 @@ if global.hitstun == 0
 			scr_player_hurt()
 			break
 	}
-	if place_meeting(x + hsp, y + vsp * 2, obj_destroyable) &&
-	state == states.running ||
-	state == states.fork ||
-	state == states.capepound
-	{
-		with instance_place(x + hsp, y + vsp * 2, obj_destroyable)
-			instance_destroy()
-	}
 	if place_meeting(x + hsp, y + vsp + 1, obj_spike) && state != states.bounce && iframe <= 0
 	{
 		state = states.hurt 
@@ -93,6 +85,36 @@ if global.hitstun == 0
 	}
 	if state != states.hurt
 		iframe = approach(iframe, 0, 1)
+	if state == states.running || state == states.runningjump || (state == states.fork && !get_sprite("dive"))
+	{
+		if place_meeting(x + hsp, y, obj_destroyable)
+		{
+			with instance_place(x + hsp, y, obj_destroyable)
+				instance_destroy()
+		}
+	}
+	else if (state == states.cape && vsp < 0) || (state == states.fork && get_sprite("dive"))
+	{
+		if place_meeting(x + hsp, y + vsp * 2, obj_destroyable)
+		{
+			with instance_place(x + hsp, y + vsp * 2, obj_destroyable)
+				instance_destroy()
+		}
+	}
+	else if state == states.bounce
+	{
+		if place_meeting(x + hsp, y + vsp * 1.2, obj_destroyable)
+		{
+			with instance_place(x + hsp, y + vsp * 1.2, obj_destroyable)
+			{
+				instance_destroy()
+				with other
+				{
+					vsp = -10
+				}
+			}
+		}
+	}
 }
 else
 {

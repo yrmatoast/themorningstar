@@ -9,4 +9,7 @@ if global.hp != 6
 	    y += lengthdir_y(movespeed, point)
 	    movespeed += 1
 	}
+	image_alpha = 1
 }
+else
+	image_alpha = 0.3

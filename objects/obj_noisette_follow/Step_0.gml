@@ -28,7 +28,7 @@ else
 if instance_exists(obj_noisettespot)
 {
 	var inst = instance_nearest(obj_player.x, obj_player.y, obj_noisettespot)
-	if point_distance(obj_player.x, 0, inst.x, 0) < 32 * 19 && point_distance(0, obj_player.y, 0, obj_player.y) < 32 * 6
+	if point_distance(obj_player.x, 0, inst.x, 0) < 32 * 19 && point_distance(0, obj_player.y, 0, inst.y) <= 32 * 6
 	{
 		spot = true
 		x = approach(x, inst.x, 64)

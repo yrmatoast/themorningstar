@@ -1,0 +1,1 @@
+text = "Press and hold [Z] to glide while at max speed"

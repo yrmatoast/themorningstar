@@ -33,6 +33,7 @@ function scr_player_runningjump(){
 		state = states.running
 		set_sprite("runland", 0)
 		event_play_oneshot3d("event:/Sfx/land", x, y)
+		movespeed = abs(hsp)
 	}
 	if jumpstop == false && !key_jump && vsp < grav
 	{

@@ -1,0 +1,1 @@
+draw_text_transformed(textx, WINDOW_HEIGHT / 2, text, 3, 3, 0)

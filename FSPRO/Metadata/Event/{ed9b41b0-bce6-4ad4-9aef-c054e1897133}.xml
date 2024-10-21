@@ -75,6 +75,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{877cd0ad-3666-48b2-9aad-1c115742ad02}">
+		<property name="volume">
+			<value>-11.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{93e23a4d-5cd0-45e9-a82a-2de1e33950bd}</destination>
 		</relationship>
@@ -107,6 +110,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{a07e31f7-ab79-41b0-ab15-e85f10813002}" />
 	<object class="MultiSound" id="{fc600bfc-847d-4410-b9e0-9e44228f679c}">
+		<relationship name="modulators">
+			<destination>{7b457858-e4d4-4731-8ddd-9f04a1a422f8}</destination>
+		</relationship>
 		<relationship name="sounds">
 			<destination>{7689a710-d7ca-4112-b6bc-a3ed985928a8}</destination>
 			<destination>{f5c7d59d-003a-4f8b-8727-076636a20b54}</destination>
@@ -135,6 +141,14 @@
 		</property>
 		<property name="stereoToSurroundUserPanMode">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{7b457858-e4d4-4731-8ddd-9f04a1a422f8}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>9.5</value>
 		</property>
 	</object>
 	<object class="SingleSound" id="{7689a710-d7ca-4112-b6bc-a3ed985928a8}">

@@ -1,0 +1,1 @@
+showing = distance_to_object(obj_player) < 32 * 5

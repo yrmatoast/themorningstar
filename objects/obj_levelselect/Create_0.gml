@@ -11,7 +11,7 @@ add_level = function(_title, _room, _page, _islevel = true) // create a level
 		room_info: [_room, "A"],
 	})
 }
-add_level("Overgrown Zone", overgrown_og1, 0)
+add_level("Overgrown Zone", overgrown_1, 0)
 add_level("Junkyard Beach", junk_1, 0)
 add_level("Terrorist Tours", roadway_1, 0) // roadway
 add_level("Test", rm_test, 1)

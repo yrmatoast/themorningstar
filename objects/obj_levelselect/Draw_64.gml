@@ -8,5 +8,5 @@ for (var i = 0; i < array_length(levels[page]); i++)
 	var str = selected[0] == i ? "> " : ""
 	draw_text(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + (40 * i) - scrollY, str + levels[page][i].title)
 }
-draw_text(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 150, string("Page {0}/{1}", page, array_length(levels) - 1))
+draw_text(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 150, string("Page {0}/{1}", page + 1, array_length(levels)))
 draw_set_color(c_white)

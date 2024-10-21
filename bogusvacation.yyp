@@ -177,6 +177,7 @@
     {"id":{"name":"spr_monster_runmax","path":"sprites/spr_monster_runmax/spr_monster_runmax.yy",},},
     {"id":{"name":"spr_monster_runskid","path":"sprites/spr_monster_runskid/spr_monster_runskid.yy",},},
     {"id":{"name":"spr_monster_runstart","path":"sprites/spr_monster_runstart/spr_monster_runstart.yy",},},
+    {"id":{"name":"spr_monster_skidend","path":"sprites/spr_monster_skidend/spr_monster_skidend.yy",},},
     {"id":{"name":"spr_monster_turn","path":"sprites/spr_monster_turn/spr_monster_turn.yy",},},
     {"id":{"name":"spr_movementcloud","path":"sprites/spr_movementcloud/spr_movementcloud.yy",},},
     {"id":{"name":"spr_noise_backflip","path":"sprites/spr_noise_backflip/spr_noise_backflip.yy",},},

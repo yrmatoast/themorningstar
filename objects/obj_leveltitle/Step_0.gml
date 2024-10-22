@@ -1,5 +1,5 @@
 textx = approach(textx, target, 30)
-if textx = WINDOW_WIDTH / 2
+if textx = WINDOW_WIDTH / 2 - 300
 	waittimer = approach(waittimer, 0, 1)
 if waittimer <= 0
 {

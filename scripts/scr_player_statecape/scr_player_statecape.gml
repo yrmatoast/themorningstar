@@ -75,7 +75,7 @@ function scr_player_capepound()
 					if point_distance(other.x, other.y, x, y) < 32 * 8
 						instance_destroy()
 				}
-				with obj_eggcop
+				with par_baddie
 				{
 					if point_distance(other.x, other.y, x, y) < 32 * 8
 						instance_destroy()

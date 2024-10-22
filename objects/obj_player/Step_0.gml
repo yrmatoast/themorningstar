@@ -103,7 +103,7 @@ if global.hitstun == 0
 				instance_destroy()
 		}
 	}
-	else if (state == states.cape && vsp < 0) || (state == states.fork && get_sprite("forkdive"))
+	else if (state == states.cape && vsp < 0) || (state == states.fork && get_sprite("forkdive")) || state == states.capepound
 	{
 		if place_meeting(x + hsp, y + vsp, obj_destroyable)
 		{

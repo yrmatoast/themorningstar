@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"obj_eggcop",
+  "%Name":"obj_eggpropeller",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -8,7 +8,7 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_eggcop",
+  "name":"obj_eggpropeller",
   "overriddenProperties":[],
   "parent":{
     "name":"Level Structure",
@@ -36,12 +36,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_eggcop_idle",
-    "path":"sprites/spr_eggcop_idle/spr_eggcop_idle.yy",
+    "name":"spr_eggpropeller",
+    "path":"sprites/spr_eggpropeller/spr_eggpropeller.yy",
   },
-  "spriteMaskId":{
-    "name":"spr_eggcop_mash",
-    "path":"sprites/spr_eggcop_mash/spr_eggcop_mash.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

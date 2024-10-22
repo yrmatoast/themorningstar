@@ -3,7 +3,7 @@ if active == false
 		with obj_player
 		{
 			savedspd = vsp;
-			savedpos = x - other.x
+			savedpos = (x - other.x)
 			targetRoom = other.targetRoom
 			targetDoor = other.targetDoor
 			hallwaydirection = other.hallwaydirection

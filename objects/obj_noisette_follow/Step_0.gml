@@ -45,6 +45,7 @@ if instance_exists(obj_noisettespot)
 					case spots.bounce:
 						with obj_player
 						{
+							grav = grav
 							vsp = -20
 							state = states.bounce
 						}

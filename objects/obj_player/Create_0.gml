@@ -48,6 +48,7 @@ timers =
 	step: 0,
 	steppart: 0,
 	turn: 0,
+	blur: 0,
 }
 
 jumpanim = false
@@ -92,6 +93,7 @@ do_monsterjump = function()
 {
 	if key_jump2 && char == "M"
 	{
+		poundcharge = 0
 		state = states.capepound
 		vsp = -20
 		sprite_index = spr_monster_capepound
@@ -115,3 +117,5 @@ do_wallslide = function()
 
 iframe = 0
 machsnd = fmod_createEventInstance("event:/Sfx/sprinting");
+
+poundcharge = 0

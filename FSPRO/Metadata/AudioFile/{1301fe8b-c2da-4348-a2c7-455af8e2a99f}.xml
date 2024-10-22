@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1301fe8b-c2da-4348-a2c7-455af8e2a99f}">
+		<property name="assetPath">
+			<value>sfx/rushdownend2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.2386666666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a1a2a492-1c83-4cec-819a-e7a52dffd00d}</destination>
+		</relationship>
+	</object>
+</objects>

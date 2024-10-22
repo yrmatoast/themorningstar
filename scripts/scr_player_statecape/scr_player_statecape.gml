@@ -60,20 +60,38 @@ function scr_player_capepound()
 			movespeed = 0
 		if grounded
 		{
-			set_sprite("capepoundslam", 0)
-			obj_camera.shake = 20
-			with obj_destroyable
+			if poundcharge < 30
 			{
-				if point_distance(other.x, other.y, x, y) < 32 * 6
-					instance_destroy()
+				set_sprite("capepoundslam", 0)
+				obj_camera.shake = 20
 			}
-			with obj_eggcop
+			else
 			{
-				if point_distance(other.x, other.y, x, y) < 32 * 6
-					instance_destroy()
+				event_play_oneshot3d("event:/Sfx/slamhitground", x, y)
+				set_sprite("capepoundslam", 0)
+				obj_camera.shake = 50
+				with obj_destroyable
+				{
+					if point_distance(other.x, other.y, x, y) < 32 * 8
+						instance_destroy()
+				}
+				with obj_eggcop
+				{
+					if point_distance(other.x, other.y, x, y) < 32 * 8
+						instance_destroy()
+				}
 			}
+			poundcharge = 0
 		}
+		if timers.blur == 0 && poundcharge >= 30
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
 		vsp += 1
+		if vsp >= 0
+			poundcharge++
 	}
 	if get_sprite("capepoundslam")
 	{

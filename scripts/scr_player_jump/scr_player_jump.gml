@@ -2,6 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_jump()
 {
+	grav = grav
 	image_speed = 0.35
 	if get_sprite("jump") || get_sprite("fall")
 	{

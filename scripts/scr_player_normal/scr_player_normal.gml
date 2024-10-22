@@ -1,5 +1,6 @@
 function scr_player_normal()
 {
+	grav = grav
 	image_speed = 0.35
 	hsp = movespeed * xscale
 	if animation_end() && (get_sprite("land") || get_sprite("skidend"))

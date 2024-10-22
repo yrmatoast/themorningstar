@@ -33,6 +33,7 @@ if keyboard_check_pressed(vk_f1)
 	hsp = 0
 	vsp = 0
 	movespeed = 0
+	char = "N"
 }
 var att = char == "N" ? attributes.noise : attributes.bruit
 grav = att[0][0]

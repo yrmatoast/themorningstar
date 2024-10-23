@@ -12,8 +12,6 @@ if place_meeting(x, y, obj_player) && obj_player.killmove
 			killID: [id]
 		}
 		global.hitstun = 5
-		if obj_player.key_jump
-			obj_player.vsp = -5
 	}
 }
 if distance_to_object(obj_player) < 32 * 10 && point_distance(0, obj_player.y, 0, y) < 32 * 4

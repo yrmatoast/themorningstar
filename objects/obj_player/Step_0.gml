@@ -151,7 +151,7 @@ else
 
 if state == states.fork 
 || (state == states.running && char != "N" && movespeed > speeds[1])
-|| (state == states.cape && char != "N" && movespeed > speeds[1])
+|| (state == states.cape && movespeed > speeds[1])
 || state == states.capepound
 	killmove = true
 else

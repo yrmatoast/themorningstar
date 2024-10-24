@@ -21,9 +21,19 @@ if active
 	if key_jump2 == active && levels[page][sel].islevel = true
 	{
 		active = false
-		obj_player.targetRoom = levels[page][sel].room_info[0]
-		obj_player.targetDoor = levels[page][sel].room_info[1]
 		obj_player.hallway = false
+		global.level = levels[page][sel].title
+		var _checkpoint = string("{0} Checkpoints", global.level)
+		/*if load_quick(_checkpoint, "general_currentroom") != -4
+		{
+			obj_player.targetRoom = load_quick(_checkpoint, "general_currentroom")
+			obj_player.targetDoor = [load_quick(_checkpoint, "player_x"), load_quick(_checkpoint, "player_y")]
+		}
+		else
+		{*/
+			obj_player.targetRoom = levels[page][sel].room_info[0]
+			obj_player.targetDoor = levels[page][sel].room_info[1]
+		//}
 		with instance_create_depth(x, y, 0, obj_fadeout)
 			targetRoom = obj_player.targetRoom
 		instance_create_depth(x, y, -5, obj_leveltitle).text = string_upper(levels[page][sel].title)

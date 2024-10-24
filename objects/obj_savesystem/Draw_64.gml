@@ -1,0 +1,1 @@
+draw_sprite_ext(spr_noise_run, saveicon.index, WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 1, 1, 0, c_white, saveicon.alpha)

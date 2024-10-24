@@ -87,6 +87,7 @@
     {"id":{"name":"obj_parrallax","path":"objects/obj_parrallax/obj_parrallax.yy",},},
     {"id":{"name":"obj_platform","path":"objects/obj_platform/obj_platform.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
+    {"id":{"name":"obj_savesystem","path":"objects/obj_savesystem/obj_savesystem.yy",},},
     {"id":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},},
     {"id":{"name":"obj_slope_blue","path":"objects/obj_slope_blue/obj_slope_blue.yy",},},
     {"id":{"name":"obj_slope","path":"objects/obj_slope/obj_slope.yy",},},

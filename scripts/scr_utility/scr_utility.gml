@@ -177,3 +177,37 @@ function add_error(_text)
 		ds_list_add(obj_errorreporter.errors, _err)	
 	return _err
 }
+
+/*
+_vars = []
+array_push(_vars, {
+name: x,
+val: y,
+})
+*/
+function save_quick(_section, _vars)
+{
+	with obj_savesystem
+	{
+		for (var i = 0; i < array_length(_vars); i++)
+		{
+			ini_open(file);
+			if is_string(_vars[i].val)
+				ini_write_string(_section, _vars[i].name, _vars[i].val);
+			else
+				ini_write_real(_section, _vars[i].name, _vars[i].val);
+		}
+		ini_close()
+		saveicon.timer = 60
+	}
+}
+
+function load_quick(_section, _var)
+{
+	with obj_savesystem
+	{
+		ini_open(file);
+		return ini_read_real(_section, _var, -4)
+		ini_close()
+	}
+}

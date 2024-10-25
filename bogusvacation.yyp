@@ -143,6 +143,7 @@
     {"id":{"name":"scr_utility","path":"scripts/scr_utility/scr_utility.yy",},},
     {"id":{"name":"bg_junk","path":"sprites/bg_junk/bg_junk.yy",},},
     {"id":{"name":"bg_junk2","path":"sprites/bg_junk2/bg_junk2.yy",},},
+    {"id":{"name":"bg_levelselect","path":"sprites/bg_levelselect/bg_levelselect.yy",},},
     {"id":{"name":"bg_over","path":"sprites/bg_over/bg_over.yy",},},
     {"id":{"name":"cuphud","path":"sprites/cuphud/cuphud.yy",},},
     {"id":{"name":"roadyway1","path":"sprites/roadyway1/roadyway1.yy",},},

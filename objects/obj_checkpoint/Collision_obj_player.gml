@@ -26,7 +26,7 @@ if !activated && ds_list_find_index(global.saveroom, id) == -1
 	})
 	array_push(save, {
 		name: "general_saveroom",
-		val: global.saveroom
+		val: ds_list_write(global.saveroom)
 	})
 	array_push(save, {
 		name: "general_currentroom",

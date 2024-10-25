@@ -31,6 +31,6 @@ function music_stop()
 	}
 }
 music_add(rm_levelselect, -4)
-music_add(junk_1, "event:/Music/junk")
-music_add(overgrown_1, "event:/Music/zone")
+music_add("junk", "event:/Music/junk")
+music_add("overgrown", "event:/Music/zone")
 func = -4

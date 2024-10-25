@@ -81,6 +81,7 @@
     {"id":{"name":"obj_hook","path":"objects/obj_hook/obj_hook.yy",},},
     {"id":{"name":"obj_levelselect","path":"objects/obj_levelselect/obj_levelselect.yy",},},
     {"id":{"name":"obj_leveltitle","path":"objects/obj_leveltitle/obj_leveltitle.yy",},},
+    {"id":{"name":"obj_music","path":"objects/obj_music/obj_music.yy",},},
     {"id":{"name":"obj_noisette_follow","path":"objects/obj_noisette_follow/obj_noisette_follow.yy",},},
     {"id":{"name":"obj_noisettespot","path":"objects/obj_noisettespot/obj_noisettespot.yy",},},
     {"id":{"name":"obj_orangeswitch","path":"objects/obj_orangeswitch/obj_orangeswitch.yy",},},

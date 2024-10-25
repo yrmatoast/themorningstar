@@ -1,7 +1,6 @@
-var _door = asset_get_index("obj_door" + targetDoor)
-
 if is_string(targetDoor)
 {
+	var _door = asset_get_index("obj_door" + targetDoor)
 	if instance_exists(_door)
 	{
 		if hallway != 2

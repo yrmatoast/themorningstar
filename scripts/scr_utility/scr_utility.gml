@@ -202,12 +202,12 @@ function save_quick(_section, _vars)
 	}
 }
 
-function load_quick(_section, _var)
+function load_quick(_real = true, _section, _var)
 {
 	with obj_savesystem
 	{
 		ini_open(file);
-		return ini_read_real(_section, _var, -4)
+		return _real ? real(ini_read_real(_section, _var, -4)) : ini_read_string(_section, _var, -4)
 		ini_close()
 	}
 }

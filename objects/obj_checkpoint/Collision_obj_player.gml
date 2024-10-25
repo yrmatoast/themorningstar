@@ -21,6 +21,10 @@ if !activated && ds_list_find_index(global.saveroom, id) == -1
 		val: global.collect
 	})
 	array_push(save, {
+		name: "player_char",
+		val: obj_player.char
+	})
+	array_push(save, {
 		name: "general_saveroom",
 		val: global.saveroom
 	})

@@ -2,6 +2,7 @@ enum optmenu{
 	main,
 	audio,
 	video,
+	game,
 	
 	//ANCHORS
 	center,
@@ -26,6 +27,11 @@ array_push(backgrounds, {
 })
 array_push(backgrounds, {
 	index: 2,
+	alpha: 0,
+	scroll: 0,
+})
+array_push(backgrounds, {
+	index: 3,
 	alpha: 0,
 	scroll: 0,
 })
@@ -87,6 +93,11 @@ add_option_ext(_main, optmenu.press, "AUDIO", function()
 add_option_ext(_main, optmenu.press, "VIDEO", function()
 {
 	goto_menu(optmenu.video)
+})
+
+add_option_ext(_main, optmenu.press, "GAME", function()
+{
+	goto_menu(optmenu.game)
 })
 
 array_push(menus, _main)
@@ -164,3 +175,25 @@ add_option_ext(_video, optmenu.toggle, "RESOLUTION", function()
 	}, 1, 1, ["960 X 540", "1280 X 720"])
 
 array_push(menus, _video)
+
+var _game = create_menu(optmenu.game, optmenu.left, 48, function()
+{
+	goto_menu(optmenu.main)
+})
+
+add_option_ext(_game, optmenu.press, "BACK", function()
+{
+	goto_menu(optmenu.main)
+})
+
+
+add_option_ext(_game, optmenu.toggle, "TIMER", function()
+	{
+		var m = menus[menu]
+		var opt = m.options
+		var q = opt[selected]
+		global.timervisible = q.val
+		q.val = global.timervisible
+	}, global.timervisible, 1, ["OFF", "PER LEVEL"])
+
+array_push(menus, _game)

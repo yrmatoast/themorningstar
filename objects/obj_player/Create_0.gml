@@ -3,6 +3,7 @@ global.followerlist = ds_list_create()
 global.hp = 4
 global.collect = 0
 global.level = ""
+global.timervisible = true
 hsp = 0
 vsp = 0
 grounded = false

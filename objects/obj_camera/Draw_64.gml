@@ -33,5 +33,6 @@ var _seconds = _sec
 if _sec < 10
 	_seconds = string("0{0}", _sec)
 var _minutes = wrap(global.timer / (60 * 60), 0, 59)
-var _timer = string("{2}:{1}:{0}", _mseconds, _seconds, _minutes)
-draw_text(WINDOW_WIDTH - 50, WINDOW_HEIGHT - 40, _timer)
+var _timer = string("{2}:{1}.{0}", _mseconds, _seconds, _minutes)
+if global.timervisible
+	draw_text(WINDOW_WIDTH - 50, WINDOW_HEIGHT - 40, _timer)

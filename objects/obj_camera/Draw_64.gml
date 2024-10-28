@@ -22,3 +22,16 @@ draw_sprite(cuphud, 0, cupx, cupy)
 draw_set_align(fa_right)
 draw_set_font(cupfont)
 draw_text(256 + 16 - 6 + 15 + 32 + (56 * (global.hp - 4)), 16 - 4 + cupoffset + 32 + 4, collect)
+draw_set_align(fa_right)
+draw_set_font(Font1)
+var _msec = wrap(global.timer, 0, 59)
+var _mseconds = _msec
+if _msec < 10
+	_mseconds = string("0{0}", _msec)
+var _sec = wrap(global.timer / 60, 0, 59)
+var _seconds = _sec
+if _sec < 10
+	_seconds = string("0{0}", _sec)
+var _minutes = wrap(global.timer / (60 * 60), 0, 59)
+var _timer = string("{2}:{1}:{0}", _mseconds, _seconds, _minutes)
+draw_text(WINDOW_WIDTH - 50, WINDOW_HEIGHT - 40, _timer)

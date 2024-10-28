@@ -211,3 +211,13 @@ function load_quick(_real = true, _section, _var)
 		ini_close()
 	}
 }
+
+function wrap()
+{
+	var value = floor(argument0);
+	var _min = floor(min(argument1, argument2));
+	var _max = floor(max(argument1, argument2));
+	var range = _max - _min + 1; // + 1 is because max bound is inclusive
+
+	return (((value - _min) % range) + range) % range + _min;
+}

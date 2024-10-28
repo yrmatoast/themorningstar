@@ -75,7 +75,8 @@ char = "N"
 hasflew = false
 savedspd = 0
 savedpos = 0
-
+font_add_enable_aa(false)
+global.bigfont = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¡¿?.1234567890:ÁÄÃÀÂÉÈÊËÍÌÎÏÓÖÕÔÒÚÙÛÜÇ+", true, 0)
 slope_momentum = function(_accel = 0.4, _daccel = 0.2, _max = 24)
 {
 	if place_meeting(x, y + 1, obj_slope)

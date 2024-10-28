@@ -18,7 +18,7 @@ if showing
 	        draw_sprite(spr_button, 0, xx + strx, yy + shakeY + (16 / 2))
 	        draw_text_color(xx + strx, yy + shakeY, str, c_black, c_black, c_black, c_black, 1)
 	    }
-	    strx += spacing
+	    strx += string_width(str)
     
 	}
 }

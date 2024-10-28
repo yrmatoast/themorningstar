@@ -52,6 +52,7 @@ if active
 			obj_player.targetDoor = [load_quick(true, _checkpoint, "player_x"), load_quick(true, _checkpoint, "player_y")]
 			global.hp = load_quick(true, _checkpoint, "player_hp")
 			global.collect = load_quick(true, _checkpoint, "player_collectables")
+			global.timer = load_quick(true, _checkpoint, "general_time")
 			ds_list_read(global.saveroom, load_quick(false, _checkpoint, "general_saveroom"))
 			obj_camera.collect = global.collect
 		}
@@ -62,6 +63,7 @@ if active
 			obj_camera.collect = 0
 			global.collect = 0
 			global.hp = 4
+			global.timer = 0
 		}
 		with instance_create_depth(x, y, 0, obj_fadeout)
 			targetRoom = obj_player.targetRoom

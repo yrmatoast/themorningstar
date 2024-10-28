@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ab5fef45-e7c8-4b6b-bac5-8d35decd2f64}">
+		<property name="assetPath">
+			<value>projectmidnight_junk_test_5.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>111.11111111111111</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a1a2a492-1c83-4cec-819a-e7a52dffd00d}</destination>
+		</relationship>
+	</object>
+</objects>

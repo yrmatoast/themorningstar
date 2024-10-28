@@ -36,7 +36,7 @@ function scr_player_cape(){
 		set_sprite("runland", 0)
 		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}
-	if key_down2 && sprite_index != spr_noise_forkdive 
+	if key_down2 && sprite_index != spr_noise_forkdive && char != "M"
 	{
 		set_sprite("forkdive", 0)
 		vsp = 15

@@ -59,7 +59,7 @@ function scr_player_walljump()
 		state = states.jump
 		grv = grav
 	}
-	if key_down2 && !get_sprite("forkdive")
+	if key_down2 && !get_sprite("forkdive") && char != "M"
 	{
 		set_sprite("forkdive", 0)
 		vsp = 15

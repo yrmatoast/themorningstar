@@ -9,8 +9,14 @@ function scr_collision()
 	{
 		if !place_meeting(x + hsp, y - _slopecheckthing, par_solid) && (scr_sloped() || place_meeting(x + hsp, y, obj_slope))
 		{
+			var i = 0;
 			while place_meeting(x + hsp, y, par_solid) 
+			{
+				i++
 				y -= _checkby
+				if i > 180
+					 break
+			}
 		}
 		else
 		{
@@ -22,9 +28,13 @@ function scr_collision()
 	}
 	if vsp >= 0 && !place_meeting(x + hsp, y + 1, par_solid) && place_meeting(x + hsp, y + _slopecheckthing / 1.5 + vsp, par_solid) && scr_sloped(0, vsp + 1) // go DOWN slopw
 	{
+		var i = 0;
 		while !place_meeting(x + hsp, y + _checkby, par_solid) 
 		{
+			i++
 			y += _checkby
+			if i > 180
+				 break
 		}
 	}
 	x += hsp

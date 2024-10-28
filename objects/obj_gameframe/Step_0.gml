@@ -29,3 +29,11 @@ if (gameframe_visible_time > 0)
 }
 else
 	gameframe_alpha = approach(gameframe_alpha, 0, 0.1);
+	
+fmod_global_setParameter("mastervol", master, true)
+fmod_global_setParameter("sfxvol", global.SfxVolume, true)
+fmod_global_setParameter("musicvol", global.MusicVolume, true)
+if !window_has_focus() && global.unfocusedmute
+	master = 0
+else
+	master = global.MasterVolume

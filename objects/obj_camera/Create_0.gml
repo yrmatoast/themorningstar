@@ -15,6 +15,7 @@ collectables = ds_list_create()
 cupx = 256 + 16 - 6 + (56 * (global.hp - 4))
 cupy = 0
 collect = 0
+global.timer = 0
 
 create_collect = function(_sprite, _x, _y)
 {

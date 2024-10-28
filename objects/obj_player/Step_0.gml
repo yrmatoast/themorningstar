@@ -22,19 +22,6 @@ if mouse_check_button(mb_left)
 	x = mouse_x;
 	y = mouse_y;
 }
-if keyboard_check_pressed(vk_f1)
-{
-	global.hp = 4
-	global.collect = 0
-	room = rm_levelselect
-	targetDoor = "A"
-	state = states.normal
-	ds_list_clear(global.saveroom)
-	hsp = 0
-	vsp = 0
-	movespeed = 0
-	char = "N"
-}
 var att = char == "N" ? attributes.noise : attributes.bruit
 grav = att[0][0]
 cape = att[0][1]

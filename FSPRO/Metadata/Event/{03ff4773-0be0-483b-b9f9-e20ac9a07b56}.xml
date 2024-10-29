@@ -5,7 +5,7 @@
 			<value>junkintro</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{dc68f269-e378-4dd5-9fea-9a23f06c336d}</destination>
@@ -107,7 +107,7 @@
 	</object>
 	<object class="CommandSound" id="{e4068feb-e228-4341-bd0e-279add0747aa}">
 		<property name="start">
-			<value>2.531456720619282</value>
+			<value>2.5600000000000001</value>
 		</property>
 		<property name="length">
 			<value>0</value>
@@ -156,7 +156,6 @@
 	<object class="MixerBusEffectChain" id="{16419a9d-f71c-4101-a290-4fae7da52137}">
 		<relationship name="effects">
 			<destination>{07373ea4-3fae-4118-ba1b-419c5981c912}</destination>
-			<destination>{b397afc9-fb0a-455c-8ff3-bc9b3943eeb1}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{856a0dec-b161-4d8d-8ce4-7e9014cd5540}" />
@@ -168,28 +167,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{a7d8ba6b-7562-4a75-88ca-80e9b392858f}" />
 	<object class="MixerBusFader" id="{07373ea4-3fae-4118-ba1b-419c5981c912}" />
-	<object class="SpatialiserEffect" id="{b397afc9-fb0a-455c-8ff3-bc9b3943eeb1}">
-		<property name="minimumDistance">
-			<value>6.80000019</value>
-		</property>
-		<property name="maximumDistance">
-			<value>1600</value>
-		</property>
-		<property name="overrideRange">
-			<value>true</value>
-		</property>
-		<property name="extentMode">
-			<value>1</value>
-		</property>
-		<property name="soundSize">
-			<value>2000</value>
-		</property>
-		<property name="minimumExtent">
-			<value>10</value>
-		</property>
-		<property name="stereoToSurroundUserPanMode">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="MixerBusFader" id="{933e4c25-4494-42d6-98e7-3e708746e8fd}" />
 </objects>

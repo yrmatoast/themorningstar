@@ -44,7 +44,7 @@ for (var i = 0; i < array_length(layers); i++)
 			layer_y(lay, camy);
 		break
 		case "Backgrounds_RstillH3":
-			layer_x(lay, camx * -(1 - 0.95));
+			layer_x(lay, camx * 1 - 0.95);
 			layer_y(lay, camy);
 		break
 	}

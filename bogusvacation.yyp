@@ -213,6 +213,7 @@
     {"id":{"name":"spr_noise_hurt","path":"sprites/spr_noise_hurt/spr_noise_hurt.yy",},},
     {"id":{"name":"spr_noise_idle","path":"sprites/spr_noise_idle/spr_noise_idle.yy",},},
     {"id":{"name":"spr_noise_jump","path":"sprites/spr_noise_jump/spr_noise_jump.yy",},},
+    {"id":{"name":"spr_noise_junk_intro","path":"sprites/spr_noise_junk_intro/spr_noise_junk_intro.yy",},},
     {"id":{"name":"spr_noise_land","path":"sprites/spr_noise_land/spr_noise_land.yy",},},
     {"id":{"name":"spr_noise_longjump","path":"sprites/spr_noise_longjump/spr_noise_longjump.yy",},},
     {"id":{"name":"spr_noise_longjumpend","path":"sprites/spr_noise_longjumpend/spr_noise_longjumpend.yy",},},

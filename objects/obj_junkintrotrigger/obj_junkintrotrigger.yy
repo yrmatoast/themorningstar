@@ -37,5 +37,5 @@
     "path":"sprites/spr_noise_skidend/spr_noise_skidend.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

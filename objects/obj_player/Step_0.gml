@@ -1,6 +1,9 @@
-if vsp < 20
-	vsp += grv
-scr_collision()
+if state != states.death
+{
+	if vsp < 20
+		vsp += grv
+	scr_collision()
+}
 fmod_listener_setPosition(0, x, y, 0)
 if state == states.running && !get_sprite("runskid")
 {
@@ -68,18 +71,38 @@ if global.hitstun == 0
 		case states.hurt:
 			scr_player_hurt()
 			break
+		case states.death:
+			scr_player_death()
+			break
 	}
-	if place_meeting(x + hsp, y + vsp + 1, obj_spike) && state != states.bounce && iframe <= 0
+	if global.hp == 0 && state != states.death
 	{
-		state = states.hurt 
-		vsp = -10
-		iframe = 60 * 2
-		movespeed = 10 * -xscale
 		set_sprite("hurt")
-		event_play_oneshot3d("event:/Sfx/hurt", x, y)
-
-		global.hp -= 1
-		alarm[0] = 3
+		timers.death = 60
+		dying = false
+		state = states.death
+		obj_player.hitstunvars = 
+		{
+			x: obj_player.x,
+			y: obj_player.y,
+			kill: true,
+			killID: [id]
+		}
+	}
+	if state != states.death
+	{
+		if place_meeting(x + hsp, y + vsp + 1, obj_spike) && state != states.bounce && iframe <= 0
+		{
+			state = states.hurt 
+			vsp = -10
+			iframe = 60 * 2
+			movespeed = 10 * -xscale
+			set_sprite("hurt")
+			event_play_oneshot3d("event:/Sfx/hurt", x, y)
+			obj_music.pitch = 0.75
+			global.hp -= 1
+			alarm[0] = 3
+		}
 	}
 	if state != states.hurt
 		iframe = approach(iframe, 0, 1)

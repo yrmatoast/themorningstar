@@ -20,9 +20,15 @@ function scr_collision()
 		}
 		else
 		{
+			var i = 0;
 			var _checkby2 = _checkby * sign(hsp)
 			while !place_meeting(x + _checkby2, y, par_solid)  //basic collision
+			{
+				i++
 				x += _checkby2
+				if i > 180
+					 break
+			}
 			hsp = 0
 		}
 	}
@@ -41,10 +47,16 @@ function scr_collision()
 	
 	
 	var _checkby2 = _checkby * sign(vsp)
-	if place_meeting(x, y + vsp + 0.5, par_solid) // Vertical Shit
+	if place_meeting(x, y + vsp, par_solid) // Vertical Shit
 	{
+		var i = 0;
 		while !place_meeting(x, y + _checkby2, par_solid)  //basic collision
+		{
+			i++
 			y += _checkby2
+			if i > 180
+				break
+		}
 			vsp = 0
 	}
 	//platforms

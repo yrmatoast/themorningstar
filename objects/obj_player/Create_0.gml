@@ -27,6 +27,9 @@ attributes =
 image_speed = 0.35
 depth = 0
 xscale = 1
+xs_cale = 1
+ys_cale = 1
+rot = 0
 enum states
 {
 	normal,
@@ -41,6 +44,7 @@ enum states
 	capepound,
 	bounce,
 	hurt,
+	death,
 }
 state = states.normal
 timers = 
@@ -50,8 +54,9 @@ timers =
 	steppart: 0,
 	turn: 0,
 	blur: 0,
+	death: 0,
 }
-
+dying = false
 jumpanim = false
 jumpstop = false
 __ti_initinput()

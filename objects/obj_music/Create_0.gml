@@ -4,6 +4,7 @@ muID = -4
 currentmusic = ""
 prevmuID = muID
 lock = false
+pitch = 1
 function music_add(_room, _music, _func = -4) // add the music to a room buuh
 {
 	var _mu = 

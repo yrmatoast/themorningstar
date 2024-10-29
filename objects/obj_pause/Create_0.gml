@@ -25,7 +25,11 @@ array_push(exitarr, {
 			hsp = 0
 			vsp = 0
 			movespeed = 0
+			xs_cale = 1
+			ys_cale = 1
+			rot = 0
 			char = "N"
+			obj_camera.lock = false
 		}
 	},
 })

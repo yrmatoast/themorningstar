@@ -133,6 +133,7 @@
     {"id":{"name":"scr_afterimages","path":"scripts/scr_afterimages/scr_afterimages.yy",},},
     {"id":{"name":"scr_collision","path":"scripts/scr_collision/scr_collision.yy",},},
     {"id":{"name":"scr_fmodUtility","path":"scripts/scr_fmodUtility/scr_fmodUtility.yy",},},
+    {"id":{"name":"scr_player_death","path":"scripts/scr_player_death/scr_player_death.yy",},},
     {"id":{"name":"scr_player_fork","path":"scripts/scr_player_fork/scr_player_fork.yy",},},
     {"id":{"name":"scr_player_hurt","path":"scripts/scr_player_hurt/scr_player_hurt.yy",},},
     {"id":{"name":"scr_player_jump","path":"scripts/scr_player_jump/scr_player_jump.yy",},},

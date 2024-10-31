@@ -12,7 +12,7 @@ if pause
 		draw_set_font(global.bigfont)
 		draw_set_align(fa_center)
 		draw_set_color(selected == i ? arr[i].color : c_gray)
-		draw_text(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + (40 * i), string_upper(arr[i].title))
+		draw_text(WINDOW_WIDTH / 2, (WINDOW_HEIGHT / 2 - 40 * array_length(arr) / 2) + (40 * i), string_upper(arr[i].title))
 	}
 	draw_set_color(c_white)
 	if exiting

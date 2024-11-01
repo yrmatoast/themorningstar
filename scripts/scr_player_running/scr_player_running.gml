@@ -3,7 +3,7 @@
 function scr_player_running(){
 	grav = grav
 	if get_sprite("runmax")
-		image_speed = movespeed / 19 - 0.3
+		image_speed = 0.4
 	else
 		image_speed = 0.35
 	hsp = movespeed * xscale
@@ -47,8 +47,6 @@ function scr_player_running(){
 				set_sprite("run")
 			if movespeed < targetspeed
 				movespeed = approach(movespeed, targetspeed, speeds[0])
-			else if char == "N" && targetspeed >= speeds[2]
-				movespeed = approach(movespeed, 19, 0.01)
 		}
 	}
 	if movespeed > speeds[1] && timers.run > 0

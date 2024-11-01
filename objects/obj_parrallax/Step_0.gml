@@ -31,6 +31,10 @@ for (var i = 0; i < array_length(layers); i++)
 			layer_x(lay, camx);
 			layer_y(lay, camy);
 		break
+		case "Backgrounds_still2":
+			layer_x(lay, camx);
+			layer_y(lay, camy);
+		break
 		case "Backgrounds_stillH1":
 			layer_x(lay, camx * 0.15);
 			layer_y(lay, camy);
@@ -40,11 +44,11 @@ for (var i = 0; i < array_length(layers); i++)
 			layer_y(lay, camy);
 		break
 		case "Backgrounds_stillH3":
-			layer_x(lay, camx * 0.95);
+			layer_x(lay, camx);
 			layer_y(lay, camy);
 		break
 		case "Backgrounds_RstillH3":
-			layer_x(lay, camx * 1 - 0.95);
+			layer_x(lay, camx);
 			layer_y(lay, camy);
 		break
 	}

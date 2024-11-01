@@ -2,16 +2,15 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_running(){
 	grav = grav
-	if get_sprite("runmax")
-		image_speed = 0.4
-	else
-		image_speed = 0.35
+	image_speed = 0.5
 	hsp = movespeed * xscale
 	var targetspeed = speeds[1]
 	if timers.run <= 0
 		var targetspeed = speeds[2]
-	if animation_end() && (get_sprite("runstart") || get_sprite("runland") || get_sprite("turn"))
+	if animation_end() && (get_sprite("runstart") || get_sprite("turn"))
 		set_sprite("run")
+	if animation_end() && get_sprite("runland")
+		set_sprite("runstart")
 	if movespeed > speeds[1] && get_sprite("run")
 		set_sprite("runmax")
 	if grounded
@@ -42,7 +41,8 @@ function scr_player_running(){
 		}
 		else
 		{
-			slope_momentum(0.2, 0.1)
+			if get_sprite("runmax")
+				slope_momentum(0.1, 0.05)
 			if get_sprite("runskid")
 				set_sprite("run")
 			if movespeed < targetspeed

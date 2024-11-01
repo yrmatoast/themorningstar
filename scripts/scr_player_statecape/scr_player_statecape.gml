@@ -19,6 +19,14 @@ function scr_player_cape(){
 	}
 	do_monsterjump()
 	do_wallslide()
+	if timers.steppart == 0
+	{
+		instance_create_depth(x + random(10), y + random(10), 5, obj_basicparticle, {
+			sprite_index: spr_capeparticle,
+		})
+		timers.steppart = 6
+	}
+	timers.steppart = approach(timers.steppart, 0, 1)
 	if jumpstop == false && !key_jump
 	{
 		jumpstop = true

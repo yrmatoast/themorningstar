@@ -153,6 +153,7 @@
     {"id":{"name":"cuphud","path":"sprites/cuphud/cuphud.yy",},},
     {"id":{"name":"spr_baddie","path":"sprites/spr_baddie/spr_baddie.yy",},},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},
+    {"id":{"name":"spr_capeparticle","path":"sprites/spr_capeparticle/spr_capeparticle.yy",},},
     {"id":{"name":"spr_checkpoint_activated","path":"sprites/spr_checkpoint_activated/spr_checkpoint_activated.yy",},},
     {"id":{"name":"spr_checkpoint","path":"sprites/spr_checkpoint/spr_checkpoint.yy",},},
     {"id":{"name":"spr_collectible","path":"sprites/spr_collectible/spr_collectible.yy",},},

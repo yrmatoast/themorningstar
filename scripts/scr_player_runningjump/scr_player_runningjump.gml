@@ -23,7 +23,10 @@ function scr_player_runningjump(){
 			sprite_index: spr_landeffect
 		})
 		state = states.running
-		set_sprite("runland", 0)
+		if get_sprite("longjump")
+			set_sprite("run", 0)
+		else
+			set_sprite("runland", 0)
 		event_play_oneshot3d("event:/Sfx/land", x, y)
 		movespeed = abs(hsp)
 	}

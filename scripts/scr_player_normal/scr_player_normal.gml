@@ -9,7 +9,7 @@ function scr_player_normal()
 	{
 		state = states.running
 		set_sprite("runstart", 0)
-		timers.run = 30
+		timers.run = 50
 	}
 	else
 	{

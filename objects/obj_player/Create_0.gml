@@ -112,8 +112,8 @@ do_monsterjump = function()
 do_wallslide = function()
 {
 	var _vsp = -movespeed
-	if _vsp < movespeed
-		_vsp = _vsp
+	if vsp > 0
+		_vsp = 0
 	if place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope) && move != 0 && move == xscale
 	{
 		state = states.wallslide

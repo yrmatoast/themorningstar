@@ -33,6 +33,8 @@ function scr_player_cape(){
 		})
 		grv = grav
 		state = states.running
+		if movespeed < 12
+			timers.run = 30
 		set_sprite("runland", 0)
 		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}

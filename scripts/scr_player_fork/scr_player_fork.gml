@@ -12,6 +12,8 @@ function scr_player_fork()
 		movespeed = approach(movespeed, 0, 0.1)
 		if key_jump && grounded
 		{
+			if movespeed < 12
+				timers.run = 30
 			grv = grav
 			jumpstop = false
 			vsp = -13
@@ -35,32 +37,8 @@ function scr_player_fork()
 		grv = grav
 		if grounded
 		{
-			if !key_down
-			{
-				instance_create_depth(x, y, 5, obj_basicparticle, {
-					sprite_index: spr_landeffect
-				})
-				if move != 0
-				{
-					grv = grav
-					state = states.running
-					set_sprite("runland", 0)
-					event_play_oneshot3d("event:/Sfx/land", x, y)
-					timers.run = 30
-				}
-				else
-				{
-					grv = grav
-					state = states.normal
-					set_sprite("idle", 0)
-					event_play_oneshot3d("event:/Sfx/land", x, y)
-				}
-			}
-			else
-			{
-				set_sprite("forkstart", 0)
-				event_play_oneshot3d("event:/Sfx/slide", x, y)
-			}
+			set_sprite("forkstart", 0)
+			event_play_oneshot3d("event:/Sfx/slide", x, y)
 		}
 	}
 }

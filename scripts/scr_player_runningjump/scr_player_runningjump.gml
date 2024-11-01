@@ -2,17 +2,9 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_runningjump(){
 	image_speed = 0.35
-	hsp = approach(hsp, movespeed * xscale, 1)
-	if movespeed <= speeds[1]
-	{
-		if move != 0
-		{
-			xscale = move
-			movespeed = speeds[1]
-		}
-		else
-			movespeed = 0
-	}
+	hsp = movespeed * xscale
+	if movespeed < 10 && move != 0
+		movespeed = approach(movespeed, 10, speeds[0])
 	if jumpanim == true
 	{
 		if movespeed > speeds[1] || (get_sprite("fork") || get_sprite("forkstart"))

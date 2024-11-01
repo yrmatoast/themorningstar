@@ -33,9 +33,18 @@ function scr_player_jump()
 		instance_create_depth(x, y, 5, obj_basicparticle, {
 			sprite_index: spr_landeffect
 		})
-		state = states.normal
-		movespeed = abs(hsp)
-		set_sprite("land", 0)
+		if move != 0 && !scr_solid(move, 0)
+		{
+			state = states.running
+			set_sprite("runstart", 0)
+			timers.run = 30
+		}
+		else
+		{
+			state = states.normal
+			movespeed = abs(hsp)
+			set_sprite("land", 0)
+		}
 		event_play_oneshot3d("event:/Sfx/land", x, y)
 	}
 	if jumpstop == false && !key_jump && vsp < grav
@@ -56,6 +65,7 @@ function scr_player_jump()
 
 function scr_player_bounce()
 {
+	grv = grav
 	image_speed = 0.35
 	set_sprite("bounce")
 	hsp = approach(hsp, movespeed * xscale, 2)

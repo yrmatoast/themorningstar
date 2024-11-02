@@ -19,19 +19,21 @@ function scr_player_runningjump()
 			set_sprite("longjump", 0)
 		else
 			set_sprite("runjump", 0)
-		jumpanim = false
+		jumpanim = false 
 	}
-		if animation_end() && get_sprite("longjump")
-			set_sprite("longjumpend", 0)
-		if animation_end() && get_sprite("runjump")
-			set_sprite("runfall", 0)
+	if vsp >= 0 && get_sprite("longjump")
+		set_sprite("longjumpendstart", 0)
+	if animation_end() && get_sprite("longjumpendstart")
+		set_sprite("longjumpend", 0)
+	if animation_end() && get_sprite("runjump")
+		set_sprite("runfall", 0)
 	if grounded
 	{
 		instance_create_depth(x, y, 5, obj_basicparticle, {
 			sprite_index: spr_landeffect
 		})
 		state = states.running
-		if get_sprite("longjump")
+		if get_sprite("longjump") || get_sprite("longjumpend") || get_sprite("longjumpendstart")
 			set_sprite("run", 0)
 		else
 			set_sprite("runland", 0)

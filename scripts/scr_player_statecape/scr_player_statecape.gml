@@ -12,9 +12,10 @@ function scr_player_cape(){
 		set_sprite("capefallstart", 0)
 		grv = grav
 	}
-	if vsp > 0 && char == "M" && !hasflew
+	if vsp > 0 && !hasflew
 	{
-		grv = cape
+		if char == "M"
+			grv = cape
 		hasflew = true
 	}
 	do_monsterjump()
@@ -27,7 +28,7 @@ function scr_player_cape(){
 		timers.steppart = 6
 	}
 	timers.steppart = approach(timers.steppart, 0, 1)
-	if jumpstop == false && !key_jump
+	if jumpstop == false && !key_jump && hasflew = false
 	{
 		jumpstop = true
 		hasflew = true

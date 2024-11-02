@@ -15,7 +15,7 @@ else
 char = obj_player.char
 if cam_tar == obj_player
 {
-	var extend = cam_tar.xscale * cam_tar.movespeed * 4
+	var extend = sign(cam_tar.hsp) * cam_tar.movespeed * 4
 	if cam_tar.state == states.cape
 		var extendy = cam_tar.vsp * 10
 	else

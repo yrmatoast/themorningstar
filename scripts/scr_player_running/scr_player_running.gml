@@ -67,6 +67,7 @@ function scr_player_running(){
 		}
 		else
 		{
+			movespeed = abs(hsp)
 			instance_create_depth(x, y + 5, 5, obj_basicparticle, {
 				sprite_index: spr_jumpcloud
 			})

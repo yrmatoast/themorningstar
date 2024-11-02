@@ -10,7 +10,7 @@ function scr_player_jump()
 		if move != 0
 		{
 			xscale = move
-			movespeed = 10
+			movespeed = 8
 		}
 		else
 			movespeed = 0

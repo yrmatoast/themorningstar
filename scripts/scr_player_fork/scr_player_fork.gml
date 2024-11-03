@@ -17,6 +17,12 @@ function scr_player_fork()
 			timers.steppart = 15
 		}
 		timers.steppart = approach(timers.steppart, 0, 1)
+		if timers.blur == 0
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
 		slope_momentum()
 		movespeed = approach(movespeed, 0, 0.1)
 		if key_jump && grounded
@@ -49,6 +55,12 @@ function scr_player_fork()
 	}
 	if get_sprite("forkdive")
 	{
+		if timers.blur == 0 
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
 		grv = grav
 		if grounded
 		{

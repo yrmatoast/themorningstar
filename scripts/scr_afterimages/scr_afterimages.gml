@@ -11,7 +11,7 @@ function create_blur_afterimage(_sprite, _index, _x, _y, _xscale)
 		alarm: [15, 5, -2],
 		type: afterimagetype.fade,
 		alpha: 1,
-		image_alpha: 0.5,
+		image_alpha: 0.8,
 	}
 	ds_list_add(obj_afterimagecontroller.afterimages, aft)
 	return aft;

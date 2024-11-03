@@ -13,6 +13,15 @@ function scr_player_running(){
 		set_sprite("runstart")
 	if movespeed > speeds[1] && get_sprite("run")
 		set_sprite("runmax")
+	if movespeed > speeds[1]
+	{
+		if timers.blur == 0
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
+	}
 	if grounded
 	{
 		if (move != xscale && movespeed <= speeds[1])

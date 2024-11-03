@@ -13,6 +13,15 @@ function scr_player_runningjump()
 	}
 	image_speed = 0.35
 	hsp = approach(hsp, _mvsp, 0.5)
+	if movespeed > speeds[1]
+	{
+		if timers.blur == 0
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
+	}
 	if jumpanim == true
 	{
 		if movespeed > speeds[1] || (get_sprite("fork") || get_sprite("forkstart"))

@@ -28,7 +28,16 @@ function scr_player_cape(){
 		timers.steppart = 6
 	}
 	timers.steppart = approach(timers.steppart, 0, 1)
-	if jumpstop == false && !key_jump && hasflew = false
+	if movespeed > speeds[1]
+	{
+		if timers.blur == 0
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
+	}
+	if jumpstop == false && !key_jump
 	{
 		jumpstop = true
 		hasflew = true
@@ -59,16 +68,16 @@ function scr_player_cape(){
 function scr_player_capepound()
 {
 	image_speed = 0.35
+	hsp = approach(hsp, movespeed * xscale, move != 0 ? 4 : 1)
+	if move != 0
+	{
+		xscale = move
+		movespeed = 10
+	}
+	else
+		movespeed = 0
 	if get_sprite("capepound")
 	{
-		hsp = approach(hsp, movespeed * xscale, move != 0 ? 4 : 1)
-		if move != 0
-		{
-			xscale = move
-			movespeed = 10
-		}
-		else
-			movespeed = 0
 		if grounded
 		{
 			if poundcharge < 30
@@ -94,7 +103,7 @@ function scr_player_capepound()
 			}
 			poundcharge = 0
 		}
-		if timers.blur == 0 && poundcharge >= 30
+		if timers.blur == 0
 		{
 			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
 			timers.blur = 4

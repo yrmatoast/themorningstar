@@ -69,7 +69,7 @@ hitstunvars =
 	kill: false,
 	killID: []
 }
-global.hitstun = 0
+hitstun = 0
 targetRoom = -4
 targetDoor = "A"
 hallway = false

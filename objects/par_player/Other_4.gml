@@ -34,4 +34,8 @@ with obj_noisette_follow
 	x = gx
 	y = gy
 }
-global.Bswitch = 1
+with obj_fakeplayer
+{
+	x = other.x
+	y = other.y
+}

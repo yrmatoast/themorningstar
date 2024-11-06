@@ -4,7 +4,6 @@ if state != states.death
 		vsp += grv
 	scr_collision()
 }
-fmod_listener_setPosition(0, x, y, 0)
 if state == states.running && !get_sprite("runskid")
 {
 	fmod_event_setPause(machsnd, false);
@@ -20,18 +19,12 @@ if state == states.running && !get_sprite("runskid")
 }
 else
 	fmod_event_setPause(machsnd, true)
-if mouse_check_button(mb_left)
-{
-	x = mouse_x;
-	y = mouse_y;
-}
 var att = char == "N" ? attributes.noise : attributes.bruit
 grav = att[0][0]
 cape = att[0][1]
 speeds = [att[1][0], att[1][1], att[1][2]]
-if global.hitstun == 0
+if hitstun == 0
 {
-	__ti_input()
 	move = key_left + key_right;
 	switch state
 	{
@@ -45,7 +38,44 @@ if global.hitstun == 0
 			scr_player_walljump()
 			break
 		case states.wallslide:
-			scr_player_wallslide()
+			image_speed = 0.35
+			hsp = 0
+			grv = 0.25
+			image_speed = 0.4
+			if vsp > 0
+				set_sprite("wallslidedown")
+			else
+				set_sprite("wallslide")
+			if !scr_solid(xscale, 0)
+			{
+				set_sprite("jump", 0)
+				state = states.jump
+				grv = grav
+				jumpstop = false
+				if vsp < -15
+					vsp = -15
+			}
+			if grounded
+			{
+				set_sprite("land", 0)
+				state = states.jump
+				grv = grav
+			}
+			if key_jump
+			{
+				jumpstop = false
+				state = states.walljump
+				xscale *= -1
+				movespeed = 10
+				hsp = movespeed * xscale
+				vsp = -12
+				set_sprite("bounce", 0)
+				instance_create_depth(x, y + 5, 5, obj_basicparticle, {
+				sprite_index: spr_jumpcloud,
+				image_angle: -90 * xscale,
+				})
+				event_play_oneshot3d("event:/Sfx/jump", x, y)
+			}
 			break
 		case states.fork:
 			scr_player_fork()
@@ -99,8 +129,6 @@ if global.hitstun == 0
 			movespeed = 10 * -xscale
 			set_sprite("hurt")
 			event_play_oneshot3d("event:/Sfx/hurt", x, y)
-			obj_music.pitch = 0.75
-			global.hp -= 1
 			alarm[0] = 3
 		}
 	}
@@ -136,14 +164,108 @@ if global.hitstun == 0
 			}
 		}
 	}
+	
+	var _enemy = instance_nearest(x, y, par_baddie)
+	if _enemy != -4
+	{
+		if point_distance(x, y, _enemy.x, y) < 32 * 20
+			chasing_enemy = true
+		else
+			chasing_enemy = false
+	}
+	else
+		chasing_enemy = false
+	if chasing_enemy == false
+	{
+		if point_distance(x, 0, obj_player.x, 0) < 32 * 4
+		{
+			key_right = false
+			key_left = false
+		}
+		else
+		{
+			if x < obj_player.x
+			{
+				key_right = true
+				key_left = 0
+			}
+			else if x > obj_player.x
+			{
+				key_left = -1
+				key_right = false
+			}
+		}
+		key_down2 = false
+	}
+	else
+	{
+		if x < _enemy.x
+			key_right = true	
+		else if x > _enemy.x
+			key_left = -1
+		if point_distance(x, 0, _enemy.x, 0) < 32 * 7
+			key_down2 = true
+		else
+			key_down2 = false
+		if _enemy.y < y
+		{
+			key_jump = true
+			if vsp > 0
+				key_jump2 = true
+		}
+	}
+	if ((obj_player.y < y
+	&& point_distance(0, y, 0, obj_player.y) > 32 * 4)
+	|| (place_meeting(x + xscale, y - 1, obj_solid)
+	&& !place_meeting(x + 32, y - (100 * 4), obj_solid))
+	|| (state == states.wallslide 
+	&& vsp > 0
+	&& !place_meeting(x, y - 128, obj_solid)))
+	&& !place_meeting(x, y - 128, obj_solid) && amt_jumps < 6
+	{
+		key_jump = true
+		jumptim = 20
+		if grounded || state == states.wallslide
+			amt_jumps++
+	}
+	else
+	{
+		if jumptim == 0
+			key_jump = false
+		key_jump2 = false
+	}
+	if point_distance(x, y, obj_player.x, obj_player.y) > 32 * 64
+	{
+		x = obj_player.x
+		y = obj_player.y
+	}
+	if state != states.capepound 
+	&& y < obj_player.y
+	&& point_distance(0, y, 0, obj_player.y) > 32 * 32
+	&& !grounded
+	{
+		key_jump2 = true
+	}
+	
+	jumptim = approach(jumptim, 0, 1)
+	if grounded
+		amt_jumps = 0
+	
+	
+	
+	
+	
+	
+	
+	
 }
 else
 {
-	global.hitstun = approach(global.hitstun, 0, 1)
+	hitstun = approach(hitstun, 0, 1)
 	x = hitstunvars.x + random_range(-5, 5)
 	y = hitstunvars.y + random_range(-5, 5)
 	image_speed = 0
-	if (global.hitstun <= 0)
+	if (hitstun <= 0)
 	{
 		x = hitstunvars.x;
 		y = hitstunvars.y;
@@ -166,17 +288,3 @@ if state == states.fork
 	killmove = true
 else
 	killmove = false
-with par_solid
-{
-	if object_index != obj_destroyable && object_index != obj_spike
-		visible = global.showcollisions
-}
-if keyboard_check_pressed(ord("S"))
-	global.showcollisions = !global.showcollisions
-global.hp = clamp(global.hp, 0, 6)
-global.collect = clamp(global.collect, 0, 20)
-if global.collect >= 20 && global.hp < 6
-{
-	global.collect = 0
-	global.hp += 1
-}

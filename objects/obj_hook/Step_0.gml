@@ -1,6 +1,6 @@
 if active
 {
-	with obj_player
+	with obj_player1
 	{
 		x = approach(x, other.x, 10)
 		y = approach(y, other.y, 10)

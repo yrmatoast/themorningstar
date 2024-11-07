@@ -26,16 +26,16 @@ if distance_to_object(instance_nearest(x, y, par_player)) < 32 * 10 && point_dis
 	if !attacking
 	{
 		attacking = true
-		if obj_player.x != x
-			xscale = sign(obj_player.x - x)
+		if obj_player1.x != x
+			xscale = sign(obj_player1.x - x)
 		sprite_index = spr_eggcop_attackingstart
 		image_index = 0
 	}
 }
 if running
 {
-	if obj_player.x != x
-		xscale = sign(obj_player.x - x)
+	if obj_player1.x != x
+		xscale = sign(obj_player1.x - x)
 	hsp = approach(hsp, xscale * 10, 0.5)
 	if scr_solid(xscale, 0)
 		instance_destroy()

@@ -1,1 +1,1 @@
-showing = distance_to_object(obj_player) < 32 * 5
+showing = distance_to_object(obj_player1) < 32 * 5

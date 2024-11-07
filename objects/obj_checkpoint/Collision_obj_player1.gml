@@ -7,11 +7,11 @@ if !activated && ds_list_find_index(global.saveroom, id) == -1
 	var save = []
 	array_push(save, {
 		name: "player_x",
-		val: obj_player.x
+		val: obj_player1.x
 	})
 	array_push(save, {
 		name: "player_y",
-		val: obj_player.y
+		val: obj_player1.y
 	})
 	array_push(save, {
 		name: "player_hp",
@@ -23,7 +23,7 @@ if !activated && ds_list_find_index(global.saveroom, id) == -1
 	})
 	array_push(save, {
 		name: "player_char",
-		val: obj_player.char
+		val: obj_player1.char
 	})
 	array_push(save, {
 		name: "general_saveroom",
@@ -37,6 +37,6 @@ if !activated && ds_list_find_index(global.saveroom, id) == -1
 		name: "general_time",
 		val: global.timer
 	})
-	instance_create_depth(x + 50, y - 10, obj_player.depth - 1, obj_timepopup)
+	instance_create_depth(x + 50, y - 10, obj_player1.depth - 1, obj_timepopup)
 	save_quick(string("{0} Checkpoints", global.level), save)
 }

@@ -3,6 +3,8 @@ enum optmenu{
 	audio,
 	video,
 	game,
+	controls_main,
+	controls_key,
 	
 	//ANCHORS
 	center,
@@ -12,6 +14,7 @@ enum optmenu{
 	press,
 	toggle,
 	slider,
+	key,
 }
 
 backgrounds = []
@@ -19,22 +22,39 @@ array_push(backgrounds, {
 	index: 0,
 	alpha: 1,
 	scroll: 0,
+	men: 0,
 })
 array_push(backgrounds, {
 	index: 1,
 	alpha: 0,
 	scroll: 0,
+	men: 1,
 })
 array_push(backgrounds, {
 	index: 2,
 	alpha: 0,
 	scroll: 0,
+	men: 2,
 })
 array_push(backgrounds, {
 	index: 3,
 	alpha: 0,
 	scroll: 0,
+	men: 3,
 })
+array_push(backgrounds, {
+	index: 4,
+	alpha: 0,
+	scroll: 0,
+	men: 4,
+})
+array_push(backgrounds, {
+	index: 4,
+	alpha: 0,
+	scroll: 0,
+	men: 5,
+})
+
 
 
 menu = 0
@@ -63,7 +83,8 @@ add_option_ext = function(_id, _type, _name, _function, _value = 0, _max = 0, _t
 		val: _value,
 		toggle: _toggle,
 		type: _type,
-		max: _max
+		max: _max,
+		selecting: false
 	}
 	array_push(_id.options, q)
 	return q;
@@ -98,6 +119,11 @@ add_option_ext(_main, optmenu.press, "VIDEO", function()
 add_option_ext(_main, optmenu.press, "GAME", function()
 {
 	goto_menu(optmenu.game)
+})
+
+add_option_ext(_main, optmenu.press, "CONTROLS", function()
+{
+	goto_menu(optmenu.controls_main)
 })
 
 array_push(menus, _main)
@@ -197,3 +223,41 @@ add_option_ext(_game, optmenu.toggle, "TIMER", function()
 	}, global.timervisible, 1, ["OFF", "PER LEVEL"])
 
 array_push(menus, _game)
+
+var _control_main = create_menu(optmenu.controls_main, optmenu.left, 48, function()
+{
+	goto_menu(optmenu.main)
+})
+
+add_option_ext(_control_main, optmenu.press, "BACK", function()
+{
+	goto_menu(optmenu.main)
+})
+
+add_option_ext(_control_main, optmenu.press, "KEYBOARD", function()
+{
+	goto_menu(optmenu.controls_key)
+})
+
+array_push(menus, _control_main)
+
+var _control_key = create_menu(optmenu.controls_key, optmenu.left, 48, function()
+{
+	goto_menu(optmenu.controls_main)
+})
+
+add_option_ext(_control_key, optmenu.press, "BACK", function()
+{
+	goto_menu(optmenu.controls_main)
+})
+
+add_option_ext(_control_key, optmenu.key, "LEFT", function()
+	{
+		var m = menus[menu]
+		var opt = m.options
+		var q = opt[selected]
+		scr_setbind(global.left, "Left", q.val)
+		q.val = global.key_left[0]
+	}, global.key_left[0], 1)
+
+array_push(menus, _control_key)

@@ -111,10 +111,10 @@ if hitstun == 0
 		timers.death = 60
 		dying = false
 		state = states.death
-		obj_player.hitstunvars = 
+		obj_player1.hitstunvars = 
 		{
-			x: obj_player.x,
-			y: obj_player.y,
+			x: obj_player1.x,
+			y: obj_player1.y,
 			kill: true,
 			killID: [id]
 		}
@@ -177,19 +177,19 @@ if hitstun == 0
 		chasing_enemy = false
 	if chasing_enemy == false
 	{
-		if point_distance(x, y, obj_player.x, obj_player.y) < 32 * 4
+		if point_distance(x, y, obj_player1.x, obj_player1.y) < 32 * 4
 		{
 			key_right = false
 			key_left = false
 		}
 		else
 		{
-			if x < obj_player.x
+			if x < obj_player1.x
 			{
 				key_right = true
 				key_left = 0
 			}
-			else if x > obj_player.x
+			else if x > obj_player1.x
 			{
 				key_left = -1
 				key_right = false
@@ -220,14 +220,14 @@ if hitstun == 0
 				key_jump2 = true
 		}
 	}
-	if ((obj_player.y < y
-	&& point_distance(0, y, 0, obj_player.y) > 32 * 4)
+	if ((obj_player1.y < y
+	&& point_distance(0, y, 0, obj_player1.y) > 32 * 4)
 	|| (place_meeting(x + xscale, y - 1, obj_solid)
 	&& !place_meeting(x + 32, y - (100 * 4), obj_solid))
 	|| (state == states.wallslide 
 	&& vsp > 0
 	&& !place_meeting(x, y - 128, obj_solid)
-	&& obj_player.y < y))
+	&& obj_player1.y < y))
 	&& !place_meeting(x, y - 128, obj_solid) && amt_jumps < 6
 	{
 		key_jump = true
@@ -241,14 +241,14 @@ if hitstun == 0
 			key_jump = false
 		key_jump2 = false
 	}
-	if point_distance(x, y, obj_player.x, obj_player.y) > 960
+	if point_distance(x, y, obj_player1.x, obj_player1.y) > 960
 	{
-		x = obj_player.x
-		y = obj_player.y
+		x = obj_player1.x
+		y = obj_player1.y
 	}
 	if state != states.capepound 
-	&& y < obj_player.y
-	&& point_distance(0, y, 0, obj_player.y) > 32 * 32
+	&& y < obj_player1.y
+	&& point_distance(0, y, 0, obj_player1.y) > 32 * 32
 	&& !grounded
 	{
 		key_jump2 = true
@@ -257,7 +257,7 @@ if hitstun == 0
 	jumptim = approach(jumptim, 0, 1)
 	if grounded
 		amt_jumps = 0
-	if obj_player.char == "N"
+	if obj_player1.char == "N"
 		char = "M"
 	else
 		char = "N"

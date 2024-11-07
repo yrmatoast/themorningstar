@@ -29,13 +29,16 @@ depth = 0
 with obj_noisette_follow
 {
 	ds_queue_clear(followqueue)
-	gx = obj_player.x
-	gy = obj_player.y
+	gx = obj_player1.x
+	gy = obj_player1.y
 	x = gx
 	y = gy
 }
-with obj_fakeplayer
+if instance_exists(obj_player2)
 {
-	x = other.x
-	y = other.y
+	with obj_player2
+	{
+		x = other.x
+		y = other.y
+	}
 }

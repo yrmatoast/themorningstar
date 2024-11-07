@@ -81,10 +81,10 @@ if hitstun == 0
 		timers.death = 60
 		dying = false
 		state = states.death
-		obj_player.hitstunvars = 
+		obj_player1.hitstunvars = 
 		{
-			x: obj_player.x,
-			y: obj_player.y,
+			x: obj_player1.x,
+			y: obj_player1.y,
 			kill: true,
 			killID: [id]
 		}

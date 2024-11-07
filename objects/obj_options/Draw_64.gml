@@ -6,7 +6,7 @@ for (var q = 0; q < array_length(backgrounds); q++)
 {
 	draw_sprite_tiled_ext(spr_optionsBG, backgrounds[q].index, backgrounds[q].scroll, backgrounds[q].scroll, 1, 1, c_white, backgrounds[q].alpha)
 	if q != 0
-		backgrounds[q].alpha = approach(backgrounds[q].alpha, menu == q ? 1 : 0, 0.1)
+		backgrounds[q].alpha = approach(backgrounds[q].alpha, menu == backgrounds[q].men ? 1 : 0, 0.1)
 	backgrounds[q].scroll += 1
 }
 switch m.anchor
@@ -52,6 +52,14 @@ switch m.anchor
 					draw_text(xx, yy + m.ypad * i, q.name)
 					draw_set_align(fa_right)
 					draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.val)
+					break
+				case optmenu.key:
+					draw_set_font(global.bigfont)
+					draw_set_align(fa_left)
+					draw_set_color(_sel == i ? c_white : c_gray)
+					draw_text(xx, yy + m.ypad * i, q.name)
+					draw_set_align(fa_right)
+					draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, string(q.val))
 					break
 			}
 		}

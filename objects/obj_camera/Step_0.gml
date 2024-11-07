@@ -1,7 +1,10 @@
 audio_falloff_set_model(audio_falloff_linear_distance)
-audio_listener_position(-obj_player.x, obj_player.y, 0)
- var camx = mean(cam_tar.x) - (camera_get_view_width(view_camera[0]) / 2) + xoffset
-var camy = mean(cam_tar.y) - 50 - (camera_get_view_height(view_camera[0]) / 2) + yoffset
+audio_listener_position(-obj_player1.x, obj_player1.y, 0)
+var target = [cam_tar.x, cam_tar.y]
+if instance_exists(obj_player2)
+	var target = [mean(cam_tar.x, obj_player2.x), mean(cam_tar.y, obj_player2.y)]
+var camx = target[0] - (camera_get_view_width(view_camera[0]) / 2) + xoffset
+var camy = target[1] - 50 - (camera_get_view_height(view_camera[0]) / 2) + yoffset
 camx = clamp(camx, 0, (room_width - camera_get_view_width(view_camera[0])))
 camy = clamp(camy, 0, (room_height - camera_get_view_height(view_camera[0])))
 var rcx = camx
@@ -12,8 +15,8 @@ if room == rm_levelselect
 	visible = false
 else
 	visible = true
-char = obj_player.char
-if cam_tar == obj_player
+char = obj_player1.char
+if cam_tar == obj_player1
 {
 	var extend = sign(cam_tar.hsp) * cam_tar.movespeed * 4
 	if cam_tar.state == states.cape

@@ -21,13 +21,13 @@ if place_meeting(x, y, par_player)
 		}
 	}
 }
-if distance_to_object(obj_player) < 32 * 10 && point_distance(0, obj_player.y, 0, y) < 32 * 4
+if distance_to_object(obj_player1) < 32 * 10 && point_distance(0, obj_player1.y, 0, y) < 32 * 4
 {
-	x = approach(x, obj_player.x, 1)
+	x = approach(x, obj_player1.x, 1)
 	attacking = true
-	y = approach(y, obj_player.y, 1)
-	if obj_player.x != x
-			xscale = sign(obj_player.x - x)
+	y = approach(y, obj_player1.y, 1)
+	if obj_player1.x != x
+			xscale = sign(obj_player1.x - x)
 }
 if animation_end() && sprite_index = spr_eggcop_attackingstart
 	image_speed = 0

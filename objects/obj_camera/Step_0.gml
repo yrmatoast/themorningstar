@@ -1,7 +1,7 @@
 audio_falloff_set_model(audio_falloff_linear_distance)
 audio_listener_position(-obj_player.x, obj_player.y, 0)
- var camx = cam_tar.x - (camera_get_view_width(view_camera[0]) / 2) + xoffset
-var camy = cam_tar.y - 50 - (camera_get_view_height(view_camera[0]) / 2) + yoffset
+ var camx = mean(cam_tar.x) - (camera_get_view_width(view_camera[0]) / 2) + xoffset
+var camy = mean(cam_tar.y) - 50 - (camera_get_view_height(view_camera[0]) / 2) + yoffset
 camx = clamp(camx, 0, (room_width - camera_get_view_width(view_camera[0])))
 camy = clamp(camy, 0, (room_height - camera_get_view_height(view_camera[0])))
 var rcx = camx

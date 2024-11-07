@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_noise_idle",
-    "path":"sprites/spr_noise_idle/spr_noise_idle.yy",
+    "name":"spr_monster_idle",
+    "path":"sprites/spr_monster_idle/spr_monster_idle.yy",
   },
   "spriteMaskId":{
     "name":"spr_player_mask",

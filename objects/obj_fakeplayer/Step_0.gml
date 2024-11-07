@@ -168,7 +168,7 @@ if hitstun == 0
 	var _enemy = instance_nearest(x, y, par_baddie)
 	if _enemy != -4
 	{
-		if point_distance(x, y, _enemy.x, y) < 32 * 20
+		if point_distance(x, y, _enemy.x, _enemy.y) < 32 * 20
 			chasing_enemy = true
 		else
 			chasing_enemy = false
@@ -177,7 +177,7 @@ if hitstun == 0
 		chasing_enemy = false
 	if chasing_enemy == false
 	{
-		if point_distance(x, 0, obj_player.x, 0) < 32 * 4
+		if point_distance(x, y, obj_player.x, obj_player.y) < 32 * 4
 		{
 			key_right = false
 			key_left = false
@@ -200,10 +200,16 @@ if hitstun == 0
 	else
 	{
 		if x < _enemy.x
-			key_right = true	
-		else if x > _enemy.x
-			key_left = -1
-		if point_distance(x, 0, _enemy.x, 0) < 32 * 7
+			{
+				key_right = true
+				key_left = 0
+			}
+			else if x > _enemy.x
+			{
+				key_left = -1
+				key_right = false
+			}
+		if point_distance(x, y, _enemy.x, _enemy.y) < 32 * 7
 			key_down2 = true
 		else
 			key_down2 = false
@@ -220,7 +226,8 @@ if hitstun == 0
 	&& !place_meeting(x + 32, y - (100 * 4), obj_solid))
 	|| (state == states.wallslide 
 	&& vsp > 0
-	&& !place_meeting(x, y - 128, obj_solid)))
+	&& !place_meeting(x, y - 128, obj_solid)
+	&& obj_player.y < y))
 	&& !place_meeting(x, y - 128, obj_solid) && amt_jumps < 6
 	{
 		key_jump = true
@@ -234,7 +241,7 @@ if hitstun == 0
 			key_jump = false
 		key_jump2 = false
 	}
-	if point_distance(x, y, obj_player.x, obj_player.y) > 32 * 64
+	if point_distance(x, y, obj_player.x, obj_player.y) > 960
 	{
 		x = obj_player.x
 		y = obj_player.y
@@ -250,7 +257,10 @@ if hitstun == 0
 	jumptim = approach(jumptim, 0, 1)
 	if grounded
 		amt_jumps = 0
-	
+	if obj_player.char == "N"
+		char = "M"
+	else
+		char = "N"
 	
 	
 	

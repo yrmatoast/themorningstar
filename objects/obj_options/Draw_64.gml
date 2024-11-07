@@ -58,8 +58,9 @@ switch m.anchor
 					draw_set_align(fa_left)
 					draw_set_color(_sel == i ? c_white : c_gray)
 					draw_text(xx, yy + m.ypad * i, q.name)
+					draw_text(0 + 100, 720 - 100, "F1 RESET")
 					draw_set_align(fa_right)
-					draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, string(q.val))
+					draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.selecting ? "PRESS ANY KEY" : string(q.val))
 					break
 			}
 		}

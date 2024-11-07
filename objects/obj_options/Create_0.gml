@@ -16,7 +16,7 @@ enum optmenu{
 	slider,
 	key,
 }
-
+buffer = 0
 backgrounds = []
 array_push(backgrounds, {
 	index: 0,
@@ -256,7 +256,7 @@ add_option_ext(_control_key, optmenu.key, "LEFT", function()
 		var m = menus[menu]
 		var opt = m.options
 		var q = opt[selected]
-		scr_setbind(global.left, "Left", q.val)
+		scr_setbind(global.key_left, "Left", q.val)
 		q.val = global.key_left[0]
 	}, global.key_left[0], 1)
 

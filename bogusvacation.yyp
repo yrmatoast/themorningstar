@@ -79,6 +79,7 @@
     {"id":{"name":"obj_hallway_verticle","path":"objects/obj_hallway_verticle/obj_hallway_verticle.yy",},},
     {"id":{"name":"obj_hallway","path":"objects/obj_hallway/obj_hallway.yy",},},
     {"id":{"name":"obj_hook","path":"objects/obj_hook/obj_hook.yy",},},
+    {"id":{"name":"obj_inputcontroller","path":"objects/obj_inputcontroller/obj_inputcontroller.yy",},},
     {"id":{"name":"obj_junkintrotrigger","path":"objects/obj_junkintrotrigger/obj_junkintrotrigger.yy",},},
     {"id":{"name":"obj_levelselect","path":"objects/obj_levelselect/obj_levelselect.yy",},},
     {"id":{"name":"obj_leveltitle","path":"objects/obj_leveltitle/obj_leveltitle.yy",},},

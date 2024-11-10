@@ -38,6 +38,7 @@ if keyboard_check_pressed(vk_escape)
 		instance_activate_object(obj_shell)
 		instance_activate_object(obj_pause)
 		instance_activate_object(obj_fmod)
+		instance_activate_object(obj_inputcontroller)
 		fmod_event_setPause_all(true)
 	}
 }

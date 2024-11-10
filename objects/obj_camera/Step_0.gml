@@ -35,7 +35,8 @@ if cam_tar == obj_player1
 		xoffset = approach(xoffset, extend, accel)
 		yoffset = approach(yoffset, extendy, 2)
 		noisesprite = spr_hud_speedometer_noisemove
-		barpos = approach(barpos, 1, 1 / 30)
+		if cam_tar.movespeed >= 12
+			barpos = approach(barpos, 1, 1 / 30)
 	}
 	else
 	{

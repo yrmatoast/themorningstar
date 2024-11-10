@@ -104,6 +104,7 @@ goto_menu = function(_id)
 var _main = create_menu(optmenu.main, optmenu.center, 48, function()
 {
 	instance_destroy()
+	obj_pause.pause = true
 })
 
 add_option_ext(_main, optmenu.press, "AUDIO", function()
@@ -259,5 +260,29 @@ add_option_ext(_control_key, optmenu.key, "LEFT", function()
 		scr_setbind(global.key_left, "Left", q.val)
 		q.val = global.key_left[0]
 	}, global.key_left[0], 1)
+add_option_ext(_control_key, optmenu.key, "DOWN", function()
+	{
+		var m = menus[menu]
+		var opt = m.options
+		var q = opt[selected]
+		scr_setbind(global.key_down, "Down", q.val)
+		q.val = global.key_down[0]
+	}, global.key_down[0], 1)
+add_option_ext(_control_key, optmenu.key, "UP", function()
+	{
+		var m = menus[menu]
+		var opt = m.options
+		var q = opt[selected]
+		scr_setbind(global.key_up, "Up", q.val)
+		q.val = global.key_up[0]
+	}, global.key_up[0], 1)
+add_option_ext(_control_key, optmenu.key, "RIGHT", function()
+	{
+		var m = menus[menu]
+		var opt = m.options
+		var q = opt[selected]
+		scr_setbind(global.key_right, "Right", q.val)
+		q.val = global.key_right[0]
+	}, global.key_right[0], 1)
 
 array_push(menus, _control_key)

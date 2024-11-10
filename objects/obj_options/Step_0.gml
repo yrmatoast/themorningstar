@@ -32,7 +32,7 @@ if buffer == 0
 	}
 	else
 	{
-		if key_jump2 && selecting == false
+		if key_jump2 && q.selecting == false
 		{
 			if q.selecting == false
 				q.selecting = true
@@ -49,5 +49,6 @@ if buffer == 0
 	{
 		m.backfunc()
 	}
+	obj_pause.pause = false
 }
 buffer = approach(buffer, 0, 1)

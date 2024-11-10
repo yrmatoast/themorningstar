@@ -29,8 +29,7 @@ if cam_tar == obj_player1
 		var accel = 8
 	if cam_tar.state == states.running ||
 	cam_tar.state == states.runningjump ||
-	cam_tar.state == states.cape ||
-	cam_tar.state == states.fork
+	cam_tar.state == states.cape
 	{
 		xoffset = approach(xoffset, extend, accel)
 		yoffset = approach(yoffset, extendy, 2)

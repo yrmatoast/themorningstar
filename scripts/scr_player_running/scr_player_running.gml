@@ -115,9 +115,9 @@ function scr_player_running(){
 		jumpanim = false
 		state = states.runningjump
 		if get_sprite("runmax")
-			set_sprite("longjumpend")
+			set_sprite("longjump")
 		else
-			set_sprite("runfall")
+			set_sprite("runjump")
 	}
 	if animation_end() && get_sprite("jump")
 		set_sprite("fall")

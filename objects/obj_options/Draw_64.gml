@@ -20,7 +20,7 @@ switch m.anchor
 			draw_set_font(global.bigfont)
 			draw_set_align(fa_center)
 			draw_set_color(_sel == i ? c_white : c_gray)
-			__ti_draw_text(xx, yy + m.ypad * i, q.name)
+			fekles_draw_text(xx, yy + m.ypad * i, q.name)
 		}
 	break
 	case optmenu.left:
@@ -35,7 +35,7 @@ switch m.anchor
 					draw_set_font(global.bigfont)
 					draw_set_align(fa_left)
 					draw_set_color(_sel == i ? c_white : c_gray)
-					__ti_draw_text(xx, yy + m.ypad * i, q.name)
+					fekles_draw_text(xx, yy + m.ypad * i, q.name)
 					break
 				case optmenu.toggle:
 					draw_set_font(global.bigfont)
@@ -43,23 +43,23 @@ switch m.anchor
 					draw_set_color(_sel == i ? c_white : c_gray)
 					draw_text(xx, yy + m.ypad * i, q.name)
 					draw_set_align(fa_right)
-					__ti_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.toggle[q.val])
+					fekles_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.toggle[q.val])
 					break
 				case optmenu.slider:
 					draw_set_font(global.bigfont)
 					draw_set_align(fa_left)
 					draw_set_color(_sel == i ? c_white : c_gray)
-					__ti_draw_text(xx, yy + m.ypad * i, q.name)
+					fekles_draw_text(xx, yy + m.ypad * i, q.name)
 					draw_set_align(fa_right)
-					__ti_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.val)
+					fekles_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.val)
 					break
 				case optmenu.key:
 					draw_set_font(global.bigfont)
 					draw_set_align(fa_left)
 					draw_set_color(_sel == i ? c_white : c_gray)
-					__ti_draw_text(xx, yy + m.ypad * i, q.name)
+					fekles_draw_text(xx, yy + m.ypad * i, q.name)
 					draw_set_align(fa_right)
-					__ti_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.selecting ? "PRESS ANY KEY" : scr_numtokey(q.val))
+					fekles_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.selecting ? "PRESS ANY KEY" : scr_numtokey(q.val))
 					break
 			}
 		}
@@ -72,5 +72,5 @@ if m.menuid == optmenu.controls_key
 	draw_set_font(global.bigfont)
 	draw_set_align(fa_left)
 	draw_set_color(c_white)
-	__ti_draw_text(0 + 100, 720 - 100, "F1 RESET")
+	fekles_draw_text(0 + 100, 720 - 100, "F1 RESET")
 }

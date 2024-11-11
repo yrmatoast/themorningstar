@@ -93,74 +93,48 @@ function __ti_input()
 		ini_close()
 }
 
-function __ti_draw_text(_x, _y, _text)
+function fekles_draw_text(_x, _y, _string)
 {
 	var alignments = [draw_get_halign(), draw_get_valign()]
-	draw_set_font(draw_get_font())
-	var index = 0
-	var effect_shake = false
-	var effect_wave = false
-	var offsetX = 0
-	for (var i = 1; i <= string_length(_text); i++)
+	var _xx = _x
+	var _yy = _y
+	var _cx = 0
+	var _cy = 0
+	var _length = string_length(_string) + 1
+	for (var i = 1; i < _length; ++i)
 	{
-		var letter = string_char_at(_text, i)
-		var font_size = string_width(letter)
-		var xx = _x
-		var yy = _y
-		var _special = true
-		var _special_req = ["[", "]" , "/"]
-		var _offX = 0
-		var _offY = 0
-		if string_char_at(_text, i + 1) != _special_req[0] && 
-		string_char_at(_text, i - 1) != _special_req[1] &&
-		string_char_at(_text, i - 1) != _special_req[2] &&
-		letter != _special_req[0] &&
-		letter != _special_req[2] &&
-		letter != _special_req[1]
-			_special = false
-		if _special
-		{
-			if letter != _special_req[0] || letter != _special_req[1] || letter != _special_req[2]
-			{
-				switch letter
-				{
-					case "S":
-						var effect_shake = true
-						break
-					case "E":
-						var effect_shake = false
-						break
-					case "W":
-						var effect_wave = true
-						break
-				}
-			}
-		}
-		if effect_shake = true
-		{
-			var _offX = random_range(-1, 1)
-			var _offY = random_range(-1, 1)
-		}
-		if effect_wave = true
-		{
-			var _offY = sin((current_time / 60) - (i * 60 * 4))
-		}
+		var _is_special = false
+		var _let = string_char_at(_string, i)
+		var _first = string_char_at(_string, 1)
+		var _width = string_width(_let)
 		switch alignments[0]
 		{
 			case fa_left:
 				break
 			case fa_center:
-				var xx = _x - (string_length(_text) * string_width("A")) / 2
+				_xx = _x - _length * string_width("A") / 2
 				break
-			case fa_right: // umm.. i forgot the math to this one so its fa_center right now
-				var xx = _x - string_length(_text) * string_width("A")
+			case fa_right:
+				_xx = _x - _length * string_width("A")
 				break
 		}
-		if !_special
+		if string_char_at(_string, i - 1) == "/" || string_char_at(_string, i) == "/" // Special features
+			_is_special = true
+		if _is_special == false
 		{
-			draw_text(xx + offsetX + _offX, yy + _offY, letter)
-			index++
-			offsetX += font_size 
+			draw_set_halign(fa_left)
+			draw_text(_xx + _cx, _yy + _cy, _let)
+			_cx += _width
+		}
+		else
+		{
+			switch _let
+			{
+				case "n": // New line
+					_cx = 0
+					_cy += string_height("A")
+					break
+			}
 		}
 	}
 }

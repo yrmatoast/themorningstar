@@ -284,5 +284,13 @@ add_option_ext(_control_key, optmenu.key, "RIGHT", function()
 		scr_setbind(global.key_right, "Right", q.val)
 		q.val = global.key_right[0]
 	}, global.key_right[0], 1)
+add_option_ext(_control_key, optmenu.key, "JUMP", function()
+	{
+		var m = menus[menu]
+		var opt = m.options
+		var q = opt[selected]
+		scr_setbind(global.key_jump, "Jump", q.val)
+		q.val = global.key_jump[0]
+	}, global.key_jump[0], 1)
 
 array_push(menus, _control_key)

@@ -72,5 +72,5 @@ if m.menuid == optmenu.controls_key
 	draw_set_font(global.bigfont)
 	draw_set_align(fa_left)
 	draw_set_color(c_white)
-	draw_text(0 + 100, 720 - 100, "F1 RESET")
+	__ti_draw_text(0 + 100, 720 - 100, "F1 RESET")
 }

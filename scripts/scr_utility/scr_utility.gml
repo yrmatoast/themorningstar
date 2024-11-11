@@ -245,8 +245,7 @@ function add_error(_text)
 		txt: string("ERROR: {0}", _text),
 		timer: 60 * 3,
 	}
-	if !error_exists(_text)
-		ds_list_add(obj_errorreporter.errors, _err)	
+	ds_list_add(obj_errorreporter.errors, _err)	
 	return _err
 }
 

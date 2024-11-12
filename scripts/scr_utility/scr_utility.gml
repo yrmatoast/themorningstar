@@ -96,35 +96,61 @@ function __ti_input()
 function fekles_draw_text(_x, _y, _string)
 {
 	var alignments = [draw_get_halign(), draw_get_valign()]
+	var _font = draw_get_font()
+	var _color = draw_get_color()
 	var _xx = _x
 	var _yy = _y
 	var _cx = 0
 	var _cy = 0
 	var _length = string_length(_string) + 1
+	var _final_string = ""
+	var index = 1
+	draw_set_font(_font)
 	for (var i = 1; i < _length; ++i)
 	{
 		var _is_special = false
+		var _is_key = false
 		var _let = string_char_at(_string, i)
-		var _first = string_char_at(_string, 1)
+		var _final_let = string_char_at(_string, i)
 		var _width = string_width(_let)
+		if string_char_at(_string, i - 1) == "/" 
+		|| string_char_at(_string, i) == "/"// Special features
+			_is_special = true
+		if string_char_at(_string, i) == "[" 
+		|| string_char_at(_string, i) == "]"
+		_is_special = true
+		if string_char_at(_string, i - 1) == "[" && string_char_at(_string, i + 1) == "]"
+			_is_key = true
+		if !_is_special
+			_final_string += _let
 		switch alignments[0]
 		{
 			case fa_left:
 				break
 			case fa_center:
-				_xx = _x - _length * string_width("A") / 2
+				_xx = _x - string_width(_string) / 2
 				break
 			case fa_right:
-				_xx = _x - _length * string_width("A")
+				_xx = _x - string_width(_string)
 				break
 		}
-		if string_char_at(_string, i - 1) == "/" || string_char_at(_string, i) == "/" // Special features
-			_is_special = true
 		if _is_special == false
 		{
-			draw_set_halign(fa_left)
-			draw_text(_xx + _cx, _yy + _cy, _let)
+			if _let == "&"
+				draw_sprite(spr_tutorialkeyspecial, argument3, _xx + _cx - 32, _yy + _cy + 8)
+			else
+			{
+				draw_set_halign(fa_left)
+				if _is_key
+				{
+					draw_sprite(spr_tutorialkey, 0, _xx + _cx - 8, _yy + _cy + 8)
+					draw_set_color(c_black)
+					draw_set_font(global.tutorialfont)
+				}
+				draw_text(_xx + _cx, _yy + _cy, _final_let)
+			}
 			_cx += _width
+			index += 1
 		}
 		else
 		{
@@ -132,10 +158,15 @@ function fekles_draw_text(_x, _y, _string)
 			{
 				case "n": // New line
 					_cx = 0
-					_cy += string_height("A")
+					_cy += string_height("A") 
+					_final_string = ""
+					index = 1
 					break
 			}
 		}
+		draw_set_halign(alignments[0])
+		draw_set_font(_font)
+		draw_set_color(_color)
 	}
 }
 
@@ -298,6 +329,37 @@ function scr_getkeys(_key)
 			break
 	}
 	return _char;
+}
+
+function scr_keyspecial_index(_keystr)
+{
+	switch _keystr
+	{
+		case "SHIFT":
+			return 0
+			break
+		case "CONTROL":
+			return 1
+			break
+		case "SPACE":
+			return 2
+			break
+		case "UP":
+			return 3
+			break
+		case "DOWN":
+			return 4
+			break
+		case "LEFT":
+			return 6
+			break
+		case "RIGHT":
+			return 5
+			break
+		case "ESCAPE":
+			return 7
+			break
+	}
 }
 
 function scr_numtokey(_string)

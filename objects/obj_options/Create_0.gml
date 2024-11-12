@@ -251,7 +251,14 @@ add_option_ext(_control_key, optmenu.press, "BACK", function()
 {
 	goto_menu(optmenu.controls_main)
 })
-
+add_option_ext(_control_key, optmenu.key, "START", function()
+	{
+		var m = menus[menu]
+		var opt = m.options
+		var q = opt[selected]
+		scr_setbind(global.key_start, "Start", q.val)
+		q.val = global.key_start[0]
+	}, global.key_start[0], 1)
 add_option_ext(_control_key, optmenu.key, "LEFT", function()
 	{
 		var m = menus[menu]

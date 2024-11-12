@@ -6,11 +6,9 @@ fekles_draw_text(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 100  - scrollY, string_up
 for (var i = 0; i < array_length(levels[page]); i++)
 {
 	draw_set_color(selected[0] == i ? c_white : c_gray)
-	draw_set_align(fa_center)
 	fekles_draw_text(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + (40 * i) - scrollY, string_upper(levels[page][i].title))
 }
 draw_set_color(c_white)
-draw_set_align(fa_center)
 fekles_draw_text(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 150, string_upper(string("Page {0} Out of {1}", page + 1, array_length(levels))))
 draw_set_color(c_red)
 var _checkpoint = string("{0} Checkpoints", levels[page][sel].title)

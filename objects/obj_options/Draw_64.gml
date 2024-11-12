@@ -59,7 +59,10 @@ switch m.anchor
 					draw_set_color(_sel == i ? c_white : c_gray)
 					fekles_draw_text(xx, yy + m.ypad * i, q.name)
 					draw_set_align(fa_right)
-					fekles_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.selecting ? "PRESS ANY KEY" : scr_numtokey(q.val))
+					var _key = "[&]"
+					if string_length(scr_numtokey(q.val)) == 1
+						var _key = string("[{0}]", scr_numtokey(q.val))
+					fekles_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.selecting ? "PRESS ANY KEY" : _key, scr_keyspecial_index(scr_numtokey(q.val)))
 					break
 			}
 		}

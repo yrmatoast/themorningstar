@@ -1,12 +1,3 @@
-# TODO (Order on priority)
-  - Noise recreations
-      Fall sprite, bounce sprite, ect
-  - Noise Moveset
-      Walljump, Backflip
-  - Junk Beach recreation
-      Level Design...
-  - MR ORANGE!!!
-      Everything.
-  - Noisette
-      Idle
-  - Eggcop sprite recreations
+# PIZZA TOWER: THE MORNING STAR REPOSITORY
+This fanmade recreation is... cancelled.
+It was originally a gag and shouldve stayed that way, oh well.

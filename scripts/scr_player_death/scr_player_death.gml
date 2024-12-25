@@ -25,7 +25,7 @@ function scr_player_death(){
 			vsp += 0.2
 			if xs_cale == 0
 			{
-				with obj_player
+				with obj_player1
 				{
 					global.hp = 4
 					global.collect = 0

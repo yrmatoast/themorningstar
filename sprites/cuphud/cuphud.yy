@@ -4,7 +4,7 @@
   "bboxMode":0,
   "bbox_bottom":91,
   "bbox_left":12,
-  "bbox_right":111,
+  "bbox_right":112,
   "bbox_top":12,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -19,6 +19,7 @@
   "height":108,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"6f42b364-e033-4bbe-937d-f80f97a2ee4a","blendMode":0,"displayName":"pasteLayer","isLocked":false,"name":"6f42b364-e033-4bbe-937d-f80f97a2ee4a","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"84bf939b-67b3-4aff-bcf9-6e9a41704e0c","blendMode":0,"displayName":"default","isLocked":false,"name":"84bf939b-67b3-4aff-bcf9-6e9a41704e0c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"cuphud",

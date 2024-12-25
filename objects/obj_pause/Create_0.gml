@@ -14,7 +14,7 @@ array_push(exitarr, {
 		obj_pause.pause = false
 		fmod_event_setPause_all(false)
 		instance_activate_all()
-		with obj_player
+		with obj_player1
 		{
 			global.hp = 4
 			global.collect = 0

@@ -2,18 +2,26 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_running(){
 	grav = grav
-	if get_sprite("runmax")
-		image_speed = 0.4
-	else
-		image_speed = 0.35
+	image_speed = 0.5
 	hsp = movespeed * xscale
 	var targetspeed = speeds[1]
 	if timers.run <= 0
 		var targetspeed = speeds[2]
-	if animation_end() && (get_sprite("runstart") || get_sprite("runland") || get_sprite("turn"))
+	if animation_end() && (get_sprite("runstart") || get_sprite("turn"))
 		set_sprite("run")
+	if animation_end() && get_sprite("runland")
+		set_sprite("runstart")
 	if movespeed > speeds[1] && get_sprite("run")
 		set_sprite("runmax")
+	if movespeed > speeds[1]
+	{
+		if timers.blur == 0
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
+	}
 	if grounded
 	{
 		if (move != xscale && movespeed <= speeds[1])
@@ -42,7 +50,8 @@ function scr_player_running(){
 		}
 		else
 		{
-			slope_momentum(0.2, 0.1)
+			if get_sprite("runmax")
+				slope_momentum(0.1, 0.05)
 			if get_sprite("runskid")
 				set_sprite("run")
 			if movespeed < targetspeed
@@ -67,6 +76,7 @@ function scr_player_running(){
 		}
 		else
 		{
+			movespeed = abs(hsp)
 			instance_create_depth(x, y + 5, 5, obj_basicparticle, {
 				sprite_index: spr_jumpcloud
 			})
@@ -105,9 +115,9 @@ function scr_player_running(){
 		jumpanim = false
 		state = states.runningjump
 		if get_sprite("runmax")
-			set_sprite("longjumpend")
+			set_sprite("longjump")
 		else
-			set_sprite("runfall")
+			set_sprite("runjump")
 	}
 	if animation_end() && get_sprite("jump")
 		set_sprite("fall")

@@ -1,5 +1,5 @@
 __ti_input()
-if keyboard_check_pressed(vk_escape)
+if keyboard_check_pressed(vk_escape) && !instance_exists(obj_options)
 {
 	if !pause
 	{
@@ -38,6 +38,7 @@ if keyboard_check_pressed(vk_escape)
 		instance_activate_object(obj_shell)
 		instance_activate_object(obj_pause)
 		instance_activate_object(obj_fmod)
+		instance_activate_object(obj_inputcontroller)
 		fmod_event_setPause_all(true)
 	}
 }

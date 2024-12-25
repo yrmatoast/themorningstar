@@ -43,13 +43,13 @@ if active
 	if key_jump2 == active && levels[page][sel].islevel = true
 	{
 		active = false
-		obj_player.hallway = false
+		obj_player1.hallway = false
 		global.level = levels[page][sel].title
 		if load_quick(true, _checkpoint, "general_currentroom") != -4
 		{
-			obj_player.targetRoom = load_quick(true, _checkpoint, "general_currentroom")
-			obj_player.char = load_quick(false, _checkpoint, "player_char")
-			obj_player.targetDoor = [load_quick(true, _checkpoint, "player_x"), load_quick(true, _checkpoint, "player_y")]
+			obj_player1.targetRoom = load_quick(true, _checkpoint, "general_currentroom")
+			obj_player1.char = load_quick(false, _checkpoint, "player_char")
+			obj_player1.targetDoor = [load_quick(true, _checkpoint, "player_x"), load_quick(true, _checkpoint, "player_y")]
 			global.hp = load_quick(true, _checkpoint, "player_hp")
 			global.collect = load_quick(true, _checkpoint, "player_collectables")
 			global.timer = load_quick(true, _checkpoint, "general_time")
@@ -58,15 +58,15 @@ if active
 		}
 		else
 		{
-			obj_player.targetRoom = levels[page][sel].room_info[0]
-			obj_player.targetDoor = levels[page][sel].room_info[1]
+			obj_player1.targetRoom = levels[page][sel].room_info[0]
+			obj_player1.targetDoor = levels[page][sel].room_info[1]
 			obj_camera.collect = 0
 			global.collect = 0
 			global.hp = 4
 			global.timer = 0
 		}
 		with instance_create_depth(x, y, 0, obj_fadeout)
-			targetRoom = obj_player.targetRoom
+			targetRoom = obj_player1.targetRoom
 		instance_create_depth(x, y, -5, obj_leveltitle).text = string_upper(levels[page][sel].title)
 	}
 }

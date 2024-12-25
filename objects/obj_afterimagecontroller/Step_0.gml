@@ -34,7 +34,7 @@ if (!ds_list_empty(afterimages))
 				        }
 						break
 					case afterimagetype.fade:
-						image_alpha -= 0.1
+						image_alpha -= 0.15
 						if (image_alpha <= 0)
 				        {
 							with other

@@ -15,6 +15,8 @@ function get_char_name(_char) //get character name (for sprites)
 
 function set_sprite(_name, _index = image_index, _char = char) //easier sprite setting without 12983293 variables.
 {
+	//grabs the character sprite name from get_char_name and combines it with the sprite name specified
+	// set_sprite("jump") would mean spr_noise_jump for character N
 	var sprite_to_find = string("spr_{0}_{1}", get_char_name(_char), _name)
 	var sprite = asset_get_index(sprite_to_find)
 	if sprite_exists(sprite)
@@ -52,7 +54,7 @@ function get_sprite(_name) //to check if youre a sprite
 	}
 }
 
-function get_sprite_name(_name) //easier sprite setting without 12983293 variables.
+function get_sprite_name(_name) // grabs the sprite asset to use in a non sprite setting situation
 {
 	var sprite_to_find = string("spr_{0}_{1}", get_char_name(char), _name)
 	var sprite = asset_get_index(sprite_to_find)

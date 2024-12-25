@@ -1,6 +1,8 @@
 function scr_collision()
 {
-	var _ground =  place_meeting(x, y + 1, par_solid) && vsp >= 0 || (place_meeting(x, y + 1, par_platform) && bbox_bottom - 1 < instance_place(x, y + 1, par_platform).y) && vsp >= 0 || place_meeting(x, y + 1, obj_slope) && vsp >= 0
+	var _ground =  place_meeting(x, y + 1, par_solid) && vsp >= 0 
+	|| (place_meeting(x, y + 1, par_platform) && bbox_bottom - 1 < instance_place(x, y + 1, par_platform).y) && vsp >= 0 
+	|| place_meeting(x, y + 1, obj_slope) && vsp >= 0
 	var _checkby = 0.5
 	var _slopecheckthing = 42
 	if place_meeting(x + hsp, y - 42, par_solid) && scr_sloped()

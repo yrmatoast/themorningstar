@@ -18,7 +18,7 @@ function meta_goto_room ()
 
 function sh_goto_room(args)
 {
-	with obj_player
+	with obj_player1
 	{
 		targetRoom = asset_get_index(args[1])
 		targetDoor = args[2]

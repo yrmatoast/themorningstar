@@ -8,8 +8,14 @@ function scr_player_normal()
 	if move != 0 && !scr_solid(move, 0)
 	{
 		state = states.running
-		set_sprite("runstart", 0)
-		timers.run = 30
+		if move != xscale && move != 0
+		{
+			set_sprite("turn", 0)
+			xscale = move
+		}
+		else
+			set_sprite("runstart", 0)
+		timers.run = 60
 	}
 	else
 	{

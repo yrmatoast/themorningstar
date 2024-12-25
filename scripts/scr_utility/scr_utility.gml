@@ -30,17 +30,17 @@ function __ti_initinput()
 	global.key_attack = [
 	
 	ini_read_real("Keyboard", "Attack", vk_shift), 
-	ini_read_real("Controller", "Attack", gp_face3),]
+	ini_read_real("Controller", "Attack", gp_shoulderlb),]
 	
 	global.key_slap = [
 	
 	ini_read_real("Keyboard", "Slap", ord("X")), 
-	ini_read_real("Controller", "Slap", gp_face4),]
+	ini_read_real("Controller", "Slap", gp_face2),]
 	
 	global.key_taunt = [
 	
 	ini_read_real("Keyboard", "Taunt", ord("C")), 
-	ini_read_real("Controller", "Taunt", gp_face2),]
+	ini_read_real("Controller", "Taunt", gp_face3),]
 	
 	global.key_start = [
 	
@@ -62,7 +62,7 @@ function scr_setbind(_global, _savename , _value, _controller = 0) // change bin
 
 function __ti_input()
 {
-		var _input = -4
+		var _input = obj_inputcontroller.player_input[0]
 		ini_open("options.ini")
 		key_left = -(keyboard_check(global.key_left[0]) || gamepad_button_check(_input, global.key_left[1]) || gamepad_axis_value(_input, gp_axislh) < 0)
 		key_left2 = -(keyboard_check_pressed(global.key_left[0]) || gamepad_button_check_pressed(_input, global.key_left[1]) || gamepad_axis_value(_input, gp_axislh) < 0)
@@ -91,6 +91,83 @@ function __ti_input()
 		key_start = keyboard_check(global.key_start[0]) || gamepad_button_check(_input, global.key_start[1])
 		key_start2 = keyboard_check_pressed(global.key_start[0]) || gamepad_button_check_pressed(_input, global.key_start[1])
 		ini_close()
+}
+
+function fekles_draw_text(_x, _y, _string)
+{
+	var alignments = [draw_get_halign(), draw_get_valign()]
+	var _font = draw_get_font()
+	var _color = draw_get_color()
+	var _xx = _x
+	var _yy = _y
+	var _cx = 0
+	var _cy = 0
+	var _length = string_length(_string) + 1
+	var _final_string = ""
+	var index = 1
+	draw_set_font(_font)
+	for (var i = 1; i < _length; ++i)
+	{
+		var _is_special = false
+		var _is_key = false
+		var _let = string_char_at(_string, i)
+		var _final_let = string_char_at(_string, i)
+		var _width = string_width(_let)
+		if string_char_at(_string, i - 1) == "/" 
+		|| string_char_at(_string, i) == "/"// Special features
+			_is_special = true
+		if string_char_at(_string, i) == "[" 
+		|| string_char_at(_string, i) == "]"
+		_is_special = true
+		if string_char_at(_string, i - 1) == "[" && string_char_at(_string, i + 1) == "]"
+			_is_key = true
+		if !_is_special
+			_final_string += _let
+		switch alignments[0]
+		{
+			case fa_left:
+				break
+			case fa_center:
+				_xx = _x - string_width(_string) / 2
+				break
+			case fa_right:
+				_xx = _x - string_width(_string)
+				break
+		}
+		if _is_special == false
+		{
+			if _let == "&"
+				draw_sprite(spr_tutorialkeyspecial, argument3, _xx + _cx - 32, _yy + _cy + 8)
+			else
+			{
+				draw_set_halign(fa_left)
+				if _is_key
+				{
+					draw_sprite(spr_tutorialkey, 0, _xx + _cx - 8, _yy + _cy + 8)
+					draw_set_color(c_black)
+					draw_set_font(global.tutorialfont)
+				}
+				draw_text(_xx + _cx, _yy + _cy, _final_let)
+			}
+			_cx += _width
+			index += 1
+		}
+		else
+		{
+			switch _let
+			{
+				case "n": // New line
+					_cx = 0
+					_cy += string_height("A") 
+					_final_string = ""
+					index = 1
+					break
+			}
+		}
+		draw_set_halign(alignments[0])
+		draw_set_font(_font)
+		draw_set_color(_color)
+	}
 }
 
 function gamepad_check_any(_device) // check for gamepad
@@ -173,8 +250,7 @@ function add_error(_text)
 		txt: string("ERROR: {0}", _text),
 		timer: 60 * 3,
 	}
-	if !error_exists(_text)
-		ds_list_add(obj_errorreporter.errors, _err)	
+	ds_list_add(obj_errorreporter.errors, _err)	
 	return _err
 }
 
@@ -220,4 +296,106 @@ function wrap()
 	var range = _max - _min + 1; // + 1 is because max bound is inclusive
 
 	return (((value - _min) % range) + range) % range + _min;
+}
+
+function scr_getkeys(_key)
+{
+	var _char = ord(_key) 
+	switch(_key) 
+	{
+		case vk_left:
+		    _char = "LEFT"
+		    break
+		case vk_right:
+		    _char = "RIGHT"
+		    break
+		case vk_up:
+		    _char = "UP"
+		    break
+		case vk_down:
+		    _char = "DOWN"
+		    break
+		case vk_shift:
+		    _char = "SHIFT"
+		    break
+		case vk_space:
+		    _char = "SPACE"
+		    break
+		case vk_control:
+			_char = "CONTROL"
+			break
+		case vk_escape:
+			_char = "ESCAPE"
+			break
+	}
+	return _char;
+}
+
+function scr_keyspecial_index(_keystr)
+{
+	switch _keystr
+	{
+		case "SHIFT":
+			return 0
+			break
+		case "CONTROL":
+			return 1
+			break
+		case "SPACE":
+			return 2
+			break
+		case "UP":
+			return 3
+			break
+		case "DOWN":
+			return 4
+			break
+		case "LEFT":
+			return 6
+			break
+		case "RIGHT":
+			return 5
+			break
+		case "ESCAPE":
+			return 7
+			break
+	}
+}
+
+function scr_numtokey(_string)
+{
+	var _realkey = 0
+	var actualkey = chr(_string)
+	switch _string
+	{
+		case 38:
+		case 37:
+		case 27:
+		case 16:
+		case 32:
+		case 39:
+		case 40:
+			_realkey = scr_getkeys(_string)
+			break
+		case 163:
+			_realkey = "¢"
+			break
+		case 222:
+			_realkey = "'"
+			break
+		case 186:
+			_realkey = ":"
+			break
+		case 190:
+			_realkey = "."
+			break
+		case 188:
+			_realkey = ","
+			break
+	}
+	if _realkey = 0
+		actualkey = chr(_string)
+	else
+		actualkey = _realkey
+	return actualkey;
 }

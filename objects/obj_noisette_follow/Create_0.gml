@@ -1,6 +1,6 @@
 lag = 60
 followqueue = ds_queue_create()
-targetfollower = obj_player
+targetfollower = obj_player1
 gx = x
 gy = y
 realscale = 1

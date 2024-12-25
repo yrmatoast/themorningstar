@@ -1,29 +1,51 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scr_player_runningjump(){
+function scr_player_runningjump()
+{
+	var _mvsp = movespeed * xscale
+	if movespeed <= 12
+	{
+		var _mvsp = movespeed * move
+		if move != 0
+			movespeed = 12
+		else
+			movespeed = 0
+		if hsp != 0
+			xscale = sign(hsp)
+	}
 	image_speed = 0.35
-	hsp = movespeed * xscale
-	if movespeed < 10 && move != 0
-		movespeed = approach(movespeed, 10, speeds[0])
+	hsp = approach(hsp, _mvsp, 0.5)
+	if movespeed > speeds[1]
+	{
+		if timers.blur == 0
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
+	}
 	if jumpanim == true
 	{
 		if movespeed > speeds[1] || (get_sprite("fork") || get_sprite("forkstart"))
 			set_sprite("longjump", 0)
 		else
 			set_sprite("runjump", 0)
-		jumpanim = false
+		jumpanim = false 
 	}
-		if animation_end() && get_sprite("longjump")
-			set_sprite("longjumpend", 0)
-		if animation_end() && get_sprite("runjump")
-			set_sprite("runfall", 0)
+	if vsp >= 0 && get_sprite("longjump")
+		set_sprite("longjumpendstart", 0)
+	if animation_end() && get_sprite("longjumpendstart")
+		set_sprite("longjumpend", 0)
+	if animation_end() && get_sprite("runjump")
+		set_sprite("runfall", 0)
 	if grounded
 	{
 		instance_create_depth(x, y, 5, obj_basicparticle, {
 			sprite_index: spr_landeffect
 		})
 		state = states.running
-		set_sprite("runland", 0)
+		if get_sprite("longjump") || get_sprite("longjumpend") || get_sprite("longjumpendstart")
+			set_sprite("run", 0)
+		else
+			set_sprite("runland", 0)
 		event_play_oneshot3d("event:/Sfx/land", x, y)
 		movespeed = abs(hsp)
 	}

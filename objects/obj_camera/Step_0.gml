@@ -1,7 +1,10 @@
 audio_falloff_set_model(audio_falloff_linear_distance)
-audio_listener_position(-obj_player.x, obj_player.y, 0)
- var camx = cam_tar.x - (camera_get_view_width(view_camera[0]) / 2) + xoffset
-var camy = cam_tar.y - 50 - (camera_get_view_height(view_camera[0]) / 2) + yoffset
+audio_listener_position(-obj_player1.x, obj_player1.y, 0)
+var target = [cam_tar.x, cam_tar.y]
+if instance_exists(obj_player2)
+	var target = [mean(cam_tar.x, obj_player2.x), mean(cam_tar.y, obj_player2.y)]
+var camx = target[0] - (camera_get_view_width(view_camera[0]) / 2) + xoffset
+var camy = target[1] - 50 - (camera_get_view_height(view_camera[0]) / 2) + yoffset
 camx = clamp(camx, 0, (room_width - camera_get_view_width(view_camera[0])))
 camy = clamp(camy, 0, (room_height - camera_get_view_height(view_camera[0])))
 var rcx = camx
@@ -12,10 +15,10 @@ if room == rm_levelselect
 	visible = false
 else
 	visible = true
-char = obj_player.char
-if cam_tar == obj_player
+char = obj_player1.char
+if cam_tar == obj_player1
 {
-	var extend = cam_tar.xscale * cam_tar.movespeed * 4
+	var extend = sign(cam_tar.hsp) * cam_tar.movespeed * 4
 	if cam_tar.state == states.cape
 		var extendy = cam_tar.vsp * 10
 	else
@@ -26,13 +29,13 @@ if cam_tar == obj_player
 		var accel = 8
 	if cam_tar.state == states.running ||
 	cam_tar.state == states.runningjump ||
-	cam_tar.state == states.cape ||
-	cam_tar.state == states.fork
+	cam_tar.state == states.cape
 	{
 		xoffset = approach(xoffset, extend, accel)
 		yoffset = approach(yoffset, extendy, 2)
 		noisesprite = spr_hud_speedometer_noisemove
-		barpos = approach(barpos, 1, 1 / 30)
+		if cam_tar.movespeed >= 12
+			barpos = approach(barpos, 1, 1 / 30)
 	}
 	else
 	{

@@ -15,7 +15,7 @@ function scr_player_wallslide()
 		set_sprite("jump", 0)
 		state = states.jump
 		grv = grav
-		jumpstop = true
+		jumpstop = false
 		if vsp < -15
 			vsp = -15
 	}
@@ -27,6 +27,7 @@ function scr_player_wallslide()
 	}
 	if key_jump2
 	{
+		jumpstop = false
 		state = states.walljump
 		xscale *= -1
 		movespeed = 10
@@ -65,6 +66,11 @@ function scr_player_walljump()
 		vsp = 15
 		event_play_oneshot3d("event:/Sfx/dive", x, y)
 		state = states.fork
+	}
+	if jumpstop == false && !key_jump && vsp < grav
+	{
+		jumpstop = true
+		vsp /= 20
 	}
 	do_wallslide()
 	do_monsterjump()

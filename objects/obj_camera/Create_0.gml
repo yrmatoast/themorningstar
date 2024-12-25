@@ -1,5 +1,5 @@
 depth = -50
-cam_tar = obj_player
+cam_tar = obj_player1
 xoffset = 0
 yoffset = 0
 index = 0
@@ -16,6 +16,8 @@ cupx = 256 + 16 - 6 + (56 * (global.hp - 4))
 cupy = 0
 collect = 0
 global.timer = 0
+rcx = 0
+rcy = 0
 
 create_collect = function(_sprite, _x, _y)
 {
@@ -34,4 +36,4 @@ create_collect = function(_sprite, _x, _y)
 	return par;
 }
 
-char = obj_player.char
+char = obj_player1.char

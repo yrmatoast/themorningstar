@@ -12,13 +12,31 @@ function scr_player_cape(){
 		set_sprite("capefallstart", 0)
 		grv = grav
 	}
-	if vsp > 0 && char == "M" && !hasflew
+	if vsp > 0 && !hasflew
 	{
-		grv = cape
+		if char == "M"
+			grv = cape
 		hasflew = true
 	}
 	do_monsterjump()
 	do_wallslide()
+	if timers.steppart == 0
+	{
+		instance_create_depth(x + random(10), y + random(10), 5, obj_basicparticle, {
+			sprite_index: spr_capeparticle,
+		})
+		timers.steppart = 6
+	}
+	timers.steppart = approach(timers.steppart, 0, 1)
+	if movespeed > speeds[1]
+	{
+		if timers.blur == 0
+		{
+			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
+			timers.blur = 4
+		}
+		timers.blur = approach(timers.blur, 0, 1)
+	}
 	if jumpstop == false && !key_jump
 	{
 		jumpstop = true
@@ -50,16 +68,16 @@ function scr_player_cape(){
 function scr_player_capepound()
 {
 	image_speed = 0.35
+	hsp = approach(hsp, movespeed * xscale, move != 0 ? 4 : 1)
+	if move != 0
+	{
+		xscale = move
+		movespeed = 10
+	}
+	else
+		movespeed = 0
 	if get_sprite("capepound")
 	{
-		hsp = approach(hsp, movespeed * xscale, move != 0 ? 4 : 1)
-		if move != 0
-		{
-			xscale = move
-			movespeed = 10
-		}
-		else
-			movespeed = 0
 		if grounded
 		{
 			if poundcharge < 30
@@ -85,7 +103,7 @@ function scr_player_capepound()
 			}
 			poundcharge = 0
 		}
-		if timers.blur == 0 && poundcharge >= 30
+		if timers.blur == 0
 		{
 			create_blur_afterimage(sprite_index, image_index, x, y, xscale)
 			timers.blur = 4

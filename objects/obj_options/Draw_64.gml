@@ -6,7 +6,7 @@ for (var q = 0; q < array_length(backgrounds); q++)
 {
 	draw_sprite_tiled_ext(spr_optionsBG, backgrounds[q].index, backgrounds[q].scroll, backgrounds[q].scroll, 1, 1, c_white, backgrounds[q].alpha)
 	if q != 0
-		backgrounds[q].alpha = approach(backgrounds[q].alpha, menu == q ? 1 : 0, 0.1)
+		backgrounds[q].alpha = approach(backgrounds[q].alpha, menu == backgrounds[q].men ? 1 : 0, 0.1)
 	backgrounds[q].scroll += 1
 }
 switch m.anchor
@@ -20,7 +20,7 @@ switch m.anchor
 			draw_set_font(global.bigfont)
 			draw_set_align(fa_center)
 			draw_set_color(_sel == i ? c_white : c_gray)
-			draw_text(xx, yy + m.ypad * i, q.name)
+			fekles_draw_text(xx, yy + m.ypad * i, q.name)
 		}
 	break
 	case optmenu.left:
@@ -35,7 +35,7 @@ switch m.anchor
 					draw_set_font(global.bigfont)
 					draw_set_align(fa_left)
 					draw_set_color(_sel == i ? c_white : c_gray)
-					draw_text(xx, yy + m.ypad * i, q.name)
+					fekles_draw_text(xx, yy + m.ypad * i, q.name)
 					break
 				case optmenu.toggle:
 					draw_set_font(global.bigfont)
@@ -43,18 +43,37 @@ switch m.anchor
 					draw_set_color(_sel == i ? c_white : c_gray)
 					draw_text(xx, yy + m.ypad * i, q.name)
 					draw_set_align(fa_right)
-					draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.toggle[q.val])
+					fekles_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.toggle[q.val])
 					break
 				case optmenu.slider:
 					draw_set_font(global.bigfont)
 					draw_set_align(fa_left)
 					draw_set_color(_sel == i ? c_white : c_gray)
-					draw_text(xx, yy + m.ypad * i, q.name)
+					fekles_draw_text(xx, yy + m.ypad * i, q.name)
 					draw_set_align(fa_right)
-					draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.val)
+					fekles_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.val)
+					break
+				case optmenu.key:
+					draw_set_font(global.bigfont)
+					draw_set_align(fa_left)
+					draw_set_color(_sel == i ? c_white : c_gray)
+					fekles_draw_text(xx, yy + m.ypad * i, q.name)
+					draw_set_align(fa_right)
+					var _key = "[&]"
+					if string_length(scr_numtokey(q.val)) == 1
+						var _key = string("[{0}]", scr_numtokey(q.val))
+					fekles_draw_text(WINDOW_WIDTH - xx, yy + m.ypad * i, q.selecting ? "PRESS ANY KEY" : _key, scr_keyspecial_index(scr_numtokey(q.val)))
 					break
 			}
 		}
 	break
 }
 draw_set_color(c_white)
+var m = menus[menu]
+if m.menuid == optmenu.controls_key
+{
+	draw_set_font(global.bigfont)
+	draw_set_align(fa_left)
+	draw_set_color(c_white)
+	fekles_draw_text(0 + 100, 720 - 100, "F1 RESET")
+}
